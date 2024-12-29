@@ -1,0 +1,10 @@
+SEMANA 1 - 22/12/24 ATÉ 28/12/24
+
+ - Diagrama de Casos de uso completo
+ - Diagrama Entidade Relacionamento do Banco de Dados completo
+ - Diagrama Relacional do Banco de Dados completo
+ - Script para as tabelas do Banco de Dados completo
+ - Script para as views do Banco de Dados completo
+ - Script para as Store Procedures do Banco de Dados completo
+ - Script para as Functions do Banco de Dados completo
+ - Script para os Triggers do Banco de Dados completo
