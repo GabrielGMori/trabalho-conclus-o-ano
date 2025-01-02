@@ -8,3 +8,8 @@ SEMANA 1 - 22/12/24 ATÉ 28/12/24
  - Script para as Store Procedures do Banco de Dados completo
  - Script para as Functions do Banco de Dados completo
  - Script para os Triggers do Banco de Dados completo
+
+SEMANA 2 - 29/12/24 ATÉ 05/01/25
+
+ - Diagrama de Casos de Uso atualizado
+ - Diagrama de Classes completo
