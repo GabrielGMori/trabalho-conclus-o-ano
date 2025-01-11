@@ -1,6 +1,6 @@
 <mxfile host="65bd71144e">
     <diagram name="Página-1" id="dqLcOb5ojzZijLl2xL6k">
-        <mxGraphModel dx="715" dy="952" grid="1" gridSize="10" guides="1" tooltips="1" connect="1" arrows="1" fold="1" page="1" pageScale="1" pageWidth="827" pageHeight="1169" math="0" shadow="0">
+        <mxGraphModel dx="590" dy="582" grid="1" gridSize="10" guides="1" tooltips="1" connect="1" arrows="1" fold="1" page="1" pageScale="1" pageWidth="827" pageHeight="1169" math="0" shadow="0">
             <root>
                 <mxCell id="0"/>
                 <mxCell id="1" parent="0"/>
@@ -266,7 +266,7 @@
                     <mxGeometry x="352.5" y="964" width="195" height="20" as="geometry"/>
                 </mxCell>
                 <mxCell id="0-eEK_Ey9VHcflzUC_9f-14" value="&lt;font&gt;5: Remover&amp;nbsp;&lt;/font&gt;&lt;font&gt;Aeronave&lt;/font&gt;&lt;font&gt;()&lt;/font&gt;" style="text;html=1;align=center;verticalAlign=middle;whiteSpace=wrap;rounded=0;fontSize=10;" parent="1" vertex="1">
-                    <mxGeometry x="328" y="997.5" width="250" height="20" as="geometry"/>
+                    <mxGeometry x="307.5" y="997.5" width="250" height="20" as="geometry"/>
                 </mxCell>
                 <mxCell id="0-eEK_Ey9VHcflzUC_9f-15" value="" style="endArrow=classic;html=1;rounded=0;exitX=0.964;exitY=0.833;exitDx=0;exitDy=0;exitPerimeter=0;entryX=0;entryY=0;entryDx=0;entryDy=0;" parent="1" source="axeA_orivt2Zv7nJtLyO-8" target="0-eEK_Ey9VHcflzUC_9f-16" edge="1">
                     <mxGeometry width="50" height="50" relative="1" as="geometry">
@@ -284,7 +284,7 @@
                     </mxGeometry>
                 </mxCell>
                 <mxCell id="0-eEK_Ey9VHcflzUC_9f-18" value="{Tela Visualizacao&amp;nbsp;&lt;font&gt;Aeronave&lt;/font&gt;}" style="text;html=1;align=center;verticalAlign=middle;whiteSpace=wrap;rounded=0;fontSize=10;" parent="1" vertex="1">
-                    <mxGeometry x="352.5" y="1065" width="195" height="20" as="geometry"/>
+                    <mxGeometry x="335" y="1065" width="195" height="20" as="geometry"/>
                 </mxCell>
                 <mxCell id="0-eEK_Ey9VHcflzUC_9f-19" value="" style="endArrow=none;dashed=1;html=1;rounded=0;exitX=0.5;exitY=1;exitDx=0;exitDy=0;entryX=0.5;entryY=0;entryDx=0;entryDy=0;" parent="1" source="0-eEK_Ey9VHcflzUC_9f-7" target="0-eEK_Ey9VHcflzUC_9f-20" edge="1">
                     <mxGeometry width="50" height="50" relative="1" as="geometry">
@@ -318,9 +318,6 @@
                         <mxPoint x="139.89000000000001" y="1160" as="sourcePoint"/>
                         <mxPoint x="139.89000000000001" y="1180" as="targetPoint"/>
                     </mxGeometry>
-                </mxCell>
-                <mxCell id="0-eEK_Ey9VHcflzUC_9f-28" value="{&lt;font&gt;Aeronave&lt;/font&gt; removida}" style="text;html=1;align=center;verticalAlign=middle;whiteSpace=wrap;rounded=0;fontSize=10;" parent="1" vertex="1">
-                    <mxGeometry x="673" y="1055.5" width="130" height="20" as="geometry"/>
                 </mxCell>
                 <mxCell id="0-eEK_Ey9VHcflzUC_9f-29" value="{&lt;font&gt;Aeronave&lt;/font&gt; editada}" style="text;html=1;align=center;verticalAlign=middle;whiteSpace=wrap;rounded=0;fontSize=10;" parent="1" vertex="1">
                     <mxGeometry x="670" y="959" width="130" height="20" as="geometry"/>
@@ -445,8 +442,8 @@
                 <mxCell id="tQtwQze4VD7IqxbIgXw1-3" value="&lt;font&gt;4.1: set&lt;/font&gt;&lt;font&gt;Aeronave&lt;/font&gt;&lt;font&gt;()&lt;/font&gt;" style="text;html=1;align=center;verticalAlign=middle;whiteSpace=wrap;rounded=0;fontSize=10;" parent="1" vertex="1">
                     <mxGeometry x="655" y="903" width="160" height="20" as="geometry"/>
                 </mxCell>
-                <mxCell id="tQtwQze4VD7IqxbIgXw1-10" value="&lt;font&gt;5.2: delete&lt;/font&gt;&lt;font&gt;Aeronave&lt;/font&gt;&lt;font&gt;()&lt;/font&gt;" style="text;html=1;align=center;verticalAlign=middle;whiteSpace=wrap;rounded=0;fontSize=10;" parent="1" vertex="1">
-                    <mxGeometry x="655" y="999.5" width="160" height="20" as="geometry"/>
+                <mxCell id="tQtwQze4VD7IqxbIgXw1-10" value="&lt;font&gt;5.1: delete&lt;/font&gt;&lt;font&gt;Aeronave&lt;/font&gt;&lt;font&gt;()&lt;/font&gt;" style="text;html=1;align=center;verticalAlign=middle;whiteSpace=wrap;rounded=0;fontSize=10;" parent="1" vertex="1">
+                    <mxGeometry x="647.5" y="997.5" width="160" height="20" as="geometry"/>
                 </mxCell>
                 <mxCell id="sJdmqr4MSeHQLIoKmZAB-3" value="" style="endArrow=none;dashed=1;html=1;rounded=0;entryX=0.5;entryY=0;entryDx=0;entryDy=0;" parent="1" target="sJdmqr4MSeHQLIoKmZAB-1" edge="1">
                     <mxGeometry width="50" height="50" relative="1" as="geometry">
@@ -471,6 +468,28 @@
                 </mxCell>
                 <mxCell id="sJdmqr4MSeHQLIoKmZAB-8" value="{Aeronave disponível}" style="text;html=1;align=center;verticalAlign=middle;whiteSpace=wrap;rounded=0;fontSize=10;" parent="1" vertex="1">
                     <mxGeometry x="482.5" y="740" width="180" height="20" as="geometry"/>
+                </mxCell>
+                <mxCell id="2" value="" style="rounded=1;whiteSpace=wrap;html=1;" vertex="1" parent="1">
+                    <mxGeometry x="825" y="1025.5" width="10" height="27" as="geometry"/>
+                </mxCell>
+                <mxCell id="3" value="" style="endArrow=classic;html=1;rounded=0;exitX=1;exitY=0;exitDx=0;exitDy=0;entryX=1;entryY=1;entryDx=0;entryDy=0;" edge="1" parent="1" source="2" target="2">
+                    <mxGeometry width="50" height="50" relative="1" as="geometry">
+                        <mxPoint x="860" y="1061" as="sourcePoint"/>
+                        <mxPoint x="1020" y="1059.5" as="targetPoint"/>
+                        <Array as="points">
+                            <mxPoint x="980" y="1026"/>
+                            <mxPoint x="980" y="1053"/>
+                        </Array>
+                    </mxGeometry>
+                </mxCell>
+                <mxCell id="4" value="&lt;font&gt;5.2: verificarDisponibilidade&lt;/font&gt;&lt;font&gt;()&lt;/font&gt;" style="text;html=1;align=center;verticalAlign=middle;whiteSpace=wrap;rounded=0;fontSize=10;" vertex="1" parent="1">
+                    <mxGeometry x="827" y="1005.5" width="160" height="20" as="geometry"/>
+                </mxCell>
+                <mxCell id="5" value="{&lt;font&gt;Aeronave&lt;/font&gt; removida}" style="text;html=1;align=center;verticalAlign=middle;whiteSpace=wrap;rounded=0;fontSize=10;" vertex="1" parent="1">
+                    <mxGeometry x="662.5" y="1059.5" width="130" height="20" as="geometry"/>
+                </mxCell>
+                <mxCell id="6" value="{&lt;font&gt;Aeronave&lt;/font&gt;&amp;nbsp;disponível}" style="text;html=1;align=center;verticalAlign=middle;whiteSpace=wrap;rounded=0;fontSize=10;" vertex="1" parent="1">
+                    <mxGeometry x="842" y="1052.5" width="130" height="20" as="geometry"/>
                 </mxCell>
             </root>
         </mxGraphModel>
