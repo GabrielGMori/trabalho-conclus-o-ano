@@ -17,3 +17,5 @@ SEMANA 2 - 29/12/24 ATÉ 04/01/25
 SEMANA 3 - 05/01/25 ATÉ 11/01/25
 
  - Diagramas de sequência completos
+ - Diagramas de atividade completos
+ - Mudanças na classe Aeroporto e Voo
