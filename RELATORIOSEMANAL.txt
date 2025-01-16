@@ -19,3 +19,8 @@ SEMANA 3 - 05/01/25 ATÉ 11/01/25
  - Diagramas de sequência completos
  - Diagramas de atividade completos
  - Mudanças na classe Aeroporto e Voo
+
+SEMANA 4 - 12/01/25 ATÉ 18/01/25
+
+ - Caso de uso "Ver passageiros" alterado para "Manter passageiros"
+ - FXML das telas finalizados

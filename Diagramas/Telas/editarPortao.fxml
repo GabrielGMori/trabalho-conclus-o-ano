@@ -1,0 +1,80 @@
+<?xml version="1.0" encoding="UTF-8"?>
+
+<?import javafx.scene.control.*?>
+<?import javafx.geometry.*?>
+<?import javafx.scene.text.*?>
+<?import java.lang.*?>
+<?import javafx.scene.layout.*?>
+
+<Pane maxHeight="-Infinity" maxWidth="-Infinity" minHeight="-Infinity" minWidth="-Infinity" prefHeight="800.0" prefWidth="1000.0" style="-fx-background-color: #F1FFE7;" xmlns="http://javafx.com/javafx/8" xmlns:fx="http://javafx.com/fxml/1" fx:controller="com.tca.Controller.editarPortaoControllerFXML">
+   <children>
+      <VBox alignment="CENTER" prefHeight="800.0" prefWidth="1000.0">
+         <children>
+            <Text fill="#3fc2ff" strokeType="OUTSIDE" strokeWidth="0.0" text="Editar portão de embarque" textAlignment="CENTER" wrappingWidth="996.13671875">
+               <font>
+                  <Font name="Yu Gothic Bold" size="40.0" />
+               </font>
+               <VBox.margin>
+                  <Insets bottom="20.0" />
+               </VBox.margin>
+            </Text>
+            <HBox alignment="CENTER" prefHeight="65.0" prefWidth="1000.0" spacing="20.0">
+               <children>
+                  <Text fill="#333333" strokeType="OUTSIDE" strokeWidth="0.0" text="Código:" textAlignment="RIGHT" wrappingWidth="186.13671875">
+                     <font>
+                        <Font name="Yu Gothic Regular" size="35.0" />
+                     </font>
+                  </Text>
+                  <TextField fx:id="codigoTextField" prefHeight="48.0" prefWidth="200.0" style="-fx-background-color: #3fc2ff;">
+                     <font>
+                        <Font name="Yu Gothic Regular" size="25.0" />
+                     </font>
+                  </TextField>
+               </children>
+            </HBox>
+            <HBox alignment="CENTER" prefHeight="65.0" prefWidth="1000.0" spacing="20.0">
+               <children>
+                  <Text fill="#333333" strokeType="OUTSIDE" strokeWidth="0.0" text="Aeroporto:" textAlignment="RIGHT" wrappingWidth="269.13671875">
+                     <font>
+                        <Font name="Yu Gothic Regular" size="35.0" />
+                     </font>
+                  </Text>
+                  <ChoiceBox fx:id="aeroportoChoiceBox" prefHeight="51.0" prefWidth="357.0" style="-fx-background-color: #3fc2ff;" />
+               </children>
+            </HBox>
+            <HBox alignment="CENTER" prefHeight="65.0" prefWidth="1000.0" spacing="20.0">
+               <children>
+                  <Text fill="#333333" strokeType="OUTSIDE" strokeWidth="0.0" text="Disponível:" textAlignment="RIGHT" wrappingWidth="269.13671875">
+                     <font>
+                        <Font name="Yu Gothic Regular" size="35.0" />
+                     </font>
+                  </Text>
+                  <ChoiceBox fx:id="disponivelChoiceBox" prefHeight="51.0" prefWidth="181.0" style="-fx-background-color: #3fc2ff;" />
+               </children>
+            </HBox>
+            <HBox alignment="CENTER" prefHeight="64.0" prefWidth="1000.0" spacing="20.0">
+               <children>
+                  <Button mnemonicParsing="false" onAction="#cancelar" prefHeight="47.0" prefWidth="249.0" style="-fx-background-color: #3FC2FF;" text="Cancelar" textAlignment="CENTER" textFill="#f1ffe7">
+                     <font>
+                        <Font name="Yu Gothic Bold" size="24.0" />
+                     </font>
+                  </Button>
+                  <Button mnemonicParsing="false" onAction="#confirmar" prefHeight="47.0" prefWidth="249.0" style="-fx-background-color: #3FC2FF;" text="Confirmar" textAlignment="CENTER" textFill="#f1ffe7">
+                     <font>
+                        <Font name="Yu Gothic Bold" size="24.0" />
+                     </font>
+                  </Button>
+               </children>
+               <VBox.margin>
+                  <Insets top="20.0" />
+               </VBox.margin>
+            </HBox>
+            <Text fx:id="warningText" fill="#f1ffe7" strokeType="OUTSIDE" strokeWidth="0.0" textAlignment="CENTER" wrappingWidth="996.13671875">
+               <font>
+                  <Font name="Yu Gothic Bold" size="40.0" />
+               </font>
+            </Text>
+         </children>
+      </VBox>
+   </children>
+</Pane>

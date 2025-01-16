@@ -1,0 +1,38 @@
+<?xml version="1.0" encoding="UTF-8"?>
+
+<?import javafx.scene.control.*?>
+<?import javafx.geometry.*?>
+<?import javafx.scene.text.*?>
+<?import java.lang.*?>
+<?import javafx.scene.layout.*?>
+
+<Pane maxHeight="-Infinity" maxWidth="-Infinity" minHeight="-Infinity" minWidth="-Infinity" prefHeight="800.0" prefWidth="1000.0" style="-fx-background-color: #3FC2FF;" xmlns="http://javafx.com/javafx/8" xmlns:fx="http://javafx.com/fxml/1" fx:controller="com.tca.Controller.escolherLoginControllerFXML">
+   <children>
+      <VBox alignment="CENTER" prefHeight="800.0" prefWidth="1000.0">
+         <children>
+            <Text fill="#f1ffe7" strokeType="OUTSIDE" strokeWidth="0.0" text="Escolha sua forma de login" textAlignment="CENTER" wrappingWidth="996.13671875">
+               <font>
+                  <Font name="Yu Gothic Bold" size="40.0" />
+               </font>
+               <VBox.margin>
+                  <Insets />
+               </VBox.margin>
+            </Text>
+            <HBox alignment="CENTER" prefHeight="115.0" prefWidth="1000.0" spacing="20.0">
+               <children>
+                  <Button mnemonicParsing="false" onAction="#passageiro" prefHeight="47.0" prefWidth="249.0" style="-fx-background-color: F1FFE7;" text="Passageiro" textAlignment="CENTER" textFill="#333333">
+                     <font>
+                        <Font name="Yu Gothic Bold" size="24.0" />
+                     </font>
+                  </Button>
+                  <Button mnemonicParsing="false" onAction="#administrador" prefHeight="47.0" prefWidth="249.0" style="-fx-background-color: F1FFE7;" text="Administrador" textAlignment="CENTER" textFill="#333333">
+                     <font>
+                        <Font name="Yu Gothic Bold" size="24.0" />
+                     </font>
+                  </Button>
+               </children>
+            </HBox>
+         </children>
+      </VBox>
+   </children>
+</Pane>
