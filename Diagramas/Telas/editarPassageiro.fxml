@@ -119,6 +119,11 @@
                         <Font name="Yu Gothic Bold" size="24.0" />
                      </font>
                   </Button>
+                  <Button mnemonicParsing="false" onAction="#deletar" prefHeight="47.0" prefWidth="249.0" style="-fx-background-color: #3FC2FF;" text="Deletar" textAlignment="CENTER" textFill="#f1ffe7">
+                     <font>
+                        <Font name="Yu Gothic Bold" size="24.0" />
+                     </font>
+                  </Button>
                   <Button mnemonicParsing="false" onAction="#confirmar" prefHeight="47.0" prefWidth="249.0" style="-fx-background-color: #3FC2FF;" text="Confirmar" textAlignment="CENTER" textFill="#f1ffe7">
                      <font>
                         <Font name="Yu Gothic Bold" size="24.0" />

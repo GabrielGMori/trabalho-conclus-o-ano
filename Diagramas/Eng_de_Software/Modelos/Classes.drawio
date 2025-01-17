@@ -1,6 +1,6 @@
 <mxfile host="65bd71144e">
     <diagram name="Página-1" id="JMPSkYKYKMbUT9NjB5MC">
-        <mxGraphModel dx="4024" dy="3061" grid="1" gridSize="10" guides="1" tooltips="1" connect="1" arrows="1" fold="1" page="1" pageScale="1" pageWidth="827" pageHeight="1169" math="0" shadow="0">
+        <mxGraphModel dx="5286" dy="3669" grid="1" gridSize="10" guides="1" tooltips="1" connect="1" arrows="1" fold="1" page="1" pageScale="1" pageWidth="827" pageHeight="1169" math="0" shadow="0">
             <root>
                 <mxCell id="0"/>
                 <mxCell id="1" parent="0"/>
@@ -124,10 +124,10 @@
                 <mxCell id="uebt3IdMJ_7Td7zyS676-36" value="- destino: String" style="text;strokeColor=none;fillColor=none;align=left;verticalAlign=top;spacingLeft=4;spacingRight=4;overflow=hidden;rotatable=0;points=[[0,0.5],[1,0.5]];portConstraint=eastwest;whiteSpace=wrap;html=1;" parent="uebt3IdMJ_7Td7zyS676-31" vertex="1">
                     <mxGeometry y="130" width="300" height="26" as="geometry"/>
                 </mxCell>
-                <mxCell id="uebt3IdMJ_7Td7zyS676-37" value="- horarioPartida: Date" style="text;strokeColor=none;fillColor=none;align=left;verticalAlign=top;spacingLeft=4;spacingRight=4;overflow=hidden;rotatable=0;points=[[0,0.5],[1,0.5]];portConstraint=eastwest;whiteSpace=wrap;html=1;" parent="uebt3IdMJ_7Td7zyS676-31" vertex="1">
+                <mxCell id="uebt3IdMJ_7Td7zyS676-37" value="- horarioEmbarque: Date" style="text;strokeColor=none;fillColor=none;align=left;verticalAlign=top;spacingLeft=4;spacingRight=4;overflow=hidden;rotatable=0;points=[[0,0.5],[1,0.5]];portConstraint=eastwest;whiteSpace=wrap;html=1;" parent="uebt3IdMJ_7Td7zyS676-31" vertex="1">
                     <mxGeometry y="156" width="300" height="26" as="geometry"/>
                 </mxCell>
-                <mxCell id="uebt3IdMJ_7Td7zyS676-40" value="- horarioChegada: Date" style="text;strokeColor=none;fillColor=none;align=left;verticalAlign=top;spacingLeft=4;spacingRight=4;overflow=hidden;rotatable=0;points=[[0,0.5],[1,0.5]];portConstraint=eastwest;whiteSpace=wrap;html=1;" parent="uebt3IdMJ_7Td7zyS676-31" vertex="1">
+                <mxCell id="uebt3IdMJ_7Td7zyS676-40" value="- horarioDesembarque: Date" style="text;strokeColor=none;fillColor=none;align=left;verticalAlign=top;spacingLeft=4;spacingRight=4;overflow=hidden;rotatable=0;points=[[0,0.5],[1,0.5]];portConstraint=eastwest;whiteSpace=wrap;html=1;" parent="uebt3IdMJ_7Td7zyS676-31" vertex="1">
                     <mxGeometry y="182" width="300" height="26" as="geometry"/>
                 </mxCell>
                 <mxCell id="uebt3IdMJ_7Td7zyS676-41" value="- idAeronave: int" style="text;strokeColor=none;fillColor=none;align=left;verticalAlign=top;spacingLeft=4;spacingRight=4;overflow=hidden;rotatable=0;points=[[0,0.5],[1,0.5]];portConstraint=eastwest;whiteSpace=wrap;html=1;" parent="uebt3IdMJ_7Td7zyS676-31" vertex="1">
@@ -301,7 +301,7 @@
                 <mxCell id="uebt3IdMJ_7Td7zyS676-87" value="- cpf: String" style="text;strokeColor=none;fillColor=none;align=left;verticalAlign=top;spacingLeft=4;spacingRight=4;overflow=hidden;rotatable=0;points=[[0,0.5],[1,0.5]];portConstraint=eastwest;whiteSpace=wrap;html=1;" parent="uebt3IdMJ_7Td7zyS676-86" vertex="1">
                     <mxGeometry y="26" width="290" height="26" as="geometry"/>
                 </mxCell>
-                <mxCell id="7" value="- email: String" style="text;strokeColor=none;fillColor=none;align=left;verticalAlign=top;spacingLeft=4;spacingRight=4;overflow=hidden;rotatable=0;points=[[0,0.5],[1,0.5]];portConstraint=eastwest;whiteSpace=wrap;html=1;" vertex="1" parent="uebt3IdMJ_7Td7zyS676-86">
+                <mxCell id="7" value="- email: String" style="text;strokeColor=none;fillColor=none;align=left;verticalAlign=top;spacingLeft=4;spacingRight=4;overflow=hidden;rotatable=0;points=[[0,0.5],[1,0.5]];portConstraint=eastwest;whiteSpace=wrap;html=1;" parent="uebt3IdMJ_7Td7zyS676-86" vertex="1">
                     <mxGeometry y="52" width="290" height="26" as="geometry"/>
                 </mxCell>
                 <mxCell id="uebt3IdMJ_7Td7zyS676-88" value="- nome: String" style="text;strokeColor=none;fillColor=none;align=left;verticalAlign=top;spacingLeft=4;spacingRight=4;overflow=hidden;rotatable=0;points=[[0,0.5],[1,0.5]];portConstraint=eastwest;whiteSpace=wrap;html=1;" parent="uebt3IdMJ_7Td7zyS676-86" vertex="1">

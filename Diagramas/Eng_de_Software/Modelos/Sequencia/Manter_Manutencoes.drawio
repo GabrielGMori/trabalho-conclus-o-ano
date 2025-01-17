@@ -1,6 +1,6 @@
 <mxfile host="65bd71144e">
     <diagram name="Página-1" id="dqLcOb5ojzZijLl2xL6k">
-        <mxGraphModel dx="1078" dy="809" grid="1" gridSize="10" guides="1" tooltips="1" connect="1" arrows="1" fold="1" page="1" pageScale="1" pageWidth="827" pageHeight="1169" math="0" shadow="0">
+        <mxGraphModel dx="520" dy="262" grid="1" gridSize="10" guides="1" tooltips="1" connect="1" arrows="1" fold="1" page="1" pageScale="1" pageWidth="827" pageHeight="1169" math="0" shadow="0">
             <root>
                 <mxCell id="0"/>
                 <mxCell id="1" parent="0"/>
@@ -406,7 +406,7 @@
                         <mxPoint x="635" y="1147" as="targetPoint"/>
                     </mxGeometry>
                 </mxCell>
-                <mxCell id="-u--zJyqtq7YNAQtrUt4-4" value="&lt;font&gt;6: Pesquisar&amp;nbsp;&lt;/font&gt;Manutenco&lt;font&gt;es()&lt;/font&gt;" style="text;html=1;align=center;verticalAlign=middle;whiteSpace=wrap;rounded=0;fontSize=10;" parent="1" vertex="1">
+                <mxCell id="-u--zJyqtq7YNAQtrUt4-4" value="&lt;font&gt;6:&amp;nbsp;&lt;/font&gt;&lt;font&gt;&lt;font style=&quot;border-color: var(--border-color);&quot;&gt;Selecionar Filtros&lt;/font&gt;&lt;font style=&quot;border-color: var(--border-color);&quot;&gt;()&lt;/font&gt;&lt;/font&gt;" style="text;html=1;align=center;verticalAlign=middle;whiteSpace=wrap;rounded=0;fontSize=10;" parent="1" vertex="1">
                     <mxGeometry x="156" y="1079" width="160" height="20" as="geometry"/>
                 </mxCell>
                 <mxCell id="-u--zJyqtq7YNAQtrUt4-5" value="" style="rounded=1;whiteSpace=wrap;html=1;" parent="1" vertex="1">

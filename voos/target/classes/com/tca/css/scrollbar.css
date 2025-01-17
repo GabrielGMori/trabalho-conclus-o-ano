@@ -1,0 +1,12 @@
+ListView .scroll-bar {
+  -fx-background-color: transparent;
+}
+
+ListView .scroll-bar .thumb {
+  -fx-background-color: #3fc2ff;
+}
+
+ListView > .scroll-bar:vertical .increment-button,
+ListView > .scroll-bar:vertical .decrement-button {
+  -fx-opacity: 0;
+}
