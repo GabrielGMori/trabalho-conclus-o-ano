@@ -25,3 +25,4 @@ SEMANA 4 - 12/01/25 ATÉ 18/01/25
  - Caso de uso "Ver passageiros" alterado para "Manter passageiros"
  - FXML das telas finalizados
  - Diagramas de transição de estados completos
+ - Histórias de usuário completas

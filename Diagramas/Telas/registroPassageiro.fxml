@@ -67,7 +67,7 @@
                         <Font name="Yu Gothic Regular" size="35.0" />
                      </font>
                   </Text>
-                  <TextField fx:id="cpfTextField" prefHeight="51.0" prefWidth="450.0" style="-fx-background-color: F1FFE7;">
+                  <TextField fx:id="cpfTextField" prefHeight="51.0" prefWidth="450.0" promptText="XXX.XXX.XXX-XX" style="-fx-background-color: F1FFE7;">
                      <font>
                         <Font name="Yu Gothic Regular" size="25.0" />
                      </font>
@@ -95,7 +95,7 @@
                         <Font name="Yu Gothic Regular" size="35.0" />
                      </font>
                   </Text>
-                  <TextField fx:id="telefoneTextField" prefHeight="51.0" prefWidth="450.0" style="-fx-background-color: F1FFE7;">
+                  <TextField fx:id="telefoneTextField" prefHeight="51.0" prefWidth="450.0" promptText="(XX)XXXXX-XXXXX" style="-fx-background-color: F1FFE7;">
                      <font>
                         <Font name="Yu Gothic Regular" size="25.0" />
                      </font>
