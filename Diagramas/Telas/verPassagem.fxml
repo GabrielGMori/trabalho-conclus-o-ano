@@ -51,14 +51,6 @@
                   <Insets bottom="10.0" />
                </VBox.margin>
             </Text>
-            <Text fx:id="aeroportoDesembarqueText" fill="#333333" strokeType="OUTSIDE" strokeWidth="0.0" text="Aeroporto de desembarque: XXX" textAlignment="CENTER" wrappingWidth="984.13671875">
-               <font>
-                  <Font name="Yu Gothic Bold" size="30.0" />
-               </font>
-               <VBox.margin>
-                  <Insets bottom="10.0" />
-               </VBox.margin>
-            </Text>
             <Text fx:id="portaoText" fill="#333333" strokeType="OUTSIDE" strokeWidth="0.0" text="Portão de embarque: XXX" textAlignment="CENTER" wrappingWidth="804.13671875">
                <font>
                   <Font name="Yu Gothic Bold" size="30.0" />
@@ -68,6 +60,14 @@
                </VBox.margin>
             </Text>
             <Text fx:id="horarioEmbarqueText" fill="#333333" strokeType="OUTSIDE" strokeWidth="0.0" text="Horário de embarque: XX/XX/XXXX XX:XX" textAlignment="CENTER" wrappingWidth="985.13671875">
+               <font>
+                  <Font name="Yu Gothic Bold" size="30.0" />
+               </font>
+               <VBox.margin>
+                  <Insets bottom="10.0" />
+               </VBox.margin>
+            </Text>
+            <Text fx:id="aeroportoDesembarqueText" fill="#333333" strokeType="OUTSIDE" strokeWidth="0.0" text="Aeroporto de desembarque: XXX" textAlignment="CENTER" wrappingWidth="984.13671875">
                <font>
                   <Font name="Yu Gothic Bold" size="30.0" />
                </font>
@@ -95,6 +95,16 @@
                <VBox.margin>
                   <Insets bottom="10.0" top="20.0" />
                </VBox.margin>
+            </Text>
+            <Text fx:id="dataCompraText2" fill="#333333" strokeType="OUTSIDE" strokeWidth="0.0" text="Método de pagamento: XX/XX/XXXX XX:XX" textAlignment="CENTER" wrappingWidth="877.13671875">
+               <font>
+                  <Font name="Yu Gothic Bold" size="30.0" />
+               </font>
+            </Text>
+            <Text fx:id="dataCompraText1" fill="#333333" strokeType="OUTSIDE" strokeWidth="0.0" text="Assento reservado: XXX" textAlignment="CENTER" wrappingWidth="877.13671875">
+               <font>
+                  <Font name="Yu Gothic Bold" size="30.0" />
+               </font>
             </Text>
             <HBox alignment="CENTER" prefHeight="74.0" prefWidth="1000.0" spacing="20.0">
                <children>

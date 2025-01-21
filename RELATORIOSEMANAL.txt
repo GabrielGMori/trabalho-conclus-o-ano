@@ -26,3 +26,8 @@ SEMANA 4 - 12/01/25 ATÉ 18/01/25
  - FXML das telas finalizados
  - Diagramas de transição de estados completos
  - Histórias de usuário completas
+
+SEMANA 5 - 19/01/25 ATÉ 25/01/25
+
+ - Diagramas do banco de dados atualizados para condizer com o diagrama de classes novo
+ - Scripts do banco de dados refeitos
