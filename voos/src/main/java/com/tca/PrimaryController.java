@@ -1,5 +1,15 @@
 package com.tca;
 
+import java.sql.SQLException;
+import java.util.ArrayList;
+
+import com.github.hugoperlin.results.Resultado;
+import com.tca.dao.FabricaConexoes;
+import com.tca.dao.JDBCAdministradorDAO;
+import com.tca.dao.JDBCAeronaveDAO;
+import com.tca.model.Administrador;
+import com.tca.model.Aeronave;
+
 import javafx.event.ActionEvent;
 import javafx.fxml.FXML;
 import javafx.scene.control.Button;
@@ -16,7 +26,17 @@ public class PrimaryController {
     private Button primaryButton;
 
     @FXML
-    void addHBox(ActionEvent event) {
+    void addHBox(ActionEvent event) throws SQLException {
+        JDBCAdministradorDAO a = new JDBCAdministradorDAO(FabricaConexoes.getInstance());
+        Resultado result = a.getAdministradoresFiltro(new Administrador(null, null, null));
+        if (result.foiSucesso()) {
+            ArrayList<?> admins = (ArrayList<?>) result.comoSucesso().getObj();
+            for (int i=0; i<admins.size(); i++) {
+                Administrador admin = (Administrador) admins.get(i);
+                System.out.println(admin.getNome());
+            }
+        }
+        if (result.foiErro()) System.out.println(result.comoErro().getMsg());
         // Create a new HBox
         HBox newHBox = new HBox();
         newHBox.setStyle("-fx-background-color: red;"); // Set red background

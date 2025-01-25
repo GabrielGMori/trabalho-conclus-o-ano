@@ -8,9 +8,6 @@ import javafx.stage.Stage;
 
 import java.io.IOException;
 
-/**
- * JavaFX App
- */
 public class App extends Application {
 
     private static Scene scene;
@@ -33,6 +30,10 @@ public class App extends Application {
 
     public static void main(String[] args) {
         launch();
+    }
+
+    public static String formatNumericData(String string) {
+        return string.trim().replace(" ", "").replace(".", "").replace("-", "").replace("/", "").replace("(", "").replace(")", "");
     }
 
 }

@@ -1,4 +1,4 @@
-package com.tca.Controller;
+package com.tca.controller;
 
 public class escolherLoginController {
     

@@ -166,4 +166,26 @@ BEGIN
 END$$
 
 
+DROP FUNCTION IF EXISTS verificarVooLotado$$
+CREATE FUNCTION verificarVooLotado(id_voo INT)
+RETURNS BOOLEAN
+BEGIN
+    DECLARE passagens INT;
+    DECLARE capacidade INT;
+
+    SELECT COUNT(*) INTO passagens
+    FROM Passagem
+    WHERE id_voo_passagem_fk = id_voo;
+
+    SELECT capacidade_voo INTO capacidade
+    FROM Voo
+    WHERE id_voo_pk = id_voo;
+
+    IF passagens < capacidade THEN
+        RETURN FALSE;
+    END IF;
+    RETURN TRUE;
+END$$
+
+
 DELIMITER ;
