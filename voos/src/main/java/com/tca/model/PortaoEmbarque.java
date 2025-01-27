@@ -1,15 +1,22 @@
 package com.tca.model;
 
+import java.time.LocalDate;
+
+import com.github.hugoperlin.results.Resultado;
+import com.tca.repository.PortaoEmbarqueRepository;
+
 public class PortaoEmbarque {
     private Integer id;
     private String codigo;
     private Boolean disponivel;
     private Integer idAeroporto;
+    private PortaoEmbarqueRepository portaoEmbarqueRepository;
 
     public PortaoEmbarque(String codigo, Boolean disponivel, Integer idAeroporto) {
         this.codigo = codigo;
         this.disponivel = disponivel;
         this.idAeroporto = idAeroporto;
+        portaoEmbarqueRepository = new PortaoEmbarqueRepository();
     }
 
     public PortaoEmbarque(Integer id, String codigo, Boolean disponivel, Integer idAeroporto) {
@@ -47,5 +54,18 @@ public class PortaoEmbarque {
 
     public void setIdAeroporto(Integer idAeroporto) {
         this.idAeroporto = idAeroporto;
+    }
+
+    public Boolean emUso(LocalDate dataInicial, LocalDate dataFinal) {
+        try {
+            Resultado result = portaoEmbarqueRepository.verificarEmUso(id, dataInicial, dataFinal);
+            if (result.foiErro()) {
+                return null;
+            }
+            return (Boolean) result.comoSucesso().getObj();
+        } catch (Exception e) {
+            e.printStackTrace();
+            return null;
+        }
     }
 }

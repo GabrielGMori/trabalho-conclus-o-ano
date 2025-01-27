@@ -1,17 +1,24 @@
 package com.tca.model;
 
+import java.time.LocalDate;
+
+import com.github.hugoperlin.results.Resultado;
+import com.tca.repository.AeronaveRepository;
+
 public class Aeronave {
     private Integer id;
     private String modelo;
     private Integer capacidade;
     private Integer assentosPorFileira;
     private Integer idCompanhiaAerea;
+    private AeronaveRepository aeronaveRepository;
 
     public Aeronave(String modelo, Integer capacidade, Integer assentosPorFileira, Integer idCompanhiaAerea) {
         this.modelo = modelo;
         this.capacidade = capacidade;
         this.assentosPorFileira = assentosPorFileira;
         this.idCompanhiaAerea = idCompanhiaAerea;
+        aeronaveRepository = new AeronaveRepository();
     }
 
     public Aeronave(Integer id, String modelo, Integer capacidade, Integer assentosPorFileira, Integer idCompanhiaAerea) {
@@ -57,5 +64,18 @@ public class Aeronave {
 
     public void setIdCompanhiaAerea(Integer idCompanhiaAerea) {
         this.idCompanhiaAerea = idCompanhiaAerea;
+    }
+
+    public Boolean verificarDisponibilidade(LocalDate dataInicial, LocalDate dataFinal) {
+        try {
+            Resultado result = aeronaveRepository.verificarDisponibilidade(id, dataInicial, dataFinal);
+            if (result.foiErro()) {
+                return null;
+            }
+            return (Boolean) result.comoSucesso().getObj();
+        } catch (Exception e) {
+            e.printStackTrace();
+            return null;
+        }
     }
 }

@@ -9,11 +9,13 @@ import com.tca.model.Manutencao;
 public interface ManutencaoDAO {
     Resultado criar(Manutencao manutencao) throws SQLException;
 
+    Resultado get(Integer id) throws SQLException;
+
     Resultado listar() throws SQLException;
 
     Resultado atualizar(Integer id, Manutencao manutencao) throws SQLException;
 
     Resultado deletar(Integer id) throws SQLException;
 
-    Resultado getManutencoesFiltro(String descricao, LocalDate dataInicio, LocalDate dataFim, String status, Integer idAeronave) throws SQLException;
+    Resultado getManutencoesFiltro(String descricao, LocalDate dataInicioInicial, LocalDate dataInicioFinal, LocalDate dataFimInicial, LocalDate dataFimFinal, String status, Integer idAeronave) throws SQLException;
 }

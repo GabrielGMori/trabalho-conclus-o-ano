@@ -9,6 +9,8 @@ import com.tca.model.PortaoEmbarque;
 public interface PortaoEmbarqueDAO {
     Resultado criar(PortaoEmbarque portaoEmbarque) throws SQLException;
 
+    Resultado get(Integer id) throws SQLException;
+
     Resultado listar() throws SQLException;
 
     Resultado atualizar(Integer id, PortaoEmbarque portaoEmbarque) throws SQLException;

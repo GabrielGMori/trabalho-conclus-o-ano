@@ -8,6 +8,8 @@ import com.tca.model.CompanhiaAerea;
 public interface CompanhiaAereaDAO {
     Resultado criar(CompanhiaAerea companhiaAerea) throws SQLException;
 
+    Resultado get(Integer id) throws SQLException;
+
     Resultado listar() throws SQLException;
 
     Resultado atualizar(Integer id, CompanhiaAerea companhiaAerea) throws SQLException;

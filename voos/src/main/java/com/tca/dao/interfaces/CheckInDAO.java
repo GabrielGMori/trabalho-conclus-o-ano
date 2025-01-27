@@ -8,5 +8,7 @@ import com.tca.model.CheckIn;
 public interface CheckInDAO {
     Resultado criar(CheckIn checkIn) throws SQLException;
 
+    Resultado get(Integer id) throws SQLException;
+
     Resultado listar() throws SQLException;
 }

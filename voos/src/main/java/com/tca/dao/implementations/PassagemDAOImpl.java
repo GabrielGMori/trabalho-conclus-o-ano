@@ -1,0 +1,218 @@
+package com.tca.dao.implementations;
+
+import java.sql.Connection;
+import java.sql.Date;
+import java.sql.PreparedStatement;
+import java.sql.ResultSet;
+import java.sql.SQLException;
+import java.sql.Statement;
+import java.time.LocalDate;
+import java.util.ArrayList;
+
+import com.tca.dao.FabricaConexoes;
+import com.tca.dao.interfaces.PassagemDAO;
+import com.tca.model.Passagem;
+import com.tca.util.DBUtils;
+import com.github.hugoperlin.results.Resultado;
+
+public class PassagemDAOImpl implements PassagemDAO {
+    private FabricaConexoes fabrica;
+
+    public PassagemDAOImpl(FabricaConexoes fabrica) {
+        this.fabrica = fabrica;
+    }
+
+    @Override
+    public Resultado criar(Passagem passagem) throws SQLException {
+
+        Connection con = null;
+        PreparedStatement pstm = null;
+        try {
+            con = fabrica.getConnection();
+            pstm = con.prepareStatement(
+                    "INSERT INTO Passagem(data_compra_passagem, assento_passagem, cpf_passageiro_passagem_fk, id_voo_passagem_fk, id_metodo_pagamento_passagem_fk, id_checkin_passagem_fk) VALUES (?, ?, ?, ?, ?, ?);",
+                    Statement.RETURN_GENERATED_KEYS);
+
+            pstm.setDate(1, Date.valueOf(passagem.getDataCompra()));
+            pstm.setString(2, passagem.getAssento());
+            pstm.setString(3, passagem.getCpfPassageiro());
+            pstm.setInt(4, passagem.getIdVoo());
+            pstm.setInt(5, passagem.getIdVoo());
+            pstm.setInt(6, passagem.getIdVoo());
+
+            int ret = pstm.executeUpdate();
+
+            if(ret == 1){
+                int id = DBUtils.getLastId(pstm);
+                passagem.setId(id);
+                return Resultado.sucesso("Passagem criada com sucesso", passagem);
+            }
+
+            return Resultado.erro("Algo deu errado, a passagem não foi criada");
+
+        } catch (SQLException e) {
+            return Resultado.erro(e.getMessage());
+
+        } finally {
+            if (pstm != null)
+                pstm.close();
+            if (con != null)
+                con.close();
+        }
+    }
+
+    @Override
+    public Resultado get(Integer id) throws SQLException {
+
+        Connection con = null;
+        PreparedStatement pstm = null;
+        try {
+            con = fabrica.getConnection();
+            pstm = con.prepareStatement("SELECT * FROM Passagem WHERE id_passagem_pk = ?;");
+
+            pstm.setInt(1, id);
+
+            ResultSet rs = pstm.executeQuery();
+
+            if (rs.next()) {
+                LocalDate dataCompra = rs.getDate("data_compra_passagem").toLocalDate();
+                String assento = rs.getString("assento_passagem");
+                String cpf = rs.getString("cpf_passageiro_passagem_fk");
+                int idVoo = rs.getInt("id_voo_passagem_fk");
+                int idMetodoPagamento = rs.getInt("id_metodo_pagamento_passagem_fk");
+                int idCheckIn = rs.getInt("id_checkin_passagem_fk");
+
+                Passagem passagem = new Passagem(id, dataCompra, assento, cpf, idVoo, idMetodoPagamento);
+                passagem.setIdCheckIn(idCheckIn);
+                return Resultado.sucesso("Passagem carregada", passagem);
+            }
+
+            return Resultado.erro("Passagem não encontrada");
+
+        } catch (SQLException e) {
+            return Resultado.erro(e.getMessage());
+
+        } finally {
+            if (pstm != null)
+                pstm.close();
+            if (con != null)
+                con.close();
+        }
+    }
+
+    @Override
+    public Resultado listar() throws SQLException {
+
+        Connection con = null;
+        PreparedStatement pstm = null;
+        try {
+            con = fabrica.getConnection();
+            pstm = con.prepareStatement("SELECT * FROM Passagem;");
+
+            ResultSet rs = pstm.executeQuery();
+
+            ArrayList<Passagem> passagens = new ArrayList<>();
+            while (rs.next()) {
+                int id = rs.getInt("id_passagem_pk");
+                LocalDate dataCompra = rs.getDate("data_compra_passagem").toLocalDate();
+                String assento = rs.getString("assento_passagem");
+                String cpf = rs.getString("cpf_passageiro_passagem_fk");
+                int idVoo = rs.getInt("id_voo_passagem_fk");
+                int idMetodoPagamento = rs.getInt("id_metodo_pagamento_passagem_fk");
+                int idCheckIn = rs.getInt("id_checkin_passagem_fk");
+
+                Passagem passagem = new Passagem(id, dataCompra, assento, cpf, idVoo, idMetodoPagamento);
+                passagem.setIdCheckIn(idCheckIn);
+                passagens.add(passagem);
+            }
+
+            return Resultado.sucesso("Passagens carregadas", passagens);
+
+        } catch (SQLException e) {
+            return Resultado.erro(e.getMessage());
+
+        } finally {
+            if (pstm != null)
+                pstm.close();
+            if (con != null)
+                con.close();
+        }
+    }
+
+    @Override
+    public Resultado getPassagensFiltro(LocalDate dataCompraIncialFiltro, LocalDate dataCompraFinalFiltro, String assentoFiltro, String cpfPassageiroFiltro, String numeroVooFiltro, Integer idMetodoPagamentoFiltro) throws SQLException {
+        Connection con = null;
+        PreparedStatement pstm = null;
+        try {
+            con = fabrica.getConnection();
+            pstm = con.prepareStatement(
+                    "SELECT * FROM Passagem passagem JOIN Voo voo ON passagem.id_voo_passagem_fk = voo.id_voo_pk WHERE (? IS NULL OR data_compra_passagem >= ?)  AND (? IS NULL OR data_compra_passagem <= ?) AND (? IS NULL OR assento_passagem = ?) AND (? IS NULL OR cpf_passageiro_passagem_fk = ?) AND (? IS NULL OR voo.numero_voo = ?) AND (? IS NULL OR id_metodo_pagamento_passagem_fk = ?);");
+            
+            int i = 1;
+            int j = i;
+            for (j+=2; i<j; i++)  {if (dataCompraIncialFiltro == null) pstm.setNull(i, java.sql.Types.NULL); else pstm.setDate(i, Date.valueOf(dataCompraIncialFiltro)); } 
+            for (j+=2; i<j; i++)  {if (dataCompraFinalFiltro == null) pstm.setNull(i, java.sql.Types.NULL); else pstm.setDate(i, Date.valueOf(dataCompraFinalFiltro)); }
+            for (j+=2; i<j; i++)  {if (assentoFiltro == null) pstm.setNull(i, java.sql.Types.NULL); else pstm.setString(i, assentoFiltro); }
+            for (j+=2; i<j; i++)  {if (cpfPassageiroFiltro == null) pstm.setNull(i, java.sql.Types.NULL); else pstm.setString(i, cpfPassageiroFiltro); }
+            for (j+=2; i<j; i++)  {if (numeroVooFiltro == null) pstm.setNull(i, java.sql.Types.NULL); else pstm.setString(i, numeroVooFiltro); }
+            for (j+=2; i<j; i++)  {if (idMetodoPagamentoFiltro == null) pstm.setNull(i, java.sql.Types.NULL); else pstm.setInt(i, idMetodoPagamentoFiltro); }
+
+            ResultSet rs = pstm.executeQuery();
+
+            ArrayList<Passagem> passagens = new ArrayList<>();
+            while (rs.next()) {
+                int id = rs.getInt("id_passagem_pk");
+                LocalDate dataCompra = rs.getDate("data_compra_passagem").toLocalDate();
+                String assento = rs.getString("assento_passagem");
+                String cpf = rs.getString("cpf_passageiro_passagem_fk");
+                int idVoo = rs.getInt("id_voo_passagem_fk");
+                int idMetodoPagamento = rs.getInt("id_metodo_pagamento_passagem_fk");
+                int idCheckIn = rs.getInt("id_checkin_passagem_fk");
+
+                Passagem passagem = new Passagem(id, dataCompra, assento, cpf, idVoo, idMetodoPagamento);
+                passagem.setIdCheckIn(idCheckIn);
+                passagens.add(passagem);
+            }
+
+            return Resultado.sucesso("Passagens carregadas", passagens);
+
+        } catch (SQLException e) {
+            return Resultado.erro(e.getMessage());
+
+        } finally {
+            if (pstm != null)
+                pstm.close();
+            if (con != null)
+                con.close();
+        }
+    }
+
+    public Resultado realizarCheckIn(Integer id) throws SQLException {
+        Connection con = null;
+        PreparedStatement pstm = null;
+        try {
+            con = fabrica.getConnection();
+            pstm = con.prepareStatement("CALL realizarCheckInProc(?);");
+            
+            pstm.setInt(1, id);
+
+            int ret = pstm.executeUpdate();
+
+            if(ret == 1){
+                return Resultado.sucesso("Check-in criado com sucesso", null);
+            }
+
+            return Resultado.erro("Algo deu errado, o check-in não foi criado");
+
+        } catch (SQLException e) {
+            return Resultado.erro(e.getMessage());
+
+        } finally {
+            if (pstm != null)
+                pstm.close();
+            if (con != null)
+                con.close();
+        }
+    }
+
+}

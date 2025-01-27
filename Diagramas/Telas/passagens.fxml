@@ -6,7 +6,7 @@
 <?import java.lang.*?>
 <?import javafx.scene.layout.*?>
 
-<Pane maxHeight="-Infinity" maxWidth="-Infinity" minHeight="-Infinity" minWidth="-Infinity" prefHeight="800.0" prefWidth="1000.0" style="-fx-background-color: #F1FFE7;" xmlns="http://javafx.com/javafx/8" xmlns:fx="http://javafx.com/fxml/1" fx:controller="com.tca.Controller.passagensControllerFXML">
+<Pane maxHeight="-Infinity" maxWidth="-Infinity" minHeight="-Infinity" minWidth="-Infinity" prefHeight="800.0" prefWidth="1000.0" style="-fx-background-color: #F1FFE7;" xmlns="http://javafx.com/javafx/8" xmlns:fx="http://javafx.com/fxml/1" fx:controller="com.tca.controller.PassagensControllerFXML">
    <children>
       <VBox alignment="TOP_CENTER" layoutX="237.0" prefHeight="800.0" prefWidth="764.0">
          <children>
@@ -155,7 +155,7 @@
                               <Font name="Yu Gothic Regular" size="25.0" />
                            </font>
                         </Text>
-                        <ChoiceBox fx:id="metodoPagamentoChoiceBox" prefHeight="39.0" prefWidth="354.0" style="-fx-background-color: # F1FFE7;" />
+                        <ChoiceBox fx:id="metodoPagamentoChoiceBox" prefHeight="39.0" prefWidth="354.0" style="-fx-background-color: F1FFE7;" />
                      </children>
                   </HBox>
                   <HBox alignment="CENTER" prefHeight="52.0" prefWidth="953.0" spacing="20.0">

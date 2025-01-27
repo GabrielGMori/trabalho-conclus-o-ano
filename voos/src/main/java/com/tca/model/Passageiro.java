@@ -75,13 +75,4 @@ public class Passageiro {
     public void setIdPais(Integer idPais) {
         this.idPais = idPais;
     }
-
-    public Boolean validarDados(String cpf, String email, String nome, String senha, String passaporte, String telefone, Integer idPais) {
-        if ((cpf == null || email == null || nome == null || senha == null || passaporte == null || telefone == null || idPais == null)
-            || (cpf.isEmpty() || email.isEmpty() || nome.isEmpty() || senha.isEmpty() || passaporte.isEmpty() || telefone.isEmpty())
-            || (cpf.length() != 11 || !(email.contains("@")) || passaporte.length() != 8 || telefone.length() != 11 || idPais < 0)) {
-            return false;
-        }
-        return true;
-    }
 }

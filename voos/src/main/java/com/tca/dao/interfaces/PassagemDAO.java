@@ -9,11 +9,12 @@ import com.tca.model.Passagem;
 public interface PassagemDAO {
     Resultado criar(Passagem passagem) throws SQLException;
 
+    Resultado get(Integer id) throws SQLException;
+
     Resultado listar() throws SQLException;
 
     Resultado getPassagensFiltro(LocalDate dataCompraIncial, LocalDate dataCompraFinal, String assento, String cpfPassageiro, String numeroVoo, Integer idMetodoPagamento) throws SQLException;
 
     Resultado realizarCheckIn(Integer id) throws SQLException;
 
-    Resultado verificarDisponibilidadeAssento(Integer id, String assento) throws SQLException;
 }

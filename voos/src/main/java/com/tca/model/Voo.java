@@ -2,6 +2,9 @@ package com.tca.model;
 
 import java.time.LocalDate;
 
+import com.github.hugoperlin.results.Resultado;
+import com.tca.repository.VooRepository;
+
 public class Voo {
     private Integer id;
     private String numero;
@@ -13,6 +16,7 @@ public class Voo {
     private Integer idAeronave;
     private Integer idPortaoEmbarque;
     private Integer idAeroportoChegada;
+    private VooRepository vooRepository;
 
     public Voo(String numero, String status, String origem, String destino, LocalDate horarioEmbarque,
             LocalDate horarioDesembarque, Integer idAeronave, Integer idPortaoEmbarque, Integer idAeroportoChegada) {
@@ -25,6 +29,7 @@ public class Voo {
         this.idAeronave = idAeronave;
         this.idPortaoEmbarque = idPortaoEmbarque;
         this.idAeroportoChegada = idAeroportoChegada;
+        vooRepository = new VooRepository();
     }
 
     public Voo(Integer id, String numero, String status, String origem, String destino, LocalDate horarioEmbarque,
@@ -111,5 +116,18 @@ public class Voo {
 
     public void setIdAeroportoChegada(Integer idAeroportoChegada) {
         this.idAeroportoChegada = idAeroportoChegada;
+    }
+
+    public Boolean verificarCheio() {
+        try {
+            Resultado result = vooRepository.verificarVooLotado(id);
+            if (result.foiErro()) {
+                return null;
+            }
+            return (Boolean) result.comoSucesso().getObj();
+        } catch (Exception e) {
+            e.printStackTrace();
+            return null;
+        }
     }
 }

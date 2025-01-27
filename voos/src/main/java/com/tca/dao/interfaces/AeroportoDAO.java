@@ -8,6 +8,8 @@ import com.tca.model.Aeroporto;
 public interface AeroportoDAO {
     Resultado criar(Aeroporto aeroporto) throws SQLException;
 
+    Resultado get(Integer id) throws SQLException;
+
     Resultado listar() throws SQLException;
 
     Resultado atualizar(Integer id, Aeroporto aeroporto) throws SQLException;

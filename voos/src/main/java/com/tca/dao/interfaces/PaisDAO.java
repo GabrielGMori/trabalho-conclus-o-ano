@@ -8,5 +8,7 @@ import com.tca.model.Pais;
 public interface PaisDAO {
     Resultado criar(Pais pais) throws SQLException;
 
+    Resultado get(Integer id) throws SQLException;
+
     Resultado listar() throws SQLException;
 }

@@ -8,6 +8,8 @@ import com.tca.model.Passageiro;
 public interface PassageiroDAO {
     Resultado criar(Passageiro passageiro) throws SQLException;
 
+    Resultado get(String cpf) throws SQLException;
+
     Resultado listar() throws SQLException;
 
     Resultado atualizar(String cpf, Passageiro passageiro) throws SQLException;

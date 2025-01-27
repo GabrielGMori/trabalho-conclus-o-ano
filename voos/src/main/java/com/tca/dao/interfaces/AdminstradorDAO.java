@@ -8,6 +8,8 @@ import com.tca.model.Administrador;
 public interface AdminstradorDAO {
     Resultado criar(Administrador administrador) throws SQLException;
 
+    Resultado get(String cpf) throws SQLException;
+
     Resultado listar() throws SQLException;
 
     Resultado atualizar(String cpf, Administrador administrador) throws SQLException;

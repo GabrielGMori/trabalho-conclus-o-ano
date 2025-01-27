@@ -8,5 +8,7 @@ import com.tca.model.MetodoPagamento;
 public interface MetodoPagamentoDAO {
     Resultado criar(MetodoPagamento metodoPagamento) throws SQLException;
 
+    Resultado get(Integer id) throws SQLException;
+
     Resultado listar() throws SQLException;
 }

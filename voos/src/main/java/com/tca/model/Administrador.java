@@ -34,13 +34,4 @@ public class Administrador {
     public void setSenha(String senha) {
         this.senha = senha;
     }
-
-    public Boolean validarDados(String cpf, String nome, String senha) {
-        if ((cpf == null || nome == null || senha == null)
-            || (cpf.isEmpty() || nome.isEmpty() || senha.isEmpty())
-            || (cpf.length() != 11)) {
-            return false;
-        }
-        return true;
-    }
 }

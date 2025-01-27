@@ -1,25 +1,30 @@
 package com.tca.model;
 
-import java.util.Date;
+import java.time.LocalDate;
+
+import com.github.hugoperlin.results.Resultado;
+import com.tca.repository.PassagemRepository;
 
 public class Passagem {
     private Integer id;
-    private Date dataCompra;
+    private LocalDate dataCompra;
     private String assento;
     private String cpfPassageiro;
     private Integer idVoo;
     private Integer idMetodoPagamento;
     private Integer idCheckIn;
+    private PassagemRepository passagemRepository;
     
-    public Passagem(Date dataCompra, String assento, String cpfPassageiro, Integer idVoo, Integer idMetodoPagamento) {
+    public Passagem(LocalDate dataCompra, String assento, String cpfPassageiro, Integer idVoo, Integer idMetodoPagamento) {
         this.dataCompra = dataCompra;
         this.assento = assento;
         this.cpfPassageiro = cpfPassageiro;
         this.idVoo = idVoo;
         this.idMetodoPagamento = idMetodoPagamento;
+        passagemRepository = new PassagemRepository();
     }
 
-    public Passagem(Integer id, Date dataCompra, String assento, String cpfPassageiro, Integer idVoo, Integer idMetodoPagamento) {
+    public Passagem(Integer id, LocalDate dataCompra, String assento, String cpfPassageiro, Integer idVoo, Integer idMetodoPagamento) {
         this(dataCompra, assento, cpfPassageiro, idVoo, idMetodoPagamento);
         this.id = id;
     }
@@ -32,11 +37,11 @@ public class Passagem {
         this.id = id;
     }  
 
-    public Date getDataCompra() {
+    public LocalDate getDataCompra() {
         return dataCompra;
     }
 
-    public void setDataCompra(Date dataCompra) {
+    public void setDataCompra(LocalDate dataCompra) {
         this.dataCompra = dataCompra;
     }
 
@@ -80,5 +85,16 @@ public class Passagem {
         this.idCheckIn = idCheckIn;
     }
 
-    
+    public Boolean realizarCheckIn() {
+        try {
+            Resultado result = passagemRepository.realizarCheckIn(id);
+            if (result.foiErro()) {
+                return false;
+            }
+            return true;
+        } catch (Exception e) {
+            e.printStackTrace();
+            return false;
+        }
+    }
 }
