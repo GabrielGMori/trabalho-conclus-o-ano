@@ -1,12 +1,12 @@
 package com.tca.dao.implementations;
 
 import java.sql.Connection;
-import java.sql.Date;
 import java.sql.PreparedStatement;
 import java.sql.ResultSet;
 import java.sql.SQLException;
 import java.sql.Statement;
-import java.time.LocalDate;
+import java.sql.Timestamp;
+import java.time.LocalDateTime;
 import java.util.ArrayList;
 
 import com.tca.dao.FabricaConexoes;
@@ -33,7 +33,7 @@ public class CheckInDAOImpl implements CheckInDAO {
                     "INSERT INTO CheckIn(data_checkin) VALUES (?);",
                     Statement.RETURN_GENERATED_KEYS);
 
-            pstm.setDate(1, Date.valueOf(checkIn.getData()));
+            pstm.setTimestamp(1, Timestamp.valueOf(checkIn.getData()));
 
             int ret = pstm.executeUpdate();
 
@@ -70,7 +70,7 @@ public class CheckInDAOImpl implements CheckInDAO {
             ResultSet rs = pstm.executeQuery();
 
             if (rs.next()) {
-                LocalDate data = rs.getDate("data_checkin").toLocalDate();
+                LocalDateTime data = rs.getTimestamp("data_checkin").toLocalDateTime();
 
                 CheckIn checkIn = new CheckIn(id, data);
                 return Resultado.sucesso("Check-in carregado", checkIn);
@@ -103,7 +103,7 @@ public class CheckInDAOImpl implements CheckInDAO {
             ArrayList<CheckIn> checkIns = new ArrayList<>();
             while (rs.next()) {
                 int id = rs.getInt("id_checkIn_pk");
-                LocalDate data = rs.getDate("data_checkin").toLocalDate();
+                LocalDateTime data = rs.getTimestamp("data_checkin").toLocalDateTime();
 
                 CheckIn checkIn = new CheckIn(id, data);
                 checkIns.add(checkIn);

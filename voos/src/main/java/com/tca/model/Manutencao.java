@@ -1,16 +1,16 @@
 package com.tca.model;
 
-import java.time.LocalDate;
+import java.time.LocalDateTime;
 
 public class Manutencao {
     private Integer id;
     private String descricao;
-    private LocalDate dataInicio;
-    private LocalDate dataFim;
+    private LocalDateTime dataInicio;
+    private LocalDateTime dataFim;
     private String status;
     private Integer idAeronave;
     
-    public Manutencao(String descricao, LocalDate dataInicio, LocalDate dataFim, String status, Integer idAeronave) {
+    public Manutencao(String descricao, LocalDateTime dataInicio, LocalDateTime dataFim, String status, Integer idAeronave) {
         this.descricao = descricao;
         this.dataInicio = dataInicio;
         this.dataFim = dataFim;
@@ -18,7 +18,7 @@ public class Manutencao {
         this.idAeronave = idAeronave;
     }
 
-    public Manutencao(Integer id, String descricao, LocalDate dataInicio, LocalDate dataFim, String status, Integer idAeronave) {
+    public Manutencao(Integer id, String descricao, LocalDateTime dataInicio, LocalDateTime dataFim, String status, Integer idAeronave) {
         this(descricao, dataInicio, dataFim, status, idAeronave);
         this.id = id;
     }
@@ -39,19 +39,19 @@ public class Manutencao {
         this.descricao = descricao;
     }
 
-    public LocalDate getDataInicio() {
+    public LocalDateTime getDataInicio() {
         return dataInicio;
     }
 
-    public void setDataInicio(LocalDate dataInicio) {
+    public void setDataInicio(LocalDateTime dataInicio) {
         this.dataInicio = dataInicio;
     }
 
-    public LocalDate getDataFim() {
+    public LocalDateTime getDataFim() {
         return dataFim;
     }
 
-    public void setDataFim(LocalDate dataFim) {
+    public void setDataFim(LocalDateTime dataFim) {
         this.dataFim = dataFim;
     }
 

@@ -1,12 +1,12 @@
 package com.tca.dao.implementations;
 
 import java.sql.Connection;
-import java.sql.Date;
 import java.sql.PreparedStatement;
 import java.sql.ResultSet;
 import java.sql.SQLException;
 import java.sql.Statement;
-import java.time.LocalDate;
+import java.sql.Timestamp;
+import java.time.LocalDateTime;
 import java.util.ArrayList;
 
 import com.tca.dao.FabricaConexoes;
@@ -233,7 +233,7 @@ public class PortaoEmbarqueDAOImpl implements PortaoEmbarqueDAO {
         }
     }
 
-    public Resultado verificarEmUso(Integer id, LocalDate dataInicial, LocalDate dataFinal) throws SQLException {
+    public Resultado verificarEmUso(Integer id, LocalDateTime dataInicial, LocalDateTime dataFinal) throws SQLException {
         Connection con = null;
         PreparedStatement pstm = null;
         try {
@@ -241,8 +241,8 @@ public class PortaoEmbarqueDAOImpl implements PortaoEmbarqueDAO {
             pstm = con.prepareStatement("SELECT verificarPortaoEmbarqueEmUsoFunc(?, ?, ?);");
             
             pstm.setInt(1, id);
-            pstm.setDate(2, Date.valueOf(dataInicial));
-            pstm.setDate(3, Date.valueOf(dataFinal));
+            pstm.setTimestamp(2, Timestamp.valueOf(dataInicial));
+            pstm.setTimestamp(3, Timestamp.valueOf(dataFinal));
 
             ResultSet rs = pstm.executeQuery();
 

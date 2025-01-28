@@ -1,7 +1,7 @@
 package com.tca.dao.interfaces;
 
 import java.sql.SQLException;
-import java.time.LocalDate;
+import java.time.LocalDateTime;
 
 import com.github.hugoperlin.results.Resultado;
 import com.tca.model.PortaoEmbarque;
@@ -19,5 +19,5 @@ public interface PortaoEmbarqueDAO {
 
     Resultado getPortoesEmbarqueFiltro(String codigo, Boolean disponivel, Integer idAeroporto) throws SQLException;
 
-    Resultado verificarEmUso(Integer id, LocalDate dataInicial, LocalDate dataFinal) throws SQLException;
+    Resultado verificarEmUso(Integer id, LocalDateTime dataInicial, LocalDateTime dataFinal) throws SQLException;
 }

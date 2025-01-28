@@ -1,6 +1,6 @@
 package com.tca.model;
 
-import java.time.LocalDate;
+import java.time.LocalDateTime;
 
 import com.github.hugoperlin.results.Resultado;
 import com.tca.repository.PortaoEmbarqueRepository;
@@ -56,10 +56,11 @@ public class PortaoEmbarque {
         this.idAeroporto = idAeroporto;
     }
 
-    public Boolean emUso(LocalDate dataInicial, LocalDate dataFinal) {
+    public Boolean emUso(LocalDateTime dataInicial, LocalDateTime dataFinal) {
         try {
             Resultado result = portaoEmbarqueRepository.verificarEmUso(id, dataInicial, dataFinal);
             if (result.foiErro()) {
+                System.out.println(result.comoErro().getMsg());
                 return null;
             }
             return (Boolean) result.comoSucesso().getObj();

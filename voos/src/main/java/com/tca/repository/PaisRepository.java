@@ -10,6 +10,15 @@ import com.github.hugoperlin.results.Resultado;
 
 public class PaisRepository {
     private PaisDAOImpl dao;
+    private static PaisRepository instance;
+
+    public static PaisRepository getInstance() {
+        if (instance != null) {
+            return instance;
+        }
+        instance = new PaisRepository();
+        return instance;
+    }
 
     public PaisRepository() {
         this.dao = new PaisDAOImpl(FabricaConexoes.getInstance());
@@ -17,6 +26,11 @@ public class PaisRepository {
 
     public Resultado criar(Pais pais) throws SQLException {
         Resultado resultado = dao.criar(pais);
+        return resultado;
+    }
+
+    public Resultado get(Integer id) throws SQLException {
+        Resultado resultado = dao.get(id);
         return resultado;
     }
 

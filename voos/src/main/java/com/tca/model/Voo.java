@@ -1,6 +1,6 @@
 package com.tca.model;
 
-import java.time.LocalDate;
+import java.time.LocalDateTime;
 
 import com.github.hugoperlin.results.Resultado;
 import com.tca.repository.VooRepository;
@@ -11,15 +11,15 @@ public class Voo {
     private String status;
     private String origem;
     private String destino;
-    private LocalDate horarioEmbarque;
-    private LocalDate horarioDesembarque;
+    private LocalDateTime horarioEmbarque;
+    private LocalDateTime horarioDesembarque;
     private Integer idAeronave;
     private Integer idPortaoEmbarque;
     private Integer idAeroportoChegada;
     private VooRepository vooRepository;
 
-    public Voo(String numero, String status, String origem, String destino, LocalDate horarioEmbarque,
-            LocalDate horarioDesembarque, Integer idAeronave, Integer idPortaoEmbarque, Integer idAeroportoChegada) {
+    public Voo(String numero, String status, String origem, String destino, LocalDateTime horarioEmbarque,
+            LocalDateTime horarioDesembarque, Integer idAeronave, Integer idPortaoEmbarque, Integer idAeroportoChegada) {
         this.numero = numero;
         this.status = status;
         this.origem = origem;
@@ -32,8 +32,8 @@ public class Voo {
         vooRepository = new VooRepository();
     }
 
-    public Voo(Integer id, String numero, String status, String origem, String destino, LocalDate horarioEmbarque,
-            LocalDate horarioDesembarque, Integer idAeronave, Integer idPortaoEmbarque, Integer idAeroportoChegada) {
+    public Voo(Integer id, String numero, String status, String origem, String destino, LocalDateTime horarioEmbarque,
+            LocalDateTime horarioDesembarque, Integer idAeronave, Integer idPortaoEmbarque, Integer idAeroportoChegada) {
         this(numero, status, origem, destino, horarioEmbarque, horarioDesembarque, idAeronave, idPortaoEmbarque,idAeroportoChegada);
         this.id = id;
     }
@@ -78,19 +78,19 @@ public class Voo {
         this.destino = destino;
     }
 
-    public LocalDate getHorarioEmbarque() {
+    public LocalDateTime getHorarioEmbarque() {
         return horarioEmbarque;
     }
 
-    public void setHorarioEmbarque(LocalDate horarioEmbarque) {
+    public void setHorarioEmbarque(LocalDateTime horarioEmbarque) {
         this.horarioEmbarque = horarioEmbarque;
     }
 
-    public LocalDate getHorarioDesembarque() {
+    public LocalDateTime getHorarioDesembarque() {
         return horarioDesembarque;
     }
 
-    public void setHorarioDesembarque(LocalDate horarioDesembarque) {
+    public void setHorarioDesembarque(LocalDateTime horarioDesembarque) {
         this.horarioDesembarque = horarioDesembarque;
     }
 
@@ -122,6 +122,7 @@ public class Voo {
         try {
             Resultado result = vooRepository.verificarVooLotado(id);
             if (result.foiErro()) {
+                System.out.println(result.comoErro().getMsg());
                 return null;
             }
             return (Boolean) result.comoSucesso().getObj();

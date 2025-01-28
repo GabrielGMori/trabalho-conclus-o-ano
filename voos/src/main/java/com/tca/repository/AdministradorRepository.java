@@ -10,6 +10,15 @@ import com.github.hugoperlin.results.Resultado;
 
 public class AdministradorRepository {
     private AdministradorDAOImpl dao;
+    private static AdministradorRepository instance;
+
+    public static AdministradorRepository getInstance() {
+        if (instance != null) {
+            return instance;
+        }
+        instance = new AdministradorRepository();
+        return instance;
+    }
 
     public AdministradorRepository() {
         this.dao = new AdministradorDAOImpl(FabricaConexoes.getInstance());
@@ -17,6 +26,11 @@ public class AdministradorRepository {
 
     public Resultado criar(Administrador administrador) throws SQLException {
         Resultado resultado = dao.criar(administrador);
+        return resultado;
+    }
+
+    public Resultado get(String cpf) throws SQLException {
+        Resultado resultado = dao.get(cpf);
         return resultado;
     }
 

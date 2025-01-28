@@ -10,6 +10,15 @@ import com.github.hugoperlin.results.Resultado;
 
 public class CompanhiaAereaRepository {
     private CompanhiaAereaDAOImpl dao;
+    private static CompanhiaAereaRepository instance;
+
+    public static CompanhiaAereaRepository getInstance() {
+        if (instance != null) {
+            return instance;
+        }
+        instance = new CompanhiaAereaRepository();
+        return instance;
+    }
 
     public CompanhiaAereaRepository() {
         this.dao = new CompanhiaAereaDAOImpl(FabricaConexoes.getInstance());
@@ -17,6 +26,11 @@ public class CompanhiaAereaRepository {
 
     public Resultado criar(CompanhiaAerea companhiaAerea) throws SQLException {
         Resultado resultado = dao.criar(companhiaAerea);
+        return resultado;
+    }
+
+    public Resultado get(Integer id) throws SQLException {
+        Resultado resultado = dao.get(id);
         return resultado;
     }
 

@@ -70,7 +70,7 @@ public class AeroportoDAOImpl implements AeroportoDAO {
 
             if (rs.next()) {
                 String nome = rs.getString("nome_aeroporto");
-                String localizacao = rs.getString("loocalizacao_aeroporto");
+                String localizacao = rs.getString("localizacao_aeroporto");
 
                 Aeroporto aeroporto = new Aeroporto(id, nome, localizacao);
                 return Resultado.sucesso("Aeroporto carregado", aeroporto);
@@ -104,7 +104,7 @@ public class AeroportoDAOImpl implements AeroportoDAO {
             while (rs.next()) {
                 int id = rs.getInt("id_aeroporto_pk");
                 String nome = rs.getString("nome_aeroporto");
-                String localizacao = rs.getString("loocalizacao_aeroporto");
+                String localizacao = rs.getString("localizacao_aeroporto");
 
                 Aeroporto aeroporto = new Aeroporto(id, nome, localizacao);
                 aeroportos.add(aeroporto);
@@ -206,7 +206,7 @@ public class AeroportoDAOImpl implements AeroportoDAO {
             while (rs.next()) {
                 int id = rs.getInt("id_aeroporto_pk");
                 String nome = rs.getString("nome_aeroporto");
-                String localizacao = rs.getString("loocalizacao_aeroporto");
+                String localizacao = rs.getString("localizacao_aeroporto");
 
                 Aeroporto aeroporto = new Aeroporto(id, nome, localizacao);
                 aeroportos.add(aeroporto);

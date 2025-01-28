@@ -1,7 +1,7 @@
 package com.tca.repository;
 
 import java.sql.SQLException;
-import java.time.LocalDate;
+import java.time.LocalDateTime;
 import java.util.ArrayList;
 
 import com.tca.dao.FabricaConexoes;
@@ -11,6 +11,15 @@ import com.github.hugoperlin.results.Resultado;
 
 public class AeronaveRepository {
     private AeronaveDAOImpl dao;
+    private static AeronaveRepository instance;
+
+    public static AeronaveRepository getInstance() {
+        if (instance != null) {
+            return instance;
+        }
+        instance = new AeronaveRepository();
+        return instance;
+    }
 
     public AeronaveRepository() {
         this.dao = new AeronaveDAOImpl(FabricaConexoes.getInstance());
@@ -18,6 +27,11 @@ public class AeronaveRepository {
 
     public Resultado criar(Aeronave aeronave) throws SQLException {
         Resultado resultado = dao.criar(aeronave);
+        return resultado;
+    }
+
+    public Resultado get(Integer id) throws SQLException {
+        Resultado resultado = dao.get(id);
         return resultado;
     }
 
@@ -59,7 +73,7 @@ public class AeronaveRepository {
         return null;
     }
 
-    public Resultado verificarDisponibilidade(Integer id, LocalDate dataInicial, LocalDate dataFinal) throws SQLException {
+    public Resultado verificarDisponibilidade(Integer id, LocalDateTime dataInicial, LocalDateTime dataFinal) throws SQLException {
         Resultado resultado = dao.verificarDisponibilidade(id, dataInicial, dataFinal);
         return resultado;
     }

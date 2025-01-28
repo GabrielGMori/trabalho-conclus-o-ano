@@ -1,7 +1,7 @@
 package com.tca.repository;
 
 import java.sql.SQLException;
-import java.time.LocalDate;
+import java.time.LocalDateTime;
 import java.util.ArrayList;
 
 import com.tca.dao.FabricaConexoes;
@@ -11,6 +11,15 @@ import com.github.hugoperlin.results.Resultado;
 
 public class ManutencaoRepository {
     private ManutencaoDAOImpl dao;
+    private static ManutencaoRepository instance;
+
+    public static ManutencaoRepository getInstance() {
+        if (instance != null) {
+            return instance;
+        }
+        instance = new ManutencaoRepository();
+        return instance;
+    }
 
     public ManutencaoRepository() {
         this.dao = new ManutencaoDAOImpl(FabricaConexoes.getInstance());
@@ -18,6 +27,11 @@ public class ManutencaoRepository {
 
     public Resultado criar(Manutencao manutencao) throws SQLException {
         Resultado resultado = dao.criar(manutencao);
+        return resultado;
+    }
+
+    public Resultado get(Integer id) throws SQLException {
+        Resultado resultado = dao.get(id);
         return resultado;
     }
 
@@ -45,7 +59,7 @@ public class ManutencaoRepository {
         return resultado;
     }
 
-    public ArrayList<?> getManutencaosFiltro(String descricao, LocalDate dataInicioInicial, LocalDate dataInicioFinal, LocalDate dataFimInicial, LocalDate dataFimFinal, String status, Integer idAeronave) throws SQLException {
+    public ArrayList<?> getManutencaosFiltro(String descricao, LocalDateTime dataInicioInicial, LocalDateTime dataInicioFinal, LocalDateTime dataFimInicial, LocalDateTime dataFimFinal, String status, Integer idAeronave) throws SQLException {
         Resultado resultado = dao.getManutencoesFiltro(descricao, dataInicioInicial, dataInicioFinal, dataFimInicial, dataFimFinal, status, idAeronave);
         if (resultado.foiSucesso()) {
             ArrayList<?> manutencoes = (ArrayList<?>) resultado.comoSucesso().getObj();

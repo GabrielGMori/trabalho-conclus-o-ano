@@ -1,7 +1,7 @@
 package com.tca.repository;
 
 import java.sql.SQLException;
-import java.time.LocalDate;
+import java.time.LocalDateTime;
 import java.util.ArrayList;
 
 import com.tca.dao.FabricaConexoes;
@@ -11,6 +11,15 @@ import com.github.hugoperlin.results.Resultado;
 
 public class PassagemRepository {
     private PassagemDAOImpl dao;
+    private static PassagemRepository instance;
+
+    public static PassagemRepository getInstance() {
+        if (instance != null) {
+            return instance;
+        }
+        instance = new PassagemRepository();
+        return instance;
+    }
 
     public PassagemRepository() {
         this.dao = new PassagemDAOImpl(FabricaConexoes.getInstance());
@@ -18,6 +27,11 @@ public class PassagemRepository {
 
     public Resultado criar(Passagem passagem) throws SQLException {
         Resultado resultado = dao.criar(passagem);
+        return resultado;
+    }
+
+    public Resultado get(Integer id) throws SQLException {
+        Resultado resultado = dao.get(id);
         return resultado;
     }
 
@@ -35,7 +49,7 @@ public class PassagemRepository {
         return null;
     }
 
-    public ArrayList<?> getPassagensFiltro(LocalDate dataCompraIncial, LocalDate dataCompraFinal, String assento, String cpfPassageiro, String numeroVoo, Integer idMetodoPagamento) throws SQLException {
+    public ArrayList<?> getPassagensFiltro(LocalDateTime dataCompraIncial, LocalDateTime dataCompraFinal, String assento, String cpfPassageiro, String numeroVoo, Integer idMetodoPagamento) throws SQLException {
         Resultado resultado = dao.getPassagensFiltro(dataCompraIncial, dataCompraFinal, assento, cpfPassageiro, numeroVoo, idMetodoPagamento);
         if (resultado.foiSucesso()) {
             ArrayList<?> passagens = (ArrayList<?>) resultado.comoSucesso().getObj();

@@ -31,3 +31,9 @@ SEMANA 5 - 19/01/25 ATÉ 25/01/25
 
  - Diagramas do banco de dados atualizados para condizer com o diagrama de classes novo
  - Scripts do banco de dados refeitos
+ - Models adicionados
+
+SEMANA 6 - 26/01/25 ATÉ 01/02/25
+
+ - DAOs adicionadas
+ - Repositories adicionados

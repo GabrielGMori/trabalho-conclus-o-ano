@@ -1,6 +1,6 @@
 package com.tca.model;
 
-import java.time.LocalDate;
+import java.time.LocalDateTime;
 
 import com.github.hugoperlin.results.Resultado;
 import com.tca.repository.AeronaveRepository;
@@ -66,10 +66,11 @@ public class Aeronave {
         this.idCompanhiaAerea = idCompanhiaAerea;
     }
 
-    public Boolean verificarDisponibilidade(LocalDate dataInicial, LocalDate dataFinal) {
+    public Boolean verificarDisponibilidade(LocalDateTime dataInicial, LocalDateTime dataFinal) {
         try {
             Resultado result = aeronaveRepository.verificarDisponibilidade(id, dataInicial, dataFinal);
             if (result.foiErro()) {
+                System.out.println(result.comoErro().getMsg());
                 return null;
             }
             return (Boolean) result.comoSucesso().getObj();

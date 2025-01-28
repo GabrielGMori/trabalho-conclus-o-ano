@@ -10,6 +10,15 @@ import com.github.hugoperlin.results.Resultado;
 
 public class MetodoPagamentoRepository {
     private MetodoPagamentoDAOImpl dao;
+    private static MetodoPagamentoRepository instance;
+
+    public static MetodoPagamentoRepository getInstance() {
+        if (instance != null) {
+            return instance;
+        }
+        instance = new MetodoPagamentoRepository();
+        return instance;
+    }
 
     public MetodoPagamentoRepository() {
         this.dao = new MetodoPagamentoDAOImpl(FabricaConexoes.getInstance());
@@ -17,6 +26,11 @@ public class MetodoPagamentoRepository {
 
     public Resultado criar(MetodoPagamento metodoPagamento) throws SQLException {
         Resultado resultado = dao.criar(metodoPagamento);
+        return resultado;
+    }
+
+    public Resultado get(Integer id) throws SQLException {
+        Resultado resultado = dao.get(id);
         return resultado;
     }
 

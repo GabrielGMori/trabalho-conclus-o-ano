@@ -1,7 +1,7 @@
 package com.tca.dao.interfaces;
 
 import java.sql.SQLException;
-import java.time.LocalDate;
+import java.time.LocalDateTime;
 
 import com.github.hugoperlin.results.Resultado;
 import com.tca.model.Manutencao;
@@ -17,5 +17,5 @@ public interface ManutencaoDAO {
 
     Resultado deletar(Integer id) throws SQLException;
 
-    Resultado getManutencoesFiltro(String descricao, LocalDate dataInicioInicial, LocalDate dataInicioFinal, LocalDate dataFimInicial, LocalDate dataFimFinal, String status, Integer idAeronave) throws SQLException;
+    Resultado getManutencoesFiltro(String descricao, LocalDateTime dataInicioInicial, LocalDateTime dataInicioFinal, LocalDateTime dataFimInicial, LocalDateTime dataFimFinal, String status, Integer idAeronave) throws SQLException;
 }

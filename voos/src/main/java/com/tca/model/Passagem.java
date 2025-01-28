@@ -1,13 +1,13 @@
 package com.tca.model;
 
-import java.time.LocalDate;
+import java.time.LocalDateTime;
 
 import com.github.hugoperlin.results.Resultado;
 import com.tca.repository.PassagemRepository;
 
 public class Passagem {
     private Integer id;
-    private LocalDate dataCompra;
+    private LocalDateTime dataCompra;
     private String assento;
     private String cpfPassageiro;
     private Integer idVoo;
@@ -15,7 +15,7 @@ public class Passagem {
     private Integer idCheckIn;
     private PassagemRepository passagemRepository;
     
-    public Passagem(LocalDate dataCompra, String assento, String cpfPassageiro, Integer idVoo, Integer idMetodoPagamento) {
+    public Passagem(LocalDateTime dataCompra, String assento, String cpfPassageiro, Integer idVoo, Integer idMetodoPagamento) {
         this.dataCompra = dataCompra;
         this.assento = assento;
         this.cpfPassageiro = cpfPassageiro;
@@ -24,7 +24,7 @@ public class Passagem {
         passagemRepository = new PassagemRepository();
     }
 
-    public Passagem(Integer id, LocalDate dataCompra, String assento, String cpfPassageiro, Integer idVoo, Integer idMetodoPagamento) {
+    public Passagem(Integer id, LocalDateTime dataCompra, String assento, String cpfPassageiro, Integer idVoo, Integer idMetodoPagamento) {
         this(dataCompra, assento, cpfPassageiro, idVoo, idMetodoPagamento);
         this.id = id;
     }
@@ -37,11 +37,11 @@ public class Passagem {
         this.id = id;
     }  
 
-    public LocalDate getDataCompra() {
+    public LocalDateTime getDataCompra() {
         return dataCompra;
     }
 
-    public void setDataCompra(LocalDate dataCompra) {
+    public void setDataCompra(LocalDateTime dataCompra) {
         this.dataCompra = dataCompra;
     }
 
@@ -89,6 +89,7 @@ public class Passagem {
         try {
             Resultado result = passagemRepository.realizarCheckIn(id);
             if (result.foiErro()) {
+                System.out.println(result.comoErro().getMsg());
                 return false;
             }
             return true;

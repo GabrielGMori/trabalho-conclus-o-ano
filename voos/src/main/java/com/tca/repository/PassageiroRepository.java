@@ -10,6 +10,15 @@ import com.github.hugoperlin.results.Resultado;
 
 public class PassageiroRepository {
     private PassageiroDAOImpl dao;
+    private static PassageiroRepository instance;
+
+    public static PassageiroRepository getInstance() {
+        if (instance != null) {
+            return instance;
+        }
+        instance = new PassageiroRepository();
+        return instance;
+    }
 
     public PassageiroRepository() {
         this.dao = new PassageiroDAOImpl(FabricaConexoes.getInstance());
@@ -17,6 +26,11 @@ public class PassageiroRepository {
 
     public Resultado criar(Passageiro passageiro) throws SQLException {
         Resultado resultado = dao.criar(passageiro);
+        return resultado;
+    }
+
+    public Resultado get(String cpf) throws SQLException {
+        Resultado resultado = dao.get(cpf);
         return resultado;
     }
 

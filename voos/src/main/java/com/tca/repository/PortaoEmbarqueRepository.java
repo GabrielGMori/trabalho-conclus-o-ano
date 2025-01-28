@@ -1,7 +1,7 @@
 package com.tca.repository;
 
 import java.sql.SQLException;
-import java.time.LocalDate;
+import java.time.LocalDateTime;
 import java.util.ArrayList;
 
 import com.tca.dao.FabricaConexoes;
@@ -11,6 +11,15 @@ import com.github.hugoperlin.results.Resultado;
 
 public class PortaoEmbarqueRepository {
     private PortaoEmbarqueDAOImpl dao;
+    private static PortaoEmbarqueRepository instance;
+
+    public static PortaoEmbarqueRepository getInstance() {
+        if (instance != null) {
+            return instance;
+        }
+        instance = new PortaoEmbarqueRepository();
+        return instance;
+    }
 
     public PortaoEmbarqueRepository() {
         this.dao = new PortaoEmbarqueDAOImpl(FabricaConexoes.getInstance());
@@ -18,6 +27,11 @@ public class PortaoEmbarqueRepository {
 
     public Resultado criar(PortaoEmbarque portaoEmbarque) throws SQLException {
         Resultado resultado = dao.criar(portaoEmbarque);
+        return resultado;
+    }
+
+    public Resultado get(Integer id) throws SQLException {
+        Resultado resultado = dao.get(id);
         return resultado;
     }
 
@@ -59,7 +73,7 @@ public class PortaoEmbarqueRepository {
         return null;
     }
 
-    public Resultado verificarEmUso(Integer id, LocalDate dataInicial, LocalDate dataFinal) throws SQLException {
+    public Resultado verificarEmUso(Integer id, LocalDateTime dataInicial, LocalDateTime dataFinal) throws SQLException {
         Resultado resultado = dao.verificarEmUso(id, dataInicial, dataFinal);
         return resultado;
     }

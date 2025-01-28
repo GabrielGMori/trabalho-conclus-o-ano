@@ -10,6 +10,15 @@ import com.github.hugoperlin.results.Resultado;
 
 public class CheckInRepository {
     private CheckInDAOImpl dao;
+    private static CheckInRepository instance;
+
+    public static CheckInRepository getInstance() {
+        if (instance != null) {
+            return instance;
+        }
+        instance = new CheckInRepository();
+        return instance;
+    }
 
     public CheckInRepository() {
         this.dao = new CheckInDAOImpl(FabricaConexoes.getInstance());
@@ -17,6 +26,11 @@ public class CheckInRepository {
 
     public Resultado criar(CheckIn checkIn) throws SQLException {
         Resultado resultado = dao.criar(checkIn);
+        return resultado;
+    }
+
+    public Resultado get(Integer id) throws SQLException {
+        Resultado resultado = dao.get(id);
         return resultado;
     }
 

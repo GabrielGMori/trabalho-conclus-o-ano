@@ -1,12 +1,12 @@
 package com.tca.dao.implementations;
 
+import java.sql.Timestamp;
 import java.sql.Connection;
-import java.sql.Date;
 import java.sql.PreparedStatement;
 import java.sql.ResultSet;
 import java.sql.SQLException;
 import java.sql.Statement;
-import java.time.LocalDate;
+import java.time.LocalDateTime;
 import java.util.ArrayList;
 
 import com.tca.dao.FabricaConexoes;
@@ -34,8 +34,8 @@ public class ManutencaoDAOImpl implements ManutencaoDAO {
                     Statement.RETURN_GENERATED_KEYS);
 
             pstm.setString(1, manutencao.getDescricao());
-            pstm.setDate(2, Date.valueOf(manutencao.getDataInicio()));
-            pstm.setDate(3, Date.valueOf(manutencao.getDataFim()));
+            pstm.setTimestamp(2, Timestamp.valueOf(manutencao.getDataInicio()));
+            pstm.setTimestamp(3, Timestamp.valueOf(manutencao.getDataFim()));
             pstm.setString(4, manutencao.getStatus());
             pstm.setInt(5, manutencao.getIdAeronave());
 
@@ -75,8 +75,8 @@ public class ManutencaoDAOImpl implements ManutencaoDAO {
 
             if (rs.next()) {
                 String descricao = rs.getString("descricao_manutencao");
-                LocalDate dataInicio = rs.getDate("data_inicio_manutencao").toLocalDate();
-                LocalDate dataFim = rs.getDate("data_fim_manutencao").toLocalDate();
+                LocalDateTime dataInicio = rs.getTimestamp("data_inicio_manutencao").toLocalDateTime();
+                LocalDateTime dataFim = rs.getTimestamp("data_fim_manutencao").toLocalDateTime();
                 String status = rs.getString("status_manutencao");
                 int idAeronave = rs.getInt("id_aeronave_manutencao_fk");
                 
@@ -112,8 +112,8 @@ public class ManutencaoDAOImpl implements ManutencaoDAO {
             while (rs.next()) {
                 int id = rs.getInt("id_manutencao_pk");
                 String descricao = rs.getString("descricao_manutencao");
-                LocalDate dataInicio = rs.getDate("data_inicio_manutencao").toLocalDate();
-                LocalDate dataFim = rs.getDate("data_fim_manutencao").toLocalDate();
+                LocalDateTime dataInicio = rs.getTimestamp("data_inicio_manutencao").toLocalDateTime();
+                LocalDateTime dataFim = rs.getTimestamp("data_fim_manutencao").toLocalDateTime();
                 String status = rs.getString("status_manutencao");
                 int idAeronave = rs.getInt("id_aeronave_manutencao_fk");
 
@@ -145,8 +145,8 @@ public class ManutencaoDAOImpl implements ManutencaoDAO {
                     "UPDATE Manutencao SET descricao_manutencao = ?, data_inicio_manutencao = ?, data_fim_manutencao = ?, status_manutencao = ?, id_aeronave_manutencao_fk = ? WHERE id_manutencao_pk = ?;");
 
             pstm.setString(1, manutencao.getDescricao());
-            pstm.setDate(2, Date.valueOf(manutencao.getDataInicio()));
-            pstm.setDate(3, Date.valueOf(manutencao.getDataFim()));
+            pstm.setTimestamp(2, Timestamp.valueOf(manutencao.getDataInicio()));
+            pstm.setTimestamp(3, Timestamp.valueOf(manutencao.getDataFim()));
             pstm.setString(4, manutencao.getStatus());
             pstm.setInt(5, manutencao.getIdAeronave());
             pstm.setInt(6, id);
@@ -201,7 +201,7 @@ public class ManutencaoDAOImpl implements ManutencaoDAO {
     }
 
     @Override
-    public Resultado getManutencoesFiltro(String descricaoFiltro, LocalDate dataInicioInicialFiltro, LocalDate dataInicioFinalFiltro, LocalDate dataFimInicialFiltro, LocalDate dataFimFinalFiltro, String statusFiltro, Integer idAeronaveFiltro) throws SQLException {
+    public Resultado getManutencoesFiltro(String descricaoFiltro, LocalDateTime dataInicioInicialFiltro, LocalDateTime dataInicioFinalFiltro, LocalDateTime dataFimInicialFiltro, LocalDateTime dataFimFinalFiltro, String statusFiltro, Integer idAeronaveFiltro) throws SQLException {
         Connection con = null;
         PreparedStatement pstm = null;
         try {
@@ -212,10 +212,10 @@ public class ManutencaoDAOImpl implements ManutencaoDAO {
             int i = 1;
             int j = i;
             for (j+=2; i<j; i++)  {if (descricaoFiltro == null) pstm.setNull(i, java.sql.Types.NULL); else pstm.setString(i, descricaoFiltro); } 
-            for (j+=2; i<j; i++)  {if (dataInicioInicialFiltro == null) pstm.setNull(i, java.sql.Types.NULL); else pstm.setDate(i, Date.valueOf(dataInicioInicialFiltro)); } 
-            for (j+=2; i<j; i++)  {if (dataInicioFinalFiltro == null) pstm.setNull(i, java.sql.Types.NULL); else pstm.setDate(i, Date.valueOf(dataInicioFinalFiltro)); }
-            for (j+=2; i<j; i++)  {if (dataFimInicialFiltro == null) pstm.setNull(i, java.sql.Types.NULL); else pstm.setDate(i, Date.valueOf(dataFimInicialFiltro)); }
-            for (j+=2; i<j; i++)  {if (dataFimFinalFiltro == null) pstm.setNull(i, java.sql.Types.NULL); else pstm.setDate(i, Date.valueOf(dataFimFinalFiltro)); }
+            for (j+=2; i<j; i++)  {if (dataInicioInicialFiltro == null) pstm.setNull(i, java.sql.Types.NULL); else pstm.setTimestamp(i, Timestamp.valueOf(dataInicioInicialFiltro)); } 
+            for (j+=2; i<j; i++)  {if (dataInicioFinalFiltro == null) pstm.setNull(i, java.sql.Types.NULL); else pstm.setTimestamp(i, Timestamp.valueOf(dataInicioFinalFiltro)); }
+            for (j+=2; i<j; i++)  {if (dataFimInicialFiltro == null) pstm.setNull(i, java.sql.Types.NULL); else pstm.setTimestamp(i, Timestamp.valueOf(dataFimInicialFiltro)); }
+            for (j+=2; i<j; i++)  {if (dataFimFinalFiltro == null) pstm.setNull(i, java.sql.Types.NULL); else pstm.setTimestamp(i, Timestamp.valueOf(dataFimFinalFiltro)); }
             for (j+=2; i<j; i++)  {if (statusFiltro == null) pstm.setNull(i, java.sql.Types.NULL); else pstm.setString(i, statusFiltro); }
             for (j+=2; i<j; i++)  {if (idAeronaveFiltro == null) pstm.setNull(i, java.sql.Types.NULL); else pstm.setInt(i, idAeronaveFiltro); }
 
@@ -225,8 +225,8 @@ public class ManutencaoDAOImpl implements ManutencaoDAO {
             while (rs.next()) {
                 int id = rs.getInt("id_manutencao_pk");
                 String descricao = rs.getString("descricao_manutencao");
-                LocalDate dataInicio = rs.getDate("data_inicio_manutencao").toLocalDate();
-                LocalDate dataFim = rs.getDate("data_fim_manutencao").toLocalDate();
+                LocalDateTime dataInicio = rs.getTimestamp("data_inicio_manutencao").toLocalDateTime();
+                LocalDateTime dataFim = rs.getTimestamp("data_fim_manutencao").toLocalDateTime();
                 String status = rs.getString("status_manutencao");
                 int idAeronave = rs.getInt("id_aeronave_manutencao_fk");
 

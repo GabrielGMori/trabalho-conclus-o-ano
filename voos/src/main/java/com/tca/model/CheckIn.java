@@ -1,16 +1,16 @@
 package com.tca.model;
 
-import java.time.LocalDate;
+import java.time.LocalDateTime;
 
 public class CheckIn {
     private Integer id;
-    private LocalDate data;
+    private LocalDateTime data;
     
-    public CheckIn(LocalDate data) {
+    public CheckIn(LocalDateTime data) {
         this.data = data;
     }
 
-    public CheckIn(Integer id, LocalDate data) {
+    public CheckIn(Integer id, LocalDateTime data) {
         this(data);
         this.id = id;
     }
@@ -23,11 +23,11 @@ public class CheckIn {
         this.id = id;
     }  
 
-    public LocalDate getData() {
+    public LocalDateTime getData() {
         return data;
     }
 
-    public void setData(LocalDate data) {
+    public void setData(LocalDateTime data) {
         this.data = data;
     }
 }

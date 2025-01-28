@@ -19,7 +19,7 @@ public class App extends Application {
 
     @Override
     public void start(Stage stage) throws IOException {
-        scene = new Scene(loadFXML("escolherLogin"), 997, 794);
+        scene = new Scene(loadFXML("voosPassageiro"), 997, 794);
         stage.setScene(scene);
         stage.show();
     }
@@ -35,10 +35,6 @@ public class App extends Application {
 
     public static void main(String[] args) {
         launch();
-    }
-
-    public static String formatNumericData(String string) {
-        return string.trim().replace(" ", "").replace(".", "").replace("-", "").replace("/", "").replace("(", "").replace(")", "");
     }
 
     public static void setUsuario(Administrador administrador) {
@@ -57,6 +53,11 @@ public class App extends Application {
 
     public static Passageiro getPassageiroLogado() {
         return passageiroLogado;
+    }
+
+    public static void deslogar() {
+        administradorLogado = null;
+        passageiroLogado = null;
     }
 
 }

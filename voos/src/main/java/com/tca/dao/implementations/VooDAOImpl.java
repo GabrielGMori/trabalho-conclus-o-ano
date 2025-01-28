@@ -1,12 +1,12 @@
 package com.tca.dao.implementations;
 
 import java.sql.Connection;
-import java.sql.Date;
 import java.sql.PreparedStatement;
 import java.sql.ResultSet;
 import java.sql.SQLException;
 import java.sql.Statement;
-import java.time.LocalDate;
+import java.sql.Timestamp;
+import java.time.LocalDateTime;
 import java.util.ArrayList;
 
 import com.tca.dao.FabricaConexoes;
@@ -37,8 +37,8 @@ public class VooDAOImpl implements VooDAO {
             pstm.setString(2, voo.getStatus());
             pstm.setString(3, voo.getOrigem());
             pstm.setString(4, voo.getDestino());
-            pstm.setDate(5, Date.valueOf(voo.getHorarioEmbarque()));
-            pstm.setDate(6, Date.valueOf(voo.getHorarioDesembarque()));
+            pstm.setTimestamp(5, Timestamp.valueOf(voo.getHorarioEmbarque()));
+            pstm.setTimestamp(6, Timestamp.valueOf(voo.getHorarioDesembarque()));
             pstm.setInt(7, voo.getIdAeronave());
             pstm.setInt(8, voo.getIdPortaoEmbarque());
             pstm.setInt(9, voo.getIdAeroportoChegada());
@@ -71,7 +71,7 @@ public class VooDAOImpl implements VooDAO {
         PreparedStatement pstm = null;
         try {
             con = fabrica.getConnection();
-            pstm = con.prepareStatement("SELECT * FROM Voo;");
+            pstm = con.prepareStatement("SELECT * FROM Voo ORDER BY horario_embarque_voo;");
 
             ResultSet rs = pstm.executeQuery();
 
@@ -82,8 +82,8 @@ public class VooDAOImpl implements VooDAO {
                 String status = rs.getString("status_voo");
                 String origem = rs.getString("origem_voo");
                 String destino = rs.getString("destino_voo");
-                LocalDate horarioEmbarque = rs.getDate("horario_embarque_voo").toLocalDate();
-                LocalDate horarioDesembarque = rs.getDate("horario_desembarque_voo").toLocalDate();
+                LocalDateTime horarioEmbarque = rs.getTimestamp("horario_embarque_voo").toLocalDateTime();
+                LocalDateTime horarioDesembarque = rs.getTimestamp("horario_desembarque_voo").toLocalDateTime();
                 int idAeronave = rs.getInt("id_aeronave_voo_fk");
                 int idPortaoEmbarque = rs.getInt("id_portao_embarque_voo_fk");
                 int idAeroportoChegada = rs.getInt("id_aeroporto_chegada_voo_fk");
@@ -123,8 +123,8 @@ public class VooDAOImpl implements VooDAO {
                 String status = rs.getString("status_voo");
                 String origem = rs.getString("origem_voo");
                 String destino = rs.getString("destino_voo");
-                LocalDate horarioEmbarque = rs.getDate("horario_embarque_voo").toLocalDate();
-                LocalDate horarioDesembarque = rs.getDate("horario_desembarque_voo").toLocalDate();
+                LocalDateTime horarioEmbarque = rs.getTimestamp("horario_embarque_voo").toLocalDateTime();
+                LocalDateTime horarioDesembarque = rs.getTimestamp("horario_desembarque_voo").toLocalDateTime();
                 int idAeronave = rs.getInt("id_aeronave_voo_fk");
                 int idPortaoEmbarque = rs.getInt("id_portao_embarque_voo_fk");
                 int idAeroportoChegada = rs.getInt("id_aeroporto_chegada_voo_fk");
@@ -162,8 +162,8 @@ public class VooDAOImpl implements VooDAO {
             pstm.setString(2, voo.getStatus());
             pstm.setString(3, voo.getOrigem());
             pstm.setString(4, voo.getDestino());
-            pstm.setDate(5, Date.valueOf(voo.getHorarioEmbarque()));
-            pstm.setDate(6, Date.valueOf(voo.getHorarioDesembarque()));
+            pstm.setTimestamp(5, Timestamp.valueOf(voo.getHorarioEmbarque()));
+            pstm.setTimestamp(6, Timestamp.valueOf(voo.getHorarioDesembarque()));
             pstm.setInt(7, voo.getIdAeronave());
             pstm.setInt(8, voo.getIdPortaoEmbarque());
             pstm.setInt(9, voo.getIdAeroportoChegada());
@@ -219,13 +219,13 @@ public class VooDAOImpl implements VooDAO {
     }
 
     @Override
-    public Resultado getVoosFiltro(String numeroFiltro, String statusFiltro, String origemFiltro, String destinoFiltro, LocalDate horarioEmbarqueInicialFiltro, LocalDate horarioEmbarqueFinalFiltro, LocalDate horarioDesembarqueInicialFiltro, LocalDate horarioDesembarqueFinalFiltro, Integer idAeronaveFiltro, Integer idPortaoEmbarqueFiltro, Integer idAeroportoChegadaFiltro) throws SQLException {
+    public Resultado getVoosFiltro(String numeroFiltro, String statusFiltro, String origemFiltro, String destinoFiltro, LocalDateTime horarioEmbarqueInicialFiltro, LocalDateTime horarioEmbarqueFinalFiltro, LocalDateTime horarioDesembarqueInicialFiltro, LocalDateTime horarioDesembarqueFinalFiltro, Integer idAeronaveFiltro, Integer idPortaoEmbarqueFiltro, String AeroportoEmbarqueFiltro, String AeroportoChegadaFiltro) throws SQLException {
         Connection con = null;
         PreparedStatement pstm = null;
         try {
             con = fabrica.getConnection();
             pstm = con.prepareStatement(
-                    "SELECT * FROM Aeroporto WHERE (? IS NULL OR numero_voo = ?) AND (? IS NULL OR status_voo = ?) AND (? IS NULL OR origem_voo = ?) AND (? IS NULL OR destino_voo = ?) AND (? IS NULL OR horario_embarque_voo >= ?) AND (? IS NULL OR horario_desembarque_voo <= ?) AND (? IS NULL OR id_aeronave_voo_fk = ?) AND (? IS NULL OR id_portao_embarque_voo_fk = ?) AND (? IS NULL OR id_aeroporto_chegada_voo_fk = ?);");
+                    "SELECT * FROM Voo voo JOIN Portao_Embarque portao ON voo.id_portao_embarque_voo_fk = portao.id_portao_pk JOIN Aeroporto aeroporto_embarque ON portao.id_aeroporto_portao_fk = aeroporto_embarque.id_aeroporto_pk JOIN Aeroporto aeroporto_desembarque ON voo.id_aeroporto_chegada_voo_fk = aeroporto_desembarque.id_aeroporto_pk WHERE (? IS NULL OR numero_voo = ?) AND (? IS NULL OR status_voo = ?) AND (? IS NULL OR origem_voo = ?) AND (? IS NULL OR destino_voo = ?) AND (? IS NULL OR horario_embarque_voo >= ?) AND (? IS NULL OR horario_embarque_voo <= ?) AND (? IS NULL OR horario_desembarque_voo >= ?) AND (? IS NULL OR horario_desembarque_voo <= ?) AND (? IS NULL OR id_aeronave_voo_fk = ?) AND (? IS NULL OR id_portao_embarque_voo_fk = ?) AND (? IS NULL OR aeroporto_embarque.nome_aeroporto = ?) AND (? IS NULL OR aeroporto_desembarque.nome_aeroporto = ?) ORDER BY horario_embarque_voo;");
             
             int i = 1;
             int j = i;
@@ -233,13 +233,14 @@ public class VooDAOImpl implements VooDAO {
             for (j+=2; i<j; i++)  {if (statusFiltro == null) pstm.setNull(i, java.sql.Types.NULL); else pstm.setString(i, statusFiltro); }
             for (j+=2; i<j; i++)  {if (origemFiltro == null) pstm.setNull(i, java.sql.Types.NULL); else pstm.setString(i, origemFiltro); }
             for (j+=2; i<j; i++)  {if (destinoFiltro == null) pstm.setNull(i, java.sql.Types.NULL); else pstm.setString(i, destinoFiltro); }
-            for (j+=2; i<j; i++)  {if (horarioEmbarqueInicialFiltro == null) pstm.setNull(i, java.sql.Types.NULL); else pstm.setDate(i, Date.valueOf(horarioEmbarqueInicialFiltro)); }
-            for (j+=2; i<j; i++)  {if (horarioEmbarqueFinalFiltro == null) pstm.setNull(i, java.sql.Types.NULL); else pstm.setDate(i, Date.valueOf(horarioEmbarqueFinalFiltro)); }
-            for (j+=2; i<j; i++)  {if (horarioDesembarqueInicialFiltro == null) pstm.setNull(i, java.sql.Types.NULL); else pstm.setDate(i, Date.valueOf(horarioDesembarqueInicialFiltro)); }
-            for (j+=2; i<j; i++)  {if (horarioDesembarqueFinalFiltro == null) pstm.setNull(i, java.sql.Types.NULL); else pstm.setDate(i, Date.valueOf(horarioDesembarqueFinalFiltro)); }
+            for (j+=2; i<j; i++)  {if (horarioEmbarqueInicialFiltro == null) pstm.setNull(i, java.sql.Types.NULL); else pstm.setTimestamp(i, Timestamp.valueOf(horarioEmbarqueInicialFiltro)); }
+            for (j+=2; i<j; i++)  {if (horarioEmbarqueFinalFiltro == null) pstm.setNull(i, java.sql.Types.NULL); else pstm.setTimestamp(i, Timestamp.valueOf(horarioEmbarqueFinalFiltro)); }
+            for (j+=2; i<j; i++)  {if (horarioDesembarqueInicialFiltro == null) pstm.setNull(i, java.sql.Types.NULL); else pstm.setTimestamp(i, Timestamp.valueOf(horarioDesembarqueInicialFiltro)); }
+            for (j+=2; i<j; i++)  {if (horarioDesembarqueFinalFiltro == null) pstm.setNull(i, java.sql.Types.NULL); else pstm.setTimestamp(i, Timestamp.valueOf(horarioDesembarqueFinalFiltro)); }
             for (j+=2; i<j; i++)  {if (idAeronaveFiltro == null) pstm.setNull(i, java.sql.Types.NULL); else pstm.setInt(i, idAeronaveFiltro); }
             for (j+=2; i<j; i++)  {if (idPortaoEmbarqueFiltro == null) pstm.setNull(i, java.sql.Types.NULL); else pstm.setInt(i, idPortaoEmbarqueFiltro); }
-            for (j+=2; i<j; i++)  {if (idAeroportoChegadaFiltro == null) pstm.setNull(i, java.sql.Types.NULL); else pstm.setInt(i, idAeroportoChegadaFiltro); }
+            for (j+=2; i<j; i++)  {if (AeroportoEmbarqueFiltro == null) pstm.setNull(i, java.sql.Types.NULL); else pstm.setString(i, AeroportoEmbarqueFiltro); }
+            for (j+=2; i<j; i++)  {if (AeroportoChegadaFiltro == null) pstm.setNull(i, java.sql.Types.NULL); else pstm.setString(i, AeroportoChegadaFiltro); }
 
             ResultSet rs = pstm.executeQuery();
 
@@ -250,8 +251,8 @@ public class VooDAOImpl implements VooDAO {
                 String status = rs.getString("status_voo");
                 String origem = rs.getString("origem_voo");
                 String destino = rs.getString("destino_voo");
-                LocalDate horarioEmbarque = rs.getDate("horario_embarque_voo").toLocalDate();
-                LocalDate horarioDesembarque = rs.getDate("horario_desembarque_voo").toLocalDate();
+                LocalDateTime horarioEmbarque = rs.getTimestamp("horario_embarque_voo").toLocalDateTime();
+                LocalDateTime horarioDesembarque = rs.getTimestamp("horario_desembarque_voo").toLocalDateTime();
                 int idAeronave = rs.getInt("id_aeronave_voo_fk");
                 int idPortaoEmbarque = rs.getInt("id_portao_embarque_voo_fk");
                 int idAeroportoChegada = rs.getInt("id_aeroporto_chegada_voo_fk");

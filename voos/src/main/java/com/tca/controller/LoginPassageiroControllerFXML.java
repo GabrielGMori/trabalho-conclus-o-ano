@@ -13,7 +13,7 @@ import javafx.scene.control.TextField;
 import javafx.scene.text.Text;
 
 public class LoginPassageiroControllerFXML {
-    private PassageiroRepository passageiroRepository = new PassageiroRepository();
+    private PassageiroRepository passageiroRepository = PassageiroRepository.getInstance();
 
     @FXML
     private TextField senhaTextField;
@@ -31,7 +31,7 @@ public class LoginPassageiroControllerFXML {
 
     @FXML
     void criarConta(ActionEvent event) throws IOException {
-        App.setRoot("cadastroPassageiro");
+        App.setRoot("registroPassageiro");
     }
 
     @FXML

@@ -1,12 +1,12 @@
 package com.tca.dao.implementations;
 
 import java.sql.Connection;
-import java.sql.Date;
 import java.sql.PreparedStatement;
 import java.sql.ResultSet;
 import java.sql.SQLException;
 import java.sql.Statement;
-import java.time.LocalDate;
+import java.sql.Timestamp;
+import java.time.LocalDateTime;
 import java.util.ArrayList;
 
 import com.tca.dao.FabricaConexoes;
@@ -33,7 +33,7 @@ public class PassagemDAOImpl implements PassagemDAO {
                     "INSERT INTO Passagem(data_compra_passagem, assento_passagem, cpf_passageiro_passagem_fk, id_voo_passagem_fk, id_metodo_pagamento_passagem_fk, id_checkin_passagem_fk) VALUES (?, ?, ?, ?, ?, ?);",
                     Statement.RETURN_GENERATED_KEYS);
 
-            pstm.setDate(1, Date.valueOf(passagem.getDataCompra()));
+            pstm.setTimestamp(1, Timestamp.valueOf(passagem.getDataCompra()));
             pstm.setString(2, passagem.getAssento());
             pstm.setString(3, passagem.getCpfPassageiro());
             pstm.setInt(4, passagem.getIdVoo());
@@ -75,7 +75,7 @@ public class PassagemDAOImpl implements PassagemDAO {
             ResultSet rs = pstm.executeQuery();
 
             if (rs.next()) {
-                LocalDate dataCompra = rs.getDate("data_compra_passagem").toLocalDate();
+                LocalDateTime dataCompra = rs.getTimestamp("data_compra_passagem").toLocalDateTime();
                 String assento = rs.getString("assento_passagem");
                 String cpf = rs.getString("cpf_passageiro_passagem_fk");
                 int idVoo = rs.getInt("id_voo_passagem_fk");
@@ -114,7 +114,7 @@ public class PassagemDAOImpl implements PassagemDAO {
             ArrayList<Passagem> passagens = new ArrayList<>();
             while (rs.next()) {
                 int id = rs.getInt("id_passagem_pk");
-                LocalDate dataCompra = rs.getDate("data_compra_passagem").toLocalDate();
+                LocalDateTime dataCompra = rs.getTimestamp("data_compra_passagem").toLocalDateTime();
                 String assento = rs.getString("assento_passagem");
                 String cpf = rs.getString("cpf_passageiro_passagem_fk");
                 int idVoo = rs.getInt("id_voo_passagem_fk");
@@ -140,7 +140,7 @@ public class PassagemDAOImpl implements PassagemDAO {
     }
 
     @Override
-    public Resultado getPassagensFiltro(LocalDate dataCompraIncialFiltro, LocalDate dataCompraFinalFiltro, String assentoFiltro, String cpfPassageiroFiltro, String numeroVooFiltro, Integer idMetodoPagamentoFiltro) throws SQLException {
+    public Resultado getPassagensFiltro(LocalDateTime dataCompraIncialFiltro, LocalDateTime dataCompraFinalFiltro, String assentoFiltro, String cpfPassageiroFiltro, String numeroVooFiltro, Integer idMetodoPagamentoFiltro) throws SQLException {
         Connection con = null;
         PreparedStatement pstm = null;
         try {
@@ -150,8 +150,8 @@ public class PassagemDAOImpl implements PassagemDAO {
             
             int i = 1;
             int j = i;
-            for (j+=2; i<j; i++)  {if (dataCompraIncialFiltro == null) pstm.setNull(i, java.sql.Types.NULL); else pstm.setDate(i, Date.valueOf(dataCompraIncialFiltro)); } 
-            for (j+=2; i<j; i++)  {if (dataCompraFinalFiltro == null) pstm.setNull(i, java.sql.Types.NULL); else pstm.setDate(i, Date.valueOf(dataCompraFinalFiltro)); }
+            for (j+=2; i<j; i++)  {if (dataCompraIncialFiltro == null) pstm.setNull(i, java.sql.Types.NULL); else pstm.setTimestamp(i, Timestamp.valueOf(dataCompraIncialFiltro)); } 
+            for (j+=2; i<j; i++)  {if (dataCompraFinalFiltro == null) pstm.setNull(i, java.sql.Types.NULL); else pstm.setTimestamp(i, Timestamp.valueOf(dataCompraFinalFiltro)); }
             for (j+=2; i<j; i++)  {if (assentoFiltro == null) pstm.setNull(i, java.sql.Types.NULL); else pstm.setString(i, assentoFiltro); }
             for (j+=2; i<j; i++)  {if (cpfPassageiroFiltro == null) pstm.setNull(i, java.sql.Types.NULL); else pstm.setString(i, cpfPassageiroFiltro); }
             for (j+=2; i<j; i++)  {if (numeroVooFiltro == null) pstm.setNull(i, java.sql.Types.NULL); else pstm.setString(i, numeroVooFiltro); }
@@ -162,7 +162,7 @@ public class PassagemDAOImpl implements PassagemDAO {
             ArrayList<Passagem> passagens = new ArrayList<>();
             while (rs.next()) {
                 int id = rs.getInt("id_passagem_pk");
-                LocalDate dataCompra = rs.getDate("data_compra_passagem").toLocalDate();
+                LocalDateTime dataCompra = rs.getTimestamp("data_compra_passagem").toLocalDateTime();
                 String assento = rs.getString("assento_passagem");
                 String cpf = rs.getString("cpf_passageiro_passagem_fk");
                 int idVoo = rs.getInt("id_voo_passagem_fk");

@@ -1,7 +1,7 @@
 package com.tca.repository;
 
 import java.sql.SQLException;
-import java.time.LocalDate;
+import java.time.LocalDateTime;
 import java.util.ArrayList;
 
 import com.tca.dao.FabricaConexoes;
@@ -11,6 +11,15 @@ import com.github.hugoperlin.results.Resultado;
 
 public class VooRepository {
     private VooDAOImpl dao;
+    private static VooRepository instance;
+
+    public static VooRepository getInstance() {
+        if (instance != null) {
+            return instance;
+        }
+        instance = new VooRepository();
+        return instance;
+    }
 
     public VooRepository() {
         this.dao = new VooDAOImpl(FabricaConexoes.getInstance());
@@ -18,6 +27,11 @@ public class VooRepository {
 
     public Resultado criar(Voo voo) throws SQLException {
         Resultado resultado = dao.criar(voo);
+        return resultado;
+    }
+
+    public Resultado get(Integer id) throws SQLException {
+        Resultado resultado = dao.get(id);
         return resultado;
     }
 
@@ -45,8 +59,8 @@ public class VooRepository {
         return resultado;
     }
 
-    public ArrayList<?> getVoosFiltro(String numero,  String status, String origem, String destino, LocalDate horarioEmbarqueInicial, LocalDate horarioEmbarqueFinal, LocalDate horarioDesembarqueInicial, LocalDate horarioDesembarqueFinal, Integer idAeronave, Integer idPortaoEmbarque, Integer idAeroportoChegada) throws SQLException {
-        Resultado resultado = dao.getVoosFiltro(numero, status, origem, destino, horarioEmbarqueInicial, horarioEmbarqueFinal, horarioDesembarqueInicial, horarioDesembarqueFinal, idAeronave, idPortaoEmbarque, idAeroportoChegada);
+    public ArrayList<?> getVoosFiltro(String numero,  String status, String origem, String destino, LocalDateTime horarioEmbarqueInicial, LocalDateTime horarioEmbarqueFinal, LocalDateTime horarioDesembarqueInicial, LocalDateTime horarioDesembarqueFinal, Integer idAeronave, Integer idPortaoEmbarque, String AeroportoEmbarque, String AeroportoChegada) throws SQLException {
+        Resultado resultado = dao.getVoosFiltro(numero, status, origem, destino, horarioEmbarqueInicial, horarioEmbarqueFinal, horarioDesembarqueInicial, horarioDesembarqueFinal, idAeronave, idPortaoEmbarque, AeroportoEmbarque, AeroportoChegada);
         if (resultado.foiSucesso()) {
             ArrayList<?> voos = (ArrayList<?>) resultado.comoSucesso().getObj();
             if (!(voos.stream().allMatch(element -> element instanceof Voo))) {
