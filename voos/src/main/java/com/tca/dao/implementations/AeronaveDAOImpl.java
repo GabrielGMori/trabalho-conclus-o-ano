@@ -193,19 +193,19 @@ public class AeronaveDAOImpl implements AeronaveDAO {
     }
 
     @Override
-    public Resultado getAeronavesFiltro(String modeloFiltro, Integer capacidadeFiltro, Integer idCompanhiaFiltro) throws SQLException {
+    public Resultado getAeronavesFiltro(String modeloFiltro, Integer capacidadeFiltro, String companhiaFiltro) throws SQLException {
         Connection con = null;
         PreparedStatement pstm = null;
         try {
             con = fabrica.getConnection();
             pstm = con.prepareStatement(
-                    "SELECT * FROM Aeronave WHERE (? IS NULL OR modelo_aeronave = ?) AND (? IS NULL OR capacidade_aeronave = ?) AND (? IS NULL OR id_companhia_aeronave_fk = ?);");
+                    "SELECT * FROM Aeronave aeronave JOIN Companhia_Aerea companhia ON aeronave.id_companhia_aeronave_fk = companhia.id_companhia_pk WHERE (? IS NULL OR modelo_aeronave = ?) AND (? IS NULL OR capacidade_aeronave = ?) AND (? IS NULL OR companhia.nome_companhia = ?);");
             
             int i = 1;
             int j = i;
             for (j+=2; i<j; i++)  {if (modeloFiltro == null) pstm.setNull(i, java.sql.Types.NULL); else pstm.setString(i, modeloFiltro); } 
             for (j+=2; i<j; i++)  {if (capacidadeFiltro == null) pstm.setNull(i, java.sql.Types.NULL); else pstm.setInt(i, capacidadeFiltro); }
-            for (j+=2; i<j; i++)  {if (idCompanhiaFiltro == null) pstm.setNull(i, java.sql.Types.NULL); else pstm.setInt(i, idCompanhiaFiltro); }
+            for (j+=2; i<j; i++)  {if (companhiaFiltro == null) pstm.setNull(i, java.sql.Types.NULL); else pstm.setString(i, companhiaFiltro); }
 
             ResultSet rs = pstm.executeQuery();
 

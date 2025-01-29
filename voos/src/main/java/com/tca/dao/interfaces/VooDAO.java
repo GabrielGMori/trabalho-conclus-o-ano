@@ -17,7 +17,7 @@ public interface VooDAO {
 
     Resultado deletar(Integer id) throws SQLException;
 
-    Resultado getVoosFiltro(String numero,  String status, String origem, String destino, LocalDateTime horarioEmbarqueInicial, LocalDateTime horarioEmbarqueFinal, LocalDateTime horarioDesembarqueInicial, LocalDateTime horarioDesembarqueFinal, Integer idAeronave, Integer idPortaoEmbarque, String AeroportoEmbarque, String AeroportoChegada) throws SQLException;
+    Resultado getVoosFiltro(String numero, String origem, String destino, LocalDateTime dataEmbarqueInicio, LocalDateTime dataEmbarqueFim, String aeroportoEmbarque, LocalDateTime dataDesembarqueInicio, LocalDateTime dataDesembarqueFim, String aeroportoDesembarque, String status) throws SQLException;
 
     Resultado verificarVooLotado(Integer id) throws SQLException;
 }

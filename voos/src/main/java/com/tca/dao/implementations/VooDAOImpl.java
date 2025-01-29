@@ -88,7 +88,8 @@ public class VooDAOImpl implements VooDAO {
                 int idPortaoEmbarque = rs.getInt("id_portao_embarque_voo_fk");
                 int idAeroportoChegada = rs.getInt("id_aeroporto_chegada_voo_fk");
 
-                Voo voo = new Voo(id, numero, status, origem, destino, horarioEmbarque, horarioDesembarque, idAeronave, idPortaoEmbarque, idAeroportoChegada);
+                Voo voo = new Voo(id, numero, status, origem, destino, horarioEmbarque, horarioDesembarque, idAeronave,
+                        idPortaoEmbarque, idAeroportoChegada);
                 voos.add(voo);
             }
 
@@ -146,7 +147,6 @@ public class VooDAOImpl implements VooDAO {
                 con.close();
         }
     }
-
 
     @Override
     public Resultado atualizar(Integer id, Voo voo) throws SQLException {
@@ -219,28 +219,29 @@ public class VooDAOImpl implements VooDAO {
     }
 
     @Override
-    public Resultado getVoosFiltro(String numeroFiltro, String statusFiltro, String origemFiltro, String destinoFiltro, LocalDateTime horarioEmbarqueInicialFiltro, LocalDateTime horarioEmbarqueFinalFiltro, LocalDateTime horarioDesembarqueInicialFiltro, LocalDateTime horarioDesembarqueFinalFiltro, Integer idAeronaveFiltro, Integer idPortaoEmbarqueFiltro, String AeroportoEmbarqueFiltro, String AeroportoChegadaFiltro) throws SQLException {
+    public Resultado getVoosFiltro(String numeroFiltro, String origemFiltro, String destinoFiltro,
+            LocalDateTime dataEmbarqueInicioFiltro, LocalDateTime dataEmbarqueFimFiltro, String aeroportoEmbarqueFiltro,
+            LocalDateTime dataDesembarqueInicioFiltro, LocalDateTime dataDesembarqueFimFiltro,
+            String aeroportoDesembarqueFiltro, String statusFiltro) throws SQLException {
         Connection con = null;
         PreparedStatement pstm = null;
         try {
             con = fabrica.getConnection();
             pstm = con.prepareStatement(
-                    "SELECT * FROM Voo voo JOIN Portao_Embarque portao ON voo.id_portao_embarque_voo_fk = portao.id_portao_pk JOIN Aeroporto aeroporto_embarque ON portao.id_aeroporto_portao_fk = aeroporto_embarque.id_aeroporto_pk JOIN Aeroporto aeroporto_desembarque ON voo.id_aeroporto_chegada_voo_fk = aeroporto_desembarque.id_aeroporto_pk WHERE (? IS NULL OR numero_voo = ?) AND (? IS NULL OR status_voo = ?) AND (? IS NULL OR origem_voo = ?) AND (? IS NULL OR destino_voo = ?) AND (? IS NULL OR horario_embarque_voo >= ?) AND (? IS NULL OR horario_embarque_voo <= ?) AND (? IS NULL OR horario_desembarque_voo >= ?) AND (? IS NULL OR horario_desembarque_voo <= ?) AND (? IS NULL OR id_aeronave_voo_fk = ?) AND (? IS NULL OR id_portao_embarque_voo_fk = ?) AND (? IS NULL OR aeroporto_embarque.nome_aeroporto = ?) AND (? IS NULL OR aeroporto_desembarque.nome_aeroporto = ?) ORDER BY horario_embarque_voo;");
-            
+                    "SELECT * FROM Voo voo JOIN Portao_Embarque portao ON voo.id_portao_embarque_voo_fk = portao.id_portao_pk JOIN Aeroporto aeroporto_embarque ON portao.id_aeroporto_portao_fk = aeroporto_embarque.id_aeroporto_pk JOIN Aeroporto aeroporto_desembarque ON voo.id_aeroporto_chegada_voo_fk = aeroporto_desembarque.id_aeroporto_pk WHERE (? IS NULL OR numero_voo = ?) AND (? IS NULL OR origem_voo = ?) AND (? IS NULL OR destino_voo = ?) AND (? IS NULL OR horario_embarque_voo >= ?) AND (? IS NULL OR horario_embarque_voo <= ?) AND (? IS NULL OR aeroporto_embarque.nome_aeroporto = ?) AND (? IS NULL OR horario_desembarque_voo >= ?) AND (? IS NULL OR horario_desembarque_voo <= ?) AND (? IS NULL OR aeroporto_desembarque.nome_aeroporto = ?) AND (? IS NULL OR status_voo = ?) ORDER BY horario_embarque_voo DESC;");
+
             int i = 1;
             int j = i;
-            for (j+=2; i<j; i++)  {if (numeroFiltro == null) pstm.setNull(i, java.sql.Types.NULL); else pstm.setString(i, numeroFiltro); } 
-            for (j+=2; i<j; i++)  {if (statusFiltro == null) pstm.setNull(i, java.sql.Types.NULL); else pstm.setString(i, statusFiltro); }
-            for (j+=2; i<j; i++)  {if (origemFiltro == null) pstm.setNull(i, java.sql.Types.NULL); else pstm.setString(i, origemFiltro); }
-            for (j+=2; i<j; i++)  {if (destinoFiltro == null) pstm.setNull(i, java.sql.Types.NULL); else pstm.setString(i, destinoFiltro); }
-            for (j+=2; i<j; i++)  {if (horarioEmbarqueInicialFiltro == null) pstm.setNull(i, java.sql.Types.NULL); else pstm.setTimestamp(i, Timestamp.valueOf(horarioEmbarqueInicialFiltro)); }
-            for (j+=2; i<j; i++)  {if (horarioEmbarqueFinalFiltro == null) pstm.setNull(i, java.sql.Types.NULL); else pstm.setTimestamp(i, Timestamp.valueOf(horarioEmbarqueFinalFiltro)); }
-            for (j+=2; i<j; i++)  {if (horarioDesembarqueInicialFiltro == null) pstm.setNull(i, java.sql.Types.NULL); else pstm.setTimestamp(i, Timestamp.valueOf(horarioDesembarqueInicialFiltro)); }
-            for (j+=2; i<j; i++)  {if (horarioDesembarqueFinalFiltro == null) pstm.setNull(i, java.sql.Types.NULL); else pstm.setTimestamp(i, Timestamp.valueOf(horarioDesembarqueFinalFiltro)); }
-            for (j+=2; i<j; i++)  {if (idAeronaveFiltro == null) pstm.setNull(i, java.sql.Types.NULL); else pstm.setInt(i, idAeronaveFiltro); }
-            for (j+=2; i<j; i++)  {if (idPortaoEmbarqueFiltro == null) pstm.setNull(i, java.sql.Types.NULL); else pstm.setInt(i, idPortaoEmbarqueFiltro); }
-            for (j+=2; i<j; i++)  {if (AeroportoEmbarqueFiltro == null) pstm.setNull(i, java.sql.Types.NULL); else pstm.setString(i, AeroportoEmbarqueFiltro); }
-            for (j+=2; i<j; i++)  {if (AeroportoChegadaFiltro == null) pstm.setNull(i, java.sql.Types.NULL); else pstm.setString(i, AeroportoChegadaFiltro); }
+            for (j += 2; i < j; i++) { if (numeroFiltro == null) pstm.setNull(i, java.sql.Types.NULL); else pstm.setString(i, numeroFiltro); }
+            for (j += 2; i < j; i++) { if (origemFiltro == null) pstm.setNull(i, java.sql.Types.NULL); else pstm.setString(i, origemFiltro); }
+            for (j += 2; i < j; i++) { if (destinoFiltro == null) pstm.setNull(i, java.sql.Types.NULL); else pstm.setString(i, destinoFiltro); }
+            for (j += 2; i < j; i++) { if (dataEmbarqueInicioFiltro == null) pstm.setNull(i, java.sql.Types.NULL); else pstm.setTimestamp(i, Timestamp.valueOf(dataEmbarqueInicioFiltro)); }
+            for (j += 2; i < j; i++) { if (dataEmbarqueFimFiltro == null) pstm.setNull(i, java.sql.Types.NULL); else pstm.setTimestamp(i, Timestamp.valueOf(dataEmbarqueFimFiltro)); }
+            for (j += 2; i < j; i++) { if (aeroportoEmbarqueFiltro == null) pstm.setNull(i, java.sql.Types.NULL); else pstm.setString(i, aeroportoEmbarqueFiltro); }
+            for (j += 2; i < j; i++) { if (dataDesembarqueInicioFiltro == null) pstm.setNull(i, java.sql.Types.NULL); else pstm.setTimestamp(i, Timestamp.valueOf(dataDesembarqueInicioFiltro)); }
+            for (j += 2; i < j; i++) { if (dataDesembarqueFimFiltro == null) pstm.setNull(i, java.sql.Types.NULL); else pstm.setTimestamp(i, Timestamp.valueOf(dataDesembarqueFimFiltro)); }
+            for (j += 2; i < j; i++) { if (aeroportoDesembarqueFiltro == null) pstm.setNull(i, java.sql.Types.NULL); else pstm.setString(i, aeroportoDesembarqueFiltro); }
+            for (j += 2; i < j; i++) { if (statusFiltro == null) pstm.setNull(i, java.sql.Types.NULL); else pstm.setString(i, statusFiltro); }
 
             ResultSet rs = pstm.executeQuery();
 
@@ -281,7 +282,7 @@ public class VooDAOImpl implements VooDAO {
         try {
             con = fabrica.getConnection();
             pstm = con.prepareStatement("SELECT verificarVooLotado(?);");
-            
+
             pstm.setInt(1, id);
 
             ResultSet rs = pstm.executeQuery();

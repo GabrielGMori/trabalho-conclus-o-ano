@@ -48,7 +48,7 @@
                   <Font name="Yu Gothic Bold" size="20.0" />
                </font>
             </Button>
-            <Button mnemonicParsing="false" onAction="#verCompanhias" prefHeight="40.0" prefWidth="205.0" style="-fx-background-color: F1FFE7;" text="Companhias" textAlignment="CENTER" textFill="#333333">
+            <Button mnemonicParsing="false" prefHeight="40.0" prefWidth="205.0" style="-fx-background-color: F1FFE7;" text="Companhias" textAlignment="CENTER" textFill="#333333">
                <font>
                   <Font name="Yu Gothic Bold" size="20.0" />
                </font>

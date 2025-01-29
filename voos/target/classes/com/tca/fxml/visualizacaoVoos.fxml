@@ -43,7 +43,7 @@
       </VBox>
       <VBox alignment="CENTER" prefHeight="800.0" prefWidth="237.0" spacing="20.0" style="-fx-background-color: #3FC2FF;">
          <children>
-            <Button mnemonicParsing="false" onAction="#verVoos" prefHeight="0.0" prefWidth="205.0" style="-fx-background-color: F1FFE7;" text="Voos" textAlignment="CENTER" textFill="#333333">
+            <Button mnemonicParsing="false" prefHeight="0.0" prefWidth="205.0" style="-fx-background-color: F1FFE7;" text="Voos" textAlignment="CENTER" textFill="#333333">
                <font>
                   <Font name="Yu Gothic Bold" size="20.0" />
                </font>
@@ -290,7 +290,7 @@
                               <Font name="Yu Gothic Regular" size="25.0" />
                            </font>
                         </Text>
-                        <ChoiceBox fx:id="statusChoiceBox" prefHeight="39.0" prefWidth="263.0" style="-fx-background-color: F1FFE7;" />
+                        <ChoiceBox fx:id="statusChoiceBox" prefHeight="39.0" prefWidth="263.0" style="-fx-background-color: F1FFE7;" stylesheets="@../css/choiceBox.css" />
                      </children>
                   </HBox>
                   <HBox alignment="CENTER" prefHeight="70.0" prefWidth="1006.0" spacing="20.0">

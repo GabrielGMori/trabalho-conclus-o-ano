@@ -27,13 +27,15 @@ public class App extends Application {
 
     @Override
     public void start(Stage stage) throws IOException {
-        scene = new Scene(loadFXML("escolherLogin"), 997, 794);
+        scene = new Scene(loadFXML("visualizacaoVoos"), 997, 794);
         stage.setScene(scene);
         stage.show();
     }
 
     @Override
     public void init() throws SQLException {
+        setUsuario(new Administrador("00000000001", "Administrador 1", "admin123"));
+
         try {
             if (metodoPagamentoRepository.listar().isEmpty()) {
                 metodoPagamentoRepository.criar(new MetodoPagamento("Cartão de crédito"));

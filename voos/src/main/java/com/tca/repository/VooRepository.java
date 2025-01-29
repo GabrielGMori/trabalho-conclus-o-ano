@@ -57,10 +57,10 @@ public class VooRepository {
     public Resultado deletar(Integer id) throws SQLException {
         Resultado resultado = dao.deletar(id);
         return resultado;
-    }
+        }
 
-    public ArrayList<?> getVoosFiltro(String numero,  String status, String origem, String destino, LocalDateTime horarioEmbarqueInicial, LocalDateTime horarioEmbarqueFinal, LocalDateTime horarioDesembarqueInicial, LocalDateTime horarioDesembarqueFinal, Integer idAeronave, Integer idPortaoEmbarque, String AeroportoEmbarque, String AeroportoChegada) throws SQLException {
-        Resultado resultado = dao.getVoosFiltro(numero, status, origem, destino, horarioEmbarqueInicial, horarioEmbarqueFinal, horarioDesembarqueInicial, horarioDesembarqueFinal, idAeronave, idPortaoEmbarque, AeroportoEmbarque, AeroportoChegada);
+        public ArrayList<?> getVoosFiltro(String numero, String origem, String destino, LocalDateTime dataEmbarqueInicio, LocalDateTime dataEmbarqueFim, String aeroportoEmbarque, LocalDateTime dataDesembarqueInicio, LocalDateTime dataDesembarqueFim, String aeroportoDesembarque, String status) throws SQLException {
+        Resultado resultado = dao.getVoosFiltro(numero, origem, destino, dataEmbarqueInicio, dataEmbarqueFim, aeroportoEmbarque, dataDesembarqueInicio, dataDesembarqueFim, aeroportoDesembarque, status);
         if (resultado.foiSucesso()) {
             ArrayList<?> voos = (ArrayList<?>) resultado.comoSucesso().getObj();
             if (!(voos.stream().allMatch(element -> element instanceof Voo))) {

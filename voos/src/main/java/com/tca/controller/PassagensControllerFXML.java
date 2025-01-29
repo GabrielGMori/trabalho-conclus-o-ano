@@ -98,7 +98,7 @@ public class PassagensControllerFXML implements Initializable {
 
     @FXML
     void verCompanhias(ActionEvent event) throws IOException {
-        App.setRoot("visualizacaoCompanhia");
+        App.setRoot("visualizacaoCompanhias");
     }
 
     @FXML
@@ -132,6 +132,7 @@ public class PassagensControllerFXML implements Initializable {
         for (int i = 0; i < filtros.size(); i++) {
             filtros.get(i).setText("");
         }
+        metodoPagamentoChoiceBox.getSelectionModel().clearSelection();
     }
 
     @FXML
@@ -236,7 +237,6 @@ public class PassagensControllerFXML implements Initializable {
             public void changed(ObservableValue<? extends HBox> arg0, HBox arg1, HBox arg2) {
                 try {
                     verMais(Integer.valueOf(passagensListView.getSelectionModel().getSelectedItem().getId()));
-                    System.out.println(passagensListView.getSelectionModel().getSelectedItem().getId());
                 } catch (Exception e) {
                     e.printStackTrace();
                 }
@@ -357,7 +357,11 @@ public class PassagensControllerFXML implements Initializable {
         }
 
         Integer idMetodoPagamento = null;
-        if (metodoPagamentoChoiceBox.getSelectionModel().getSelectedIndex() > 0) idMetodoPagamento = metodoPagamentoChoiceBox.getSelectionModel().getSelectedIndex();
+        if (metodoPagamentoChoiceBox.getSelectionModel().getSelectedIndex() >= 0) {
+            Integer indexMetodoPagamento = metodoPagamentoChoiceBox.getSelectionModel().getSelectedIndex();
+            MetodoPagamento metodoPagamento = (MetodoPagamento) metodos.get(indexMetodoPagamento);
+            idMetodoPagamento = metodoPagamento.getId();
+        }
 
         return new ArrayList<>(Arrays.asList(numero, origem, destino, cpf, idMetodoPagamento, dataInicio, dataFim));
     }

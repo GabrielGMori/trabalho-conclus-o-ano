@@ -59,8 +59,8 @@ public class ManutencaoRepository {
         return resultado;
     }
 
-    public ArrayList<?> getManutencaosFiltro(String descricao, LocalDateTime dataInicioInicial, LocalDateTime dataInicioFinal, LocalDateTime dataFimInicial, LocalDateTime dataFimFinal, String status, Integer idAeronave) throws SQLException {
-        Resultado resultado = dao.getManutencoesFiltro(descricao, dataInicioInicial, dataInicioFinal, dataFimInicial, dataFimFinal, status, idAeronave);
+    public ArrayList<?> getManutencaosFiltro(String descricao, LocalDateTime dataInicioInicial, LocalDateTime dataInicioFinal, LocalDateTime dataFimInicial, LocalDateTime dataFimFinal, String aeronave, String status) throws SQLException {
+        Resultado resultado = dao.getManutencoesFiltro(descricao, dataInicioInicial, dataInicioFinal, dataFimInicial, dataFimFinal, aeronave, status);
         if (resultado.foiSucesso()) {
             ArrayList<?> manutencoes = (ArrayList<?>) resultado.comoSucesso().getObj();
             if (!(manutencoes.stream().allMatch(element -> element instanceof Manutencao))) {

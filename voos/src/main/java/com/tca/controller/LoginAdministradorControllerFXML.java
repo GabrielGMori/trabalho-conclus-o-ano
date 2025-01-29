@@ -39,7 +39,7 @@ public class LoginAdministradorControllerFXML {
             Administrador administrador = encontrarAdministrador();
             if (administrador == null) return;
             App.setUsuario(administrador);
-            App.setRoot("passagens"); // App.setRoot("visualizacaoVoos");
+            App.setRoot("visualizacaoVoos");
         }
     }
 

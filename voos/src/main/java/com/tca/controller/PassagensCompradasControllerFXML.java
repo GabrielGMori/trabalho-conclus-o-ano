@@ -188,7 +188,6 @@ public class PassagensCompradasControllerFXML implements Initializable {
             public void changed(ObservableValue<? extends HBox> arg0, HBox arg1, HBox arg2) {
                 try {
                     verMais(Integer.valueOf(passagensListView.getSelectionModel().getSelectedItem().getId()));
-                    System.out.println(passagensListView.getSelectionModel().getSelectedItem().getId());
                 } catch (Exception e) {
                     e.printStackTrace();
                 }

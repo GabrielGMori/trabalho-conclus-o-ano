@@ -201,23 +201,23 @@ public class ManutencaoDAOImpl implements ManutencaoDAO {
     }
 
     @Override
-    public Resultado getManutencoesFiltro(String descricaoFiltro, LocalDateTime dataInicioInicialFiltro, LocalDateTime dataInicioFinalFiltro, LocalDateTime dataFimInicialFiltro, LocalDateTime dataFimFinalFiltro, String statusFiltro, Integer idAeronaveFiltro) throws SQLException {
+    public Resultado getManutencoesFiltro(String descricaoFiltro, LocalDateTime dataInicioInicialFiltro, LocalDateTime dataInicioFinalFiltro, LocalDateTime dataFimInicialFiltro, LocalDateTime dataFimFinalFiltro, String aeronaveFiltro, String statusFiltro) throws SQLException {
         Connection con = null;
         PreparedStatement pstm = null;
         try {
             con = fabrica.getConnection();
             pstm = con.prepareStatement(
-                    "SELECT * FROM Manutencao WHERE (? IS NULL OR descricao_manutencao = ?) AND (? IS NULL OR data_inicio_manutencao >= ?) AND (? IS NULL OR data_inicio_manutencao <= ?) AND (? IS NULL OR data_fim_manutencao >= ?) AND (? IS NULL OR data_fim_manutencao <= ?) AND (? IS NULL OR status_manutencao = ?) AND (? IS NULL OR id_aeronave_manutencao_fk = ?);");
+                    "SELECT * FROM Manutencao manutencao JOIN Aeronave aeronave ON manutencao.id_aeronave_manutencao_fk = aeronave.id_aeronave_pk WHERE (? IS NULL OR descricao_manutencao LIKE ?) AND (? IS NULL OR data_inicio_manutencao >= ?) AND (? IS NULL OR data_inicio_manutencao <= ?) AND (? IS NULL OR data_fim_manutencao >= ?) AND (? IS NULL OR data_fim_manutencao <= ?) AND (? IS NULL OR aeronave.modelo_aeronave = ?) AND (? IS NULL OR status_manutencao = ?);");
             
             int i = 1;
             int j = i;
-            for (j+=2; i<j; i++)  {if (descricaoFiltro == null) pstm.setNull(i, java.sql.Types.NULL); else pstm.setString(i, descricaoFiltro); } 
+            for (j+=2; i<j; i++)  {if (descricaoFiltro == null) pstm.setNull(i, java.sql.Types.NULL); else pstm.setString(i, "%" + descricaoFiltro + "%"); } 
             for (j+=2; i<j; i++)  {if (dataInicioInicialFiltro == null) pstm.setNull(i, java.sql.Types.NULL); else pstm.setTimestamp(i, Timestamp.valueOf(dataInicioInicialFiltro)); } 
             for (j+=2; i<j; i++)  {if (dataInicioFinalFiltro == null) pstm.setNull(i, java.sql.Types.NULL); else pstm.setTimestamp(i, Timestamp.valueOf(dataInicioFinalFiltro)); }
             for (j+=2; i<j; i++)  {if (dataFimInicialFiltro == null) pstm.setNull(i, java.sql.Types.NULL); else pstm.setTimestamp(i, Timestamp.valueOf(dataFimInicialFiltro)); }
             for (j+=2; i<j; i++)  {if (dataFimFinalFiltro == null) pstm.setNull(i, java.sql.Types.NULL); else pstm.setTimestamp(i, Timestamp.valueOf(dataFimFinalFiltro)); }
+            for (j+=2; i<j; i++)  {if (aeronaveFiltro == null) pstm.setNull(i, java.sql.Types.NULL); else pstm.setString(i, aeronaveFiltro); }
             for (j+=2; i<j; i++)  {if (statusFiltro == null) pstm.setNull(i, java.sql.Types.NULL); else pstm.setString(i, statusFiltro); }
-            for (j+=2; i<j; i++)  {if (idAeronaveFiltro == null) pstm.setNull(i, java.sql.Types.NULL); else pstm.setInt(i, idAeronaveFiltro); }
 
             ResultSet rs = pstm.executeQuery();
 

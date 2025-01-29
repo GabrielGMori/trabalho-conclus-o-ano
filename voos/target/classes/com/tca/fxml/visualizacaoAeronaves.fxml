@@ -58,7 +58,7 @@
                   <Font name="Yu Gothic Bold" size="20.0" />
                </font>
             </Button>
-            <Button mnemonicParsing="false" onAction="#verAeronaves" prefHeight="40.0" prefWidth="205.0" style="-fx-background-color: F1FFE7;" text="Aeronaves" textAlignment="CENTER" textFill="#333333">
+            <Button mnemonicParsing="false" prefHeight="40.0" prefWidth="205.0" style="-fx-background-color: F1FFE7;" text="Aeronaves" textAlignment="CENTER" textFill="#333333">
                <font>
                   <Font name="Yu Gothic Bold" size="20.0" />
                </font>
@@ -132,7 +132,11 @@
                               <Font name="Yu Gothic Regular" size="25.0" />
                            </font>
                         </Text>
-                        <ChoiceBox fx:id="companhiaChoiceBox" prefHeight="39.0" prefWidth="282.0" style="-fx-background-color: F1FFE7;" />
+                        <TextField fx:id="companhiaTextField" prefHeight="39.0" prefWidth="450.0" style="-fx-background-color: F1FFE7;">
+                           <font>
+                              <Font name="Yu Gothic Regular" size="20.0" />
+                           </font>
+                        </TextField>
                      </children>
                   </HBox>
                   <HBox alignment="CENTER" prefHeight="70.0" prefWidth="1006.0" spacing="20.0">

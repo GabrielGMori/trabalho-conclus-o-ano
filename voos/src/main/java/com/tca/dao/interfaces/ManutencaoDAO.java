@@ -17,5 +17,5 @@ public interface ManutencaoDAO {
 
     Resultado deletar(Integer id) throws SQLException;
 
-    Resultado getManutencoesFiltro(String descricao, LocalDateTime dataInicioInicial, LocalDateTime dataInicioFinal, LocalDateTime dataFimInicial, LocalDateTime dataFimFinal, String status, Integer idAeronave) throws SQLException;
+    Resultado getManutencoesFiltro(String descricao, LocalDateTime dataInicioInicial, LocalDateTime dataInicioFinal, LocalDateTime dataFimInicial, LocalDateTime dataFimFinal, String aeronave, String status) throws SQLException;
 }

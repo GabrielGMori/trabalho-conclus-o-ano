@@ -63,7 +63,7 @@
                   <Font name="Yu Gothic Bold" size="20.0" />
                </font>
             </Button>
-            <Button mnemonicParsing="false" onAction="#verManutencoes" prefHeight="40.0" prefWidth="205.0" style="-fx-background-color: F1FFE7;" text="Manutenções" textAlignment="CENTER" textFill="#333333">
+            <Button mnemonicParsing="false" prefHeight="40.0" prefWidth="205.0" style="-fx-background-color: F1FFE7;" text="Manutenções" textAlignment="CENTER" textFill="#333333">
                <font>
                   <Font name="Yu Gothic Bold" size="20.0" />
                </font>
@@ -111,38 +111,116 @@
                         </TextField>
                      </children>
                   </HBox>
-                  <HBox alignment="CENTER" prefHeight="52.0" prefWidth="812.0" spacing="20.0">
+                  <HBox alignment="CENTER" prefHeight="52.0" prefWidth="953.0" spacing="20.0">
                      <children>
-                        <Text fill="#f1ffe7" strokeType="OUTSIDE" strokeWidth="0.0" text="Início:" textAlignment="RIGHT" wrappingWidth="80.13671875">
+                        <Text fill="#f1ffe7" strokeType="OUTSIDE" strokeWidth="0.0" text="Data de início:" textAlignment="RIGHT" wrappingWidth="177.13671875">
                            <font>
                               <Font name="Yu Gothic Regular" size="25.0" />
                            </font>
                         </Text>
-                        <TextField fx:id="inicioDateTextField" prefHeight="39.0" prefWidth="176.0" promptText="DD/MM/AAAA" style="-fx-background-color: F1FFE7;">
+                        <Text fill="#f1ffe7" strokeType="OUTSIDE" strokeWidth="0.0" text="Início" textAlignment="RIGHT" wrappingWidth="67.13671875">
+                           <font>
+                              <Font name="Yu Gothic Regular" size="25.0" />
+                           </font>
+                        </Text>
+                        <TextField fx:id="dataInicioInicioTextField" prefHeight="39.0" prefWidth="170.0" promptText="DD/MM/AAAA" style="-fx-background-color: F1FFE7;">
                            <font>
                               <Font name="Yu Gothic Regular" size="20.0" />
                            </font>
                         </TextField>
-                        <TextField fx:id="inicioTimeTextField" prefHeight="39.0" prefWidth="101.0" promptText="HH:MM" style="-fx-background-color: F1FFE7;">
+                        <Text fill="#f1ffe7" strokeType="OUTSIDE" strokeWidth="0.0" text="Fim" textAlignment="RIGHT" wrappingWidth="51.13671875">
+                           <font>
+                              <Font name="Yu Gothic Regular" size="25.0" />
+                           </font>
+                        </Text>
+                        <TextField fx:id="dataInicioFimTextField" prefHeight="39.0" prefWidth="172.0" promptText="DD/MM/AAAA" style="-fx-background-color: F1FFE7;">
                            <font>
                               <Font name="Yu Gothic Regular" size="20.0" />
                            </font>
                         </TextField>
                      </children>
                   </HBox>
-                  <HBox alignment="CENTER" prefHeight="52.0" prefWidth="812.0" spacing="20.0">
+                  <HBox alignment="CENTER" prefHeight="52.0" prefWidth="953.0" spacing="20.0">
                      <children>
-                        <Text fill="#f1ffe7" strokeType="OUTSIDE" strokeWidth="0.0" text="Fim:" textAlignment="RIGHT" wrappingWidth="80.13671875">
+                        <Text fill="#f1ffe7" strokeType="OUTSIDE" strokeWidth="0.0" text="Horário de início:" textAlignment="RIGHT" wrappingWidth="227.13671875">
                            <font>
                               <Font name="Yu Gothic Regular" size="25.0" />
                            </font>
                         </Text>
-                        <TextField fx:id="fimDateTextField" prefHeight="39.0" prefWidth="176.0" promptText="DD/MM/AAAA" style="-fx-background-color: F1FFE7;">
+                        <Text fill="#f1ffe7" strokeType="OUTSIDE" strokeWidth="0.0" text="Início" textAlignment="RIGHT" wrappingWidth="69.13671875">
+                           <font>
+                              <Font name="Yu Gothic Regular" size="25.0" />
+                           </font>
+                        </Text>
+                        <TextField fx:id="horarioInicioInicioTextField" prefHeight="39.0" prefWidth="101.0" promptText="HH:MM" style="-fx-background-color: F1FFE7;">
                            <font>
                               <Font name="Yu Gothic Regular" size="20.0" />
                            </font>
                         </TextField>
-                        <TextField fx:id="fimTimeTextField" prefHeight="39.0" prefWidth="101.0" promptText="HH:MM" style="-fx-background-color: F1FFE7;">
+                        <Text fill="#f1ffe7" strokeType="OUTSIDE" strokeWidth="0.0" text="Fim" textAlignment="RIGHT" wrappingWidth="48.13671875">
+                           <font>
+                              <Font name="Yu Gothic Regular" size="25.0" />
+                           </font>
+                        </Text>
+                        <TextField fx:id="horarioInicioFimTextField" prefHeight="39.0" prefWidth="97.0" promptText="HH:MM" style="-fx-background-color: F1FFE7;">
+                           <font>
+                              <Font name="Yu Gothic Regular" size="20.0" />
+                           </font>
+                        </TextField>
+                     </children>
+                  </HBox>
+                  <HBox alignment="CENTER" prefHeight="52.0" prefWidth="953.0" spacing="20.0">
+                     <children>
+                        <Text fill="#f1ffe7" strokeType="OUTSIDE" strokeWidth="0.0" text="Data de fim:" textAlignment="RIGHT" wrappingWidth="162.13671875">
+                           <font>
+                              <Font name="Yu Gothic Regular" size="25.0" />
+                           </font>
+                        </Text>
+                        <Text fill="#f1ffe7" strokeType="OUTSIDE" strokeWidth="0.0" text="Início" textAlignment="RIGHT" wrappingWidth="67.13671875">
+                           <font>
+                              <Font name="Yu Gothic Regular" size="25.0" />
+                           </font>
+                        </Text>
+                        <TextField fx:id="dataFimInicioTextField" prefHeight="39.0" prefWidth="170.0" promptText="DD/MM/AAAA" style="-fx-background-color: F1FFE7;">
+                           <font>
+                              <Font name="Yu Gothic Regular" size="20.0" />
+                           </font>
+                        </TextField>
+                        <Text fill="#f1ffe7" strokeType="OUTSIDE" strokeWidth="0.0" text="Fim" textAlignment="RIGHT" wrappingWidth="51.13671875">
+                           <font>
+                              <Font name="Yu Gothic Regular" size="25.0" />
+                           </font>
+                        </Text>
+                        <TextField fx:id="dataFimFimTextField" prefHeight="39.0" prefWidth="172.0" promptText="DD/MM/AAAA" style="-fx-background-color: F1FFE7;">
+                           <font>
+                              <Font name="Yu Gothic Regular" size="20.0" />
+                           </font>
+                        </TextField>
+                     </children>
+                  </HBox>
+                  <HBox alignment="CENTER" prefHeight="52.0" prefWidth="953.0" spacing="20.0">
+                     <children>
+                        <Text fill="#f1ffe7" strokeType="OUTSIDE" strokeWidth="0.0" text="Horário de fim:" textAlignment="RIGHT" wrappingWidth="184.13671875">
+                           <font>
+                              <Font name="Yu Gothic Regular" size="25.0" />
+                           </font>
+                        </Text>
+                        <Text fill="#f1ffe7" strokeType="OUTSIDE" strokeWidth="0.0" text="Início" textAlignment="RIGHT" wrappingWidth="69.13671875">
+                           <font>
+                              <Font name="Yu Gothic Regular" size="25.0" />
+                           </font>
+                        </Text>
+                        <TextField fx:id="horarioFimInicioTextField" prefHeight="39.0" prefWidth="101.0" promptText="HH:MM" style="-fx-background-color: F1FFE7;">
+                           <font>
+                              <Font name="Yu Gothic Regular" size="20.0" />
+                           </font>
+                        </TextField>
+                        <Text fill="#f1ffe7" strokeType="OUTSIDE" strokeWidth="0.0" text="Fim" textAlignment="RIGHT" wrappingWidth="48.13671875">
+                           <font>
+                              <Font name="Yu Gothic Regular" size="25.0" />
+                           </font>
+                        </Text>
+                        <TextField fx:id="horarioFimFimTextField" prefHeight="39.0" prefWidth="97.0" promptText="HH:MM" style="-fx-background-color: F1FFE7;">
                            <font>
                               <Font name="Yu Gothic Regular" size="20.0" />
                            </font>
@@ -156,7 +234,11 @@
                               <Font name="Yu Gothic Regular" size="25.0" />
                            </font>
                         </Text>
-                        <ChoiceBox fx:id="aeronaveChoiceBox" prefHeight="39.0" prefWidth="282.0" style="-fx-background-color: F1FFE7;" />
+                        <TextField fx:id="aeronaveTextField" prefHeight="39.0" prefWidth="393.0" style="-fx-background-color: F1FFE7;">
+                           <font>
+                              <Font name="Yu Gothic Regular" size="20.0" />
+                           </font>
+                        </TextField>
                      </children>
                   </HBox>
                   <HBox alignment="CENTER" prefHeight="52.0" prefWidth="812.0" spacing="20.0">
@@ -166,7 +248,7 @@
                               <Font name="Yu Gothic Regular" size="25.0" />
                            </font>
                         </Text>
-                        <ChoiceBox fx:id="statusChoiceBox" prefHeight="39.0" prefWidth="282.0" style="-fx-background-color: F1FFE7;" />
+                        <ChoiceBox fx:id="statusChoiceBox" prefHeight="39.0" prefWidth="282.0" style="-fx-background-color: F1FFE7;" stylesheets="@../css/choiceBox.css" />
                      </children>
                   </HBox>
                   <HBox alignment="CENTER" prefHeight="70.0" prefWidth="1006.0" spacing="20.0">

@@ -17,7 +17,7 @@ public interface AeronaveDAO {
 
     Resultado deletar(Integer id) throws SQLException;
 
-    Resultado getAeronavesFiltro(String modelo, Integer capacidade, Integer idCompanhia) throws SQLException;
+    Resultado getAeronavesFiltro(String modelo, Integer capacidade, String companhia) throws SQLException;
 
     Resultado verificarDisponibilidade(Integer id, LocalDateTime dataInicial, LocalDateTime dataFinal) throws SQLException;
 }

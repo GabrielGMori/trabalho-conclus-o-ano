@@ -132,15 +132,13 @@ public class VoosPassageiroControllerFXML implements Initializable {
                     (String) params.get(0),
                     (String) params.get(1),
                     (String) params.get(2),
-                    (String) params.get(3),
+                    (LocalDateTime) params.get(3),
                     (LocalDateTime) params.get(4),
-                    (LocalDateTime) params.get(5),
+                    (String) params.get(5),
                     (LocalDateTime) params.get(6),
                     (LocalDateTime) params.get(7),
-                    (Integer) params.get(8),
-                    (Integer) params.get(9),
-                    (String) params.get(10),
-                    (String) params.get(11));
+                    (String) params.get(8),
+                    (String) params.get(9));
         } catch (Exception e) {
             e.printStackTrace();
             naoEncontrado();
@@ -195,11 +193,16 @@ public class VoosPassageiroControllerFXML implements Initializable {
 
         ArrayList<?> voos;
         try {
-            voos = vooRepository.getVoosFiltro(null, null, null, null, 
+            voos = vooRepository.getVoosFiltro(null, null, null,
                     LocalDateTime.of(LocalDateTime.now().getYear(), LocalDateTime.now().getMonth(), LocalDateTime.now().getDayOfMonth(), 0, 0, 0),
-                    null, null, null, null, null, null, null);
+                    null, null, null, null, null, null);
         } catch (Exception e) {
             e.printStackTrace();
+            naoEncontrado();
+            return;
+        }
+
+        if (voos.isEmpty() || voos == null) {
             naoEncontrado();
             return;
         }
@@ -210,11 +213,6 @@ public class VoosPassageiroControllerFXML implements Initializable {
                 voos.remove(i);
                 i--;
             }
-        }
-
-        if (voos.isEmpty() || voos == null) {
-            naoEncontrado();
-            return;
         }
 
         voosListView.getSelectionModel().selectedItemProperty().addListener(new ChangeListener<HBox>() {
@@ -416,7 +414,6 @@ public class VoosPassageiroControllerFXML implements Initializable {
             desembarqueFim = null;
         }
 
-        return new ArrayList<>(Arrays.asList(numero, null, origem, destino, embarqueInicio, embarqueFim,
-                desembarqueInicio, desembarqueFim, null, null, aeroportoEmbarque, aeroportoDesembarque));
+        return new ArrayList<>(Arrays.asList(numero, origem, destino, embarqueInicio, embarqueFim, aeroportoEmbarque, desembarqueInicio, desembarqueFim, aeroportoDesembarque, null));
     }
 }

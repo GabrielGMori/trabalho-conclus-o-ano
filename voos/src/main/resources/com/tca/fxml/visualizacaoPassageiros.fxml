@@ -68,7 +68,7 @@
                   <Font name="Yu Gothic Bold" size="20.0" />
                </font>
             </Button>
-            <Button mnemonicParsing="false" onAction="#verPassageiros" prefHeight="0.0" prefWidth="205.0" style="-fx-background-color: F1FFE7;" text="Passageiros" textAlignment="CENTER" textFill="#333333">
+            <Button mnemonicParsing="false" prefHeight="0.0" prefWidth="205.0" style="-fx-background-color: F1FFE7;" text="Passageiros" textAlignment="CENTER" textFill="#333333">
                <font>
                   <Font name="Yu Gothic Bold" size="20.0" />
                </font>
@@ -141,20 +141,6 @@
                   </HBox>
                   <HBox alignment="CENTER" prefHeight="52.0" prefWidth="812.0" spacing="20.0">
                      <children>
-                        <Text fill="#f1ffe7" strokeType="OUTSIDE" strokeWidth="0.0" text="Telefone:" textAlignment="RIGHT" wrappingWidth="122.13671875">
-                           <font>
-                              <Font name="Yu Gothic Regular" size="25.0" />
-                           </font>
-                        </Text>
-                        <TextField fx:id="telefoneTextField" prefHeight="39.0" prefWidth="358.0" style="-fx-background-color: F1FFE7;">
-                           <font>
-                              <Font name="Yu Gothic Regular" size="20.0" />
-                           </font>
-                        </TextField>
-                     </children>
-                  </HBox>
-                  <HBox alignment="CENTER" prefHeight="52.0" prefWidth="812.0" spacing="20.0">
-                     <children>
                         <Text fill="#f1ffe7" strokeType="OUTSIDE" strokeWidth="0.0" text="Passaporte:" textAlignment="RIGHT" wrappingWidth="153.13671875">
                            <font>
                               <Font name="Yu Gothic Regular" size="25.0" />
@@ -169,12 +155,26 @@
                   </HBox>
                   <HBox alignment="CENTER" prefHeight="52.0" prefWidth="812.0" spacing="20.0">
                      <children>
+                        <Text fill="#f1ffe7" strokeType="OUTSIDE" strokeWidth="0.0" text="Telefone:" textAlignment="RIGHT" wrappingWidth="122.13671875">
+                           <font>
+                              <Font name="Yu Gothic Regular" size="25.0" />
+                           </font>
+                        </Text>
+                        <TextField fx:id="telefoneTextField" prefHeight="39.0" prefWidth="358.0" style="-fx-background-color: F1FFE7;">
+                           <font>
+                              <Font name="Yu Gothic Regular" size="20.0" />
+                           </font>
+                        </TextField>
+                     </children>
+                  </HBox>
+                  <HBox alignment="CENTER" prefHeight="52.0" prefWidth="812.0" spacing="20.0">
+                     <children>
                         <Text fill="#f1ffe7" strokeType="OUTSIDE" strokeWidth="0.0" text="Nacionalidade:" textAlignment="RIGHT" wrappingWidth="184.13671875">
                            <font>
                               <Font name="Yu Gothic Regular" size="25.0" />
                            </font>
                         </Text>
-                        <ChoiceBox fx:id="nacionalidadeChoiceBox" prefHeight="39.0" prefWidth="282.0" style="-fx-background-color: F1FFE7;" />
+                        <ChoiceBox fx:id="nacionalidadeChoiceBox" prefHeight="39.0" prefWidth="282.0" style="-fx-background-color: F1FFE7;" stylesheets="@../css/choiceBox.css" />
                      </children>
                   </HBox>
                   <HBox alignment="CENTER" prefHeight="70.0" prefWidth="1006.0" spacing="20.0">
