@@ -13,7 +13,7 @@ public class DBUtils {
         int id = -1;
 
         if(con.getMetaData().getDatabaseProductName().equals("MySQL")){
-            ResultSet rs2 = con.prepareStatement("select last_insert_rowid();").executeQuery();
+            ResultSet rs2 = con.prepareStatement("SELECT LAST_INSERT_ID();").executeQuery();
             rs2.next();
             id = rs2.getInt(1);
             rs2.close();

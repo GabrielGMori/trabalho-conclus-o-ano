@@ -8,24 +8,22 @@ import com.tca.repository.PassagemRepository;
 public class Passagem {
     private Integer id;
     private LocalDateTime dataCompra;
-    private String assento;
     private String cpfPassageiro;
     private Integer idVoo;
     private Integer idMetodoPagamento;
     private Integer idCheckIn;
     private PassagemRepository passagemRepository;
     
-    public Passagem(LocalDateTime dataCompra, String assento, String cpfPassageiro, Integer idVoo, Integer idMetodoPagamento) {
+    public Passagem(LocalDateTime dataCompra, String cpfPassageiro, Integer idVoo, Integer idMetodoPagamento) {
         this.dataCompra = dataCompra;
-        this.assento = assento;
         this.cpfPassageiro = cpfPassageiro;
         this.idVoo = idVoo;
         this.idMetodoPagamento = idMetodoPagamento;
-        passagemRepository = new PassagemRepository();
+        passagemRepository = PassagemRepository.getInstance();
     }
 
-    public Passagem(Integer id, LocalDateTime dataCompra, String assento, String cpfPassageiro, Integer idVoo, Integer idMetodoPagamento) {
-        this(dataCompra, assento, cpfPassageiro, idVoo, idMetodoPagamento);
+    public Passagem(Integer id, LocalDateTime dataCompra, String cpfPassageiro, Integer idVoo, Integer idMetodoPagamento) {
+        this(dataCompra, cpfPassageiro, idVoo, idMetodoPagamento);
         this.id = id;
     }
 
@@ -43,14 +41,6 @@ public class Passagem {
 
     public void setDataCompra(LocalDateTime dataCompra) {
         this.dataCompra = dataCompra;
-    }
-
-    public String getAssento() {
-        return assento;
-    }
-
-    public void setAssento(String assento) {
-        this.assento = assento;
     }
 
     public String getCpfPassageiro() {

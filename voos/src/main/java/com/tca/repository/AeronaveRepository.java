@@ -59,8 +59,8 @@ public class AeronaveRepository {
         return resultado;
     }
 
-    public ArrayList<?> getAeronavesFiltro(String modelo, Integer capacidade, Integer assentosPorFilero, Integer idCompanhia) throws SQLException {
-        Resultado resultado = dao.getAeronavesFiltro(modelo, capacidade, assentosPorFilero, idCompanhia);
+    public ArrayList<?> getAeronavesFiltro(String modelo, Integer capacidade, Integer idCompanhia) throws SQLException {
+        Resultado resultado = dao.getAeronavesFiltro(modelo, capacidade, idCompanhia);
         if (resultado.foiSucesso()) {
             ArrayList<?> aeronaves = (ArrayList<?>) resultado.comoSucesso().getObj();
             if (!(aeronaves.stream().allMatch(element -> element instanceof Aeronave))) {

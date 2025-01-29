@@ -5,12 +5,12 @@ INSERT INTO Companhia_Aerea (codigo_icao_companhia, nome_companhia) VALUES
 ('TAP', 'TAP Air Portugal'),
 ('AMX', 'AeroMexico');
 
-INSERT INTO Aeronave (modelo_aeronave, capacidade_aeronave, assentos_por_fileira_aeronave, id_companhia_aeronave_fk) VALUES
-('Airbus A320', 180, 6, 1),
-('Boeing 737', 160, 6, 2),
-('Embraer E195', 132, 4, 3),
-('Airbus A330', 277, 8, 1),
-('Boeing 787', 242, 8, 5);
+INSERT INTO Aeronave (modelo_aeronave, capacidade_aeronave, id_companhia_aeronave_fk) VALUES
+('Airbus A320', 180, 1),
+('Boeing 737', 160, 2),
+('Embraer E195', 132, 3),
+('Airbus A330', 277, 1),
+('Boeing 787', 242, 5);
 
 INSERT INTO Manutencao (descricao_manutencao, data_inicio_manutencao, data_fim_manutencao, status_manutencao, id_aeronave_manutencao_fk) VALUES
 ('Troca de motor', '2025-01-15 08:00:00', '2025-01-20 18:00:00', 'Concluído', 1),
@@ -28,10 +28,10 @@ INSERT INTO Aeroporto (nome_aeroporto, localizacao_aeroporto) VALUES
 
 INSERT INTO Portao_Embarque (codigo_portao, disponivel_portao, id_aeroporto_portao_fk) VALUES
 ('A1', 1, 1),
-('B5', 0, 2),
+('B5', 1, 2),
 ('C3', 1, 3),
 ('D7', 1, 4),
-('E2', 0, 5);
+('E2', 1, 5);
 
 INSERT INTO Voo (numero_voo, status_voo, origem_voo, destino_voo, horario_embarque_voo, horario_desembarque_voo, id_aeronave_voo_fk, id_portao_embarque_voo_fk, id_aeroporto_chegada_voo_fk) VALUES
 ('LAT1234', 'Confirmado', 'São Paulo - SP', 'Rio de Janeiro - RJ', '2025-01-30 10:00:00', '2025-01-30 11:15:00', 1, 1, 2),
@@ -68,12 +68,12 @@ INSERT INTO Metodo_Pagamento (metodo_pagamento) VALUES
 ('PayPal'),
 ('Pix');
 
-INSERT INTO Passagem (data_compra_passagem, assento_passagem, cpf_passageiro_passagem_fk, id_voo_passagem_fk, id_metodo_pagamento_passagem_fk, id_checkin_passagem_fk) VALUES
-('2025-01-28 15:00:00', '12A', '12345678901', 1, 1, 1),
-('2025-01-29 14:30:00', '5B', '98765432100', 2, 2, 2),
-('2025-01-30 10:15:00', '18C', '45678912300', 3, 3, 3),
-('2025-01-31 09:45:00', '2D', '78912345600', 4, 4, 4),
-('2025-02-01 16:00:00', '9E', '32165498700', 5, 5, 5);
+INSERT INTO Passagem (data_compra_passagem, cpf_passageiro_passagem_fk, id_voo_passagem_fk, id_metodo_pagamento_passagem_fk, id_checkin_passagem_fk) VALUES
+('2025-01-28 15:00:00', '12345678901', 1, 1, 1),
+('2025-01-29 14:30:00', '98765432100', 2, 2, 2),
+('2025-01-30 10:15:00', '45678912300', 3, 3, 3),
+('2025-01-31 09:45:00', '78912345600', 4, 4, 4),
+('2025-02-01 16:00:00', '32165498700', 5, 5, 5);
 
 INSERT INTO Administrador (cpf_administrador_pk, nome_administrador, senha_administrador) VALUES
 ('00000000001', 'Administrador 1', 'admin123'),

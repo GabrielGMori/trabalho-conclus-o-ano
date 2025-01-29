@@ -304,34 +304,4 @@ public class VooDAOImpl implements VooDAO {
         }
     }
 
-    public Resultado verificarDisponibilidadeAssento(Integer id, String assento) throws SQLException {
-        Connection con = null;
-        PreparedStatement pstm = null;
-        try {
-            con = fabrica.getConnection();
-            pstm = con.prepareStatement("SELECT verificarDisponibilidadeAssentoFunc(?, ?);");
-            
-            pstm.setInt(1, id);
-            pstm.setString(2, assento);
-
-            ResultSet rs = pstm.executeQuery();
-
-            if (rs.next()) {
-                boolean disponivel = rs.getBoolean(1);
-                return Resultado.sucesso("Verificação completa", disponivel);
-            }
-
-            return Resultado.erro("Algo deu errado, a verificação não pode ser completa");
-
-        } catch (SQLException e) {
-            return Resultado.erro(e.getMessage());
-
-        } finally {
-            if (pstm != null)
-                pstm.close();
-            if (con != null)
-                con.close();
-        }
-    }
-
 }

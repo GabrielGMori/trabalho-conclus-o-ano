@@ -48,20 +48,6 @@
             </HBox>
             <HBox alignment="CENTER" prefHeight="63.0" prefWidth="953.0" spacing="20.0">
                <children>
-                  <Text fill="#f1ffe7" strokeType="OUTSIDE" strokeWidth="0.0" text="Assentos por fileira:" textAlignment="RIGHT" wrappingWidth="341.13671875">
-                     <font>
-                        <Font name="Yu Gothic Regular" size="35.0" />
-                     </font>
-                  </Text>
-                  <TextField fx:id="assentosTextField" prefHeight="51.0" prefWidth="118.0" style="-fx-background-color: F1FFE7;">
-                     <font>
-                        <Font name="Yu Gothic Regular" size="25.0" />
-                     </font>
-                  </TextField>
-               </children>
-            </HBox>
-            <HBox alignment="CENTER" prefHeight="63.0" prefWidth="953.0" spacing="20.0">
-               <children>
                   <Text fill="#f1ffe7" strokeType="OUTSIDE" strokeWidth="0.0" text="Companhia aérea:" textAlignment="RIGHT" wrappingWidth="302.13671875">
                      <font>
                         <Font name="Yu Gothic Regular" size="35.0" />

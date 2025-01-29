@@ -148,24 +148,6 @@ BEGIN
 END$$
 
 
-DROP FUNCTION IF EXISTS verificarDisponibilidadeAssentoFunc$$
-CREATE FUNCTION verificarDisponibilidadeAssentoFunc(id_voo INT, assento VARCHAR(10))
-RETURNS BOOLEAN
-BEGIN
-    DECLARE passagens INT;
-
-    SELECT COUNT(*)
-    INTO passagens
-    FROM Passagem
-    WHERE id_voo_passagem_fk = id_voo AND assento_passagem = assento;
-
-    IF passagens = 0 THEN
-        RETURN TRUE;
-    END IF;
-    RETURN FALSE;
-END$$
-
-
 DROP FUNCTION IF EXISTS verificarVooLotado$$
 CREATE FUNCTION verificarVooLotado(id_voo INT)
 RETURNS BOOLEAN
@@ -177,8 +159,9 @@ BEGIN
     FROM Passagem
     WHERE id_voo_passagem_fk = id_voo;
 
-    SELECT capacidade_voo INTO capacidade
-    FROM Voo
+    SELECT capacidade_aeronave INTO capacidade
+    FROM Voo voo
+    JOIN Aeronave aeronave ON voo.id_aeronave_voo_fk = aeronave.id_aeronave_pk
     WHERE id_voo_pk = id_voo;
 
     IF passagens < capacidade THEN

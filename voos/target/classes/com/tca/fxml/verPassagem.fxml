@@ -6,7 +6,7 @@
 <?import java.lang.*?>
 <?import javafx.scene.layout.*?>
 
-<Pane maxHeight="-Infinity" maxWidth="-Infinity" minHeight="-Infinity" minWidth="-Infinity" prefHeight="800.0" prefWidth="1000.0" style="-fx-background-color: # F1FFE7;" xmlns="http://javafx.com/javafx/8" xmlns:fx="http://javafx.com/fxml/1" fx:controller="com.tca.controller.VerPassagemControllerFXML">
+<Pane maxHeight="-Infinity" maxWidth="-Infinity" minHeight="-Infinity" minWidth="-Infinity" prefHeight="800.0" prefWidth="1000.0" style="-fx-background-color: #F1FFE7;" xmlns="http://javafx.com/javafx/8" xmlns:fx="http://javafx.com/fxml/1" fx:controller="com.tca.controller.VerPassagemControllerFXML">
    <children>
       <VBox alignment="CENTER" prefHeight="800.0" prefWidth="1000.0">
          <children>
@@ -96,12 +96,7 @@
                   <Insets bottom="10.0" top="20.0" />
                </VBox.margin>
             </Text>
-            <Text fx:id="dataCompraText2" fill="#333333" strokeType="OUTSIDE" strokeWidth="0.0" text="Método de pagamento: XX/XX/XXXX XX:XX" textAlignment="CENTER" wrappingWidth="877.13671875">
-               <font>
-                  <Font name="Yu Gothic Bold" size="30.0" />
-               </font>
-            </Text>
-            <Text fx:id="dataCompraText1" fill="#333333" strokeType="OUTSIDE" strokeWidth="0.0" text="Assento reservado: XXX" textAlignment="CENTER" wrappingWidth="877.13671875">
+            <Text fx:id="metodoPagamentoText" fill="#333333" strokeType="OUTSIDE" strokeWidth="0.0" text="Método de pagamento: XX/XX/XXXX XX:XX" textAlignment="CENTER" wrappingWidth="877.13671875">
                <font>
                   <Font name="Yu Gothic Bold" size="30.0" />
                </font>

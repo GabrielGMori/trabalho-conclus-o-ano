@@ -82,7 +82,7 @@
                   <Insets top="20.0" />
                </VBox.margin>
             </HBox>
-            <Text fx:id="warningText" fill="#f1ffe7" strokeType="OUTSIDE" strokeWidth="0.0" textAlignment="CENTER" wrappingWidth="996.13671875">
+            <Text fx:id="warningText" fill="#333333" strokeType="OUTSIDE" strokeWidth="0.0" textAlignment="CENTER" wrappingWidth="996.13671875">
                <font>
                   <Font name="Yu Gothic Bold" size="40.0" />
                </font>

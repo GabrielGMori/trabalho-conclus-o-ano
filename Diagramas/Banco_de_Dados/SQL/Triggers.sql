@@ -1,18 +1,6 @@
 DELIMITER $$ -- INSERTS -----------------------------------------------------
 
 
-DROP TRIGGER IF EXISTS assentoPassagemTrigInsert$$
-CREATE TRIGGER assentoPassagemTrigInsert
-BEFORE INSERT ON Passagem
-FOR EACH ROW
-BEGIN
-    IF verificarDisponibilidadeAssentoFunc(NEW.id_voo_passagem_fk, NEW.assento_passagem) = FALSE THEN
-        SIGNAL SQLSTATE '45000'
-        SET MESSAGE_TEXT = 'Assento da passagem já reservado';
-    END IF;
-END$$
-
-
 DROP TRIGGER IF EXISTS emailPassageiroTrigInsert$$
 CREATE TRIGGER emailPassageiroTrigInsert
 BEFORE INSERT ON Passageiro
@@ -137,18 +125,6 @@ BEGIN
 END$$
 
 
-DROP TRIGGER IF EXISTS assentosPorFileiraAeronaveTrigInsert$$
-CREATE TRIGGER assentosPorFileiraAeronaveTrigInsert
-BEFORE INSERT ON Aeronave
-FOR EACH ROW
-BEGIN
-    IF NEW.assentos_por_fileira_aeronave > NEW.capacidade_aeronave THEN
-        SIGNAL SQLSTATE '45000'
-        SET MESSAGE_TEXT = 'Assentos por fileira maior do que a capacidade da aeronave';
-    END IF;
-END$$
-
-
 DELIMITER ;
 DELIMITER $$ -- UPDATES -----------------------------------------------------
 
@@ -169,18 +145,6 @@ BEGIN
     IF voos > 0 AND NEW.disponivel_portao = FALSE THEN
         SIGNAL SQLSTATE '45000'
         SET MESSAGE_TEXT = 'O portão de embarque será usado em um voo agendado';
-    END IF;
-END$$
-
-
-DROP TRIGGER IF EXISTS assentoPassagemTrigUpdate$$
-CREATE TRIGGER assentoPassagemTrigUpdate
-BEFORE UPDATE ON Passagem
-FOR EACH ROW
-BEGIN
-    IF NOT NEW.assento_passagem = OLD.assento_passagem AND verificarDisponibilidadeAssentoFunc(NEW.id_voo_passagem_fk, NEW.assento_passagem) = FALSE THEN
-        SIGNAL SQLSTATE '45000'
-        SET MESSAGE_TEXT = 'Assento da passagem já reservado';
     END IF;
 END$$
 
@@ -292,18 +256,6 @@ BEGIN
     AND verificarPortaoEmbarqueEmUsoFunc(NEW.id_portao_embarque_voo_fk, NEW.horario_embarque_voo, NEW.horario_desembarque_voo) = TRUE OR portao_disponivel = FALSE THEN
         SIGNAL SQLSTATE '45000'
         SET MESSAGE_TEXT = 'Portão de embarque não disponível durante o período do voo';
-    END IF;
-END$$
-
-
-DROP TRIGGER IF EXISTS assentosPorFileiraAeronaveTrigUpdate$$
-CREATE TRIGGER assentosPorFileiraAeronaveTrigUpdate
-BEFORE UPDATE ON Aeronave
-FOR EACH ROW
-BEGIN
-    IF NEW.assentos_por_fileira_aeronave > NEW.capacidade_aeronave THEN
-        SIGNAL SQLSTATE '45000'
-        SET MESSAGE_TEXT = 'Assentos por fileira maior do que a capacidade da aeronave';
     END IF;
 END$$
 

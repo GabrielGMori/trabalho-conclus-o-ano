@@ -142,7 +142,7 @@
                               <Font name="Yu Gothic Regular" size="25.0" />
                            </font>
                         </Text>
-                        <TextField fx:id="destinoTextField1" prefHeight="39.0" prefWidth="450.0" style="-fx-background-color: F1FFE7;">
+                        <TextField fx:id="cpfTextField" prefHeight="39.0" prefWidth="450.0" promptText="XXX.XXX.XXX-XX" style="-fx-background-color: F1FFE7;">
                            <font>
                               <Font name="Yu Gothic Regular" size="20.0" />
                            </font>
@@ -156,21 +156,7 @@
                               <Font name="Yu Gothic Regular" size="25.0" />
                            </font>
                         </Text>
-                        <ChoiceBox fx:id="metodoPagamentoChoiceBox" prefHeight="39.0" prefWidth="354.0" style="-fx-background-color: F1FFE7;" />
-                     </children>
-                  </HBox>
-                  <HBox alignment="CENTER" prefHeight="52.0" prefWidth="953.0" spacing="20.0">
-                     <children>
-                        <Text fill="#f1ffe7" strokeType="OUTSIDE" strokeWidth="0.0" text="Assento reservado:" textAlignment="RIGHT" wrappingWidth="238.13671875">
-                           <font>
-                              <Font name="Yu Gothic Regular" size="25.0" />
-                           </font>
-                        </Text>
-                        <TextField fx:id="destinoTextField11" prefHeight="39.0" prefWidth="96.0" style="-fx-background-color: F1FFE7;">
-                           <font>
-                              <Font name="Yu Gothic Regular" size="20.0" />
-                           </font>
-                        </TextField>
+                        <ChoiceBox fx:id="metodoPagamentoChoiceBox" prefHeight="39.0" prefWidth="354.0" style="-fx-background-color: F1FFE7;" stylesheets="@../css/choiceBox.css" />
                      </children>
                   </HBox>
                   <HBox alignment="CENTER" prefHeight="52.0" prefWidth="953.0" spacing="20.0">

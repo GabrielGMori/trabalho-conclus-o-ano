@@ -39,7 +39,7 @@ public class LoginAdministradorControllerFXML {
             Administrador administrador = encontrarAdministrador();
             if (administrador == null) return;
             App.setUsuario(administrador);
-            App.setRoot("visualizacaoVoos");
+            App.setRoot("passagens"); // App.setRoot("visualizacaoVoos");
         }
     }
 
@@ -63,7 +63,7 @@ public class LoginAdministradorControllerFXML {
         try {
             Resultado result = administradorRepository.get(StringFormatter.formatNumericData(cpfTextField.getText()));
             if (result.foiErro()) {
-                warningText.setText(result.comoErro().getMsg());
+                warningText.setText("Erro: " + result.comoErro().getMsg());
                 return null;
             }
             Object obj = result.comoSucesso().getObj();

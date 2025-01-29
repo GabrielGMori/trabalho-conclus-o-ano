@@ -1,7 +1,6 @@
 package com.tca.dao.implementations;
 
 import java.sql.Connection;
-import java.sql.Date;
 import java.sql.PreparedStatement;
 import java.sql.ResultSet;
 import java.sql.SQLException;
@@ -32,7 +31,7 @@ public class MetodoPagamentoDAOImpl implements MetodoPagamentoDAO {
                     "INSERT INTO Metodo_Pagamento(metodo_pagamento) VALUES (?);",
                     Statement.RETURN_GENERATED_KEYS);
 
-            pstm.setDate(1, Date.valueOf(metodoPagamento.getMetodo()));
+            pstm.setString(1, metodoPagamento.getMetodo());
 
             int ret = pstm.executeUpdate();
 

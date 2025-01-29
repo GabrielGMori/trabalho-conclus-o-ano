@@ -30,13 +30,12 @@ public class AeronaveDAOImpl implements AeronaveDAO {
         try {
             con = fabrica.getConnection();
             pstm = con.prepareStatement(
-                    "INSERT INTO Aeronave(modelo_aeronave, capacidade_aeronave, assentos_por_fileira_aeronave, id_companhia_aeronave_fk) VALUES (?, ?, ?, ?);",
+                    "INSERT INTO Aeronave(modelo_aeronave, capacidade_aeronave, id_companhia_aeronave_fk) VALUES (?, ?, ?);",
                     Statement.RETURN_GENERATED_KEYS);
 
             pstm.setString(1, aeronave.getModelo());
             pstm.setInt(2, aeronave.getCapacidade());
-            pstm.setInt(3, aeronave.getAssentosPorFileira());
-            pstm.setInt(4, aeronave.getIdCompanhiaAerea());
+            pstm.setInt(3, aeronave.getIdCompanhiaAerea());
 
             int ret = pstm.executeUpdate();
 
@@ -75,10 +74,9 @@ public class AeronaveDAOImpl implements AeronaveDAO {
             if (rs.next()) {
                 String modelo = rs.getString("modelo_aeronave");
                 int capacidade = rs.getInt("capacidade_aeronave");
-                int assentosPorFileira = rs.getInt("assentos_por_fileira_aeronave");
                 int idCompanhiaAerea = rs.getInt("id_companhia_aeronave_fk");
 
-                Aeronave aeronave = new Aeronave(id, modelo, capacidade, assentosPorFileira, idCompanhiaAerea);
+                Aeronave aeronave = new Aeronave(id, modelo, capacidade, idCompanhiaAerea);
                 return Resultado.sucesso("Aeronave carregada", aeronave);
             }
 
@@ -111,10 +109,9 @@ public class AeronaveDAOImpl implements AeronaveDAO {
                 int id = rs.getInt("id_aeronave_pk");
                 String modelo = rs.getString("modelo_aeronave");
                 int capacidade = rs.getInt("capacidade_aeronave");
-                int assentosPorFileira = rs.getInt("assentos_por_fileira_aeronave");
                 int idCompanhiaAerea = rs.getInt("id_companhia_aeronave_fk");
 
-                Aeronave aeronave = new Aeronave(id, modelo, capacidade, assentosPorFileira, idCompanhiaAerea);
+                Aeronave aeronave = new Aeronave(id, modelo, capacidade, idCompanhiaAerea);
                 aeronaves.add(aeronave);
             }
 
@@ -139,13 +136,12 @@ public class AeronaveDAOImpl implements AeronaveDAO {
         try {
             con = fabrica.getConnection();
             pstm = con.prepareStatement(
-                    "UPDATE Aeronave SET modelo_aeronave = ?, capacidade_aeronave = ?, assentos_por_fileira_aeronave = ?, id_companhia_aeronave_fk = ? WHERE id_aeronave_pk = ?;");
+                    "UPDATE Aeronave SET modelo_aeronave = ?, capacidade_aeronave = ?, id_companhia_aeronave_fk = ? WHERE id_aeronave_pk = ?;");
 
             pstm.setString(1, aeronave.getModelo());
             pstm.setInt(2, aeronave.getCapacidade());
-            pstm.setInt(3, aeronave.getAssentosPorFileira());
-            pstm.setInt(4, aeronave.getIdCompanhiaAerea());
-            pstm.setInt(5, id);
+            pstm.setInt(3, aeronave.getIdCompanhiaAerea());
+            pstm.setInt(4, id);
 
             int ret = pstm.executeUpdate();
 
@@ -197,19 +193,18 @@ public class AeronaveDAOImpl implements AeronaveDAO {
     }
 
     @Override
-    public Resultado getAeronavesFiltro(String modeloFiltro, Integer capacidadeFiltro, Integer assentosPorFileroFiltro, Integer idCompanhiaFiltro) throws SQLException {
+    public Resultado getAeronavesFiltro(String modeloFiltro, Integer capacidadeFiltro, Integer idCompanhiaFiltro) throws SQLException {
         Connection con = null;
         PreparedStatement pstm = null;
         try {
             con = fabrica.getConnection();
             pstm = con.prepareStatement(
-                    "SELECT * FROM Aeronave WHERE (? IS NULL OR modelo_aeronave = ?) AND (? IS NULL OR capacidade_aeronave = ?) AND (? IS NULL OR assentos_por_fileira_aeronave = ?) AND (? IS NULL OR id_companhia_aeronave_fk = ?);");
+                    "SELECT * FROM Aeronave WHERE (? IS NULL OR modelo_aeronave = ?) AND (? IS NULL OR capacidade_aeronave = ?) AND (? IS NULL OR id_companhia_aeronave_fk = ?);");
             
             int i = 1;
             int j = i;
             for (j+=2; i<j; i++)  {if (modeloFiltro == null) pstm.setNull(i, java.sql.Types.NULL); else pstm.setString(i, modeloFiltro); } 
             for (j+=2; i<j; i++)  {if (capacidadeFiltro == null) pstm.setNull(i, java.sql.Types.NULL); else pstm.setInt(i, capacidadeFiltro); }
-            for (j+=2; i<j; i++)  {if (assentosPorFileroFiltro == null) pstm.setNull(i, java.sql.Types.NULL); else pstm.setInt(i, assentosPorFileroFiltro); }
             for (j+=2; i<j; i++)  {if (idCompanhiaFiltro == null) pstm.setNull(i, java.sql.Types.NULL); else pstm.setInt(i, idCompanhiaFiltro); }
 
             ResultSet rs = pstm.executeQuery();
@@ -219,10 +214,9 @@ public class AeronaveDAOImpl implements AeronaveDAO {
                 int id = rs.getInt("id_aeronave_pk");
                 String modelo = rs.getString("modelo_aeronave");
                 int capacidade = rs.getInt("capacidade_aeronave");
-                int assentosPorFileira = rs.getInt("assentos_por_fileira_aeronave");
                 int idCompanhiaAerea = rs.getInt("id_companhia_aeronave_fk");
 
-                Aeronave aeronave = new Aeronave(id, modelo, capacidade, assentosPorFileira, idCompanhiaAerea);
+                Aeronave aeronave = new Aeronave(id, modelo, capacidade, idCompanhiaAerea);
                 aeronaves.add(aeronave);
             }
 

@@ -1,7 +1,6 @@
 package com.tca.dao.implementations;
 
 import java.sql.Connection;
-import java.sql.Date;
 import java.sql.PreparedStatement;
 import java.sql.ResultSet;
 import java.sql.SQLException;
@@ -32,7 +31,7 @@ public class PaisDAOImpl implements PaisDAO {
                     "INSERT INTO Pais(nome_pais) VALUES (?);",
                     Statement.RETURN_GENERATED_KEYS);
 
-            pstm.setDate(1, Date.valueOf(pais.getNome()));
+            pstm.setString(1, pais.getNome());
 
             int ret = pstm.executeUpdate();
 

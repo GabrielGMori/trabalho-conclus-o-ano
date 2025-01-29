@@ -77,10 +77,5 @@ public class VooRepository {
         Resultado resultado = dao.verificarVooLotado(id);
         return resultado;
     }
-
-    public Resultado verificarDisponibilidadeAssento(Integer id, String assento) throws SQLException {
-        Resultado resultado = dao.verificarDisponibilidadeAssento(id, assento);
-        return resultado;
-    }
     
 }

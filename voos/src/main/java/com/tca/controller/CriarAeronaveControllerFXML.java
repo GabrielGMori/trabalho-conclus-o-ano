@@ -12,9 +12,6 @@ public class CriarAeronaveControllerFXML {
     private ChoiceBox<?> companhiaChoiceBox;
 
     @FXML
-    private TextField assentosTextField;
-
-    @FXML
     private TextField modeloTextField;
 
     @FXML

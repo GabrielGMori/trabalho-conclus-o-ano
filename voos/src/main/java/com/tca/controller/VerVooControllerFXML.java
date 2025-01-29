@@ -26,11 +26,11 @@ import javafx.scene.text.Text;
 public class VerVooControllerFXML implements Initializable {
     private static int idVoo;
 
-    private VooRepository vooRepository = new VooRepository();
-    private AeronaveRepository aeronaveRepository = new AeronaveRepository();
-    private CompanhiaAereaRepository companhiaAereaRepository = new CompanhiaAereaRepository();
-    private PortaoEmbarqueRepository portaoEmbarqueRepository = new PortaoEmbarqueRepository();
-    private AeroportoRepository aeroportoRepository = new AeroportoRepository();
+    private VooRepository vooRepository = VooRepository.getInstance();
+    private AeronaveRepository aeronaveRepository = AeronaveRepository.getInstance();
+    private CompanhiaAereaRepository companhiaAereaRepository = CompanhiaAereaRepository.getInstance();
+    private PortaoEmbarqueRepository portaoEmbarqueRepository = PortaoEmbarqueRepository.getInstance();
+    private AeroportoRepository aeroportoRepository = AeroportoRepository.getInstance();
 
     @FXML
     private Text horarioDesembarqueText;
@@ -62,11 +62,13 @@ public class VerVooControllerFXML implements Initializable {
     @FXML
     private Text numeroText;
 
+    @FXML
+    private Text warningText;
+
     @Override
     public void initialize(URL arg0, ResourceBundle arg1) {
         try {
             Resultado resultVoo = vooRepository.get(idVoo);
-
             if (resultVoo.foiErro()) {
                 System.out.println(resultVoo.comoErro().getMsg());
                 return;
@@ -74,52 +76,50 @@ public class VerVooControllerFXML implements Initializable {
             Voo voo = (Voo) resultVoo.comoSucesso().getObj();
 
             Resultado resultAeronave = aeronaveRepository.get(voo.getIdAeronave());
-            Resultado resultPortao = portaoEmbarqueRepository.get(voo.getIdPortaoEmbarque());
-            Resultado resultAeroportoChegada = aeroportoRepository.get(voo.getIdAeroportoChegada());
-
             if (resultAeronave.foiErro()) {
                 System.out.println(resultAeronave.comoErro().getMsg());
                 return;
             }
+            Aeronave aeronave = (Aeronave) resultAeronave.comoSucesso().getObj();
 
+            Resultado resultPortao = portaoEmbarqueRepository.get(voo.getIdPortaoEmbarque());
             if (resultPortao.foiErro()) {
                 System.out.println(resultPortao.comoErro().getMsg());
                 return;
             }
+            PortaoEmbarque portao = (PortaoEmbarque) resultPortao.comoSucesso().getObj();
 
+            Resultado resultAeroportoChegada = aeroportoRepository.get(voo.getIdAeroportoChegada());
             if (resultAeroportoChegada.foiErro()) {
                 System.out.println(resultAeroportoChegada.comoErro().getMsg());
                 return;
             }
-            Aeronave aeronave = (Aeronave) resultAeronave.comoSucesso().getObj();
-            PortaoEmbarque portao = (PortaoEmbarque) resultPortao.comoSucesso().getObj();
             Aeroporto aeroportoChegada = (Aeroporto) resultAeroportoChegada.comoSucesso().getObj();
 
             Resultado resultCompanhia = companhiaAereaRepository.get(aeronave.getIdCompanhiaAerea());
-            Resultado resultAeroportoEmbarque = aeroportoRepository.get(portao.getIdAeroporto());
-
             if (resultCompanhia.foiErro()) {
                 System.out.println(resultCompanhia.comoErro().getMsg());
                 return;
             }
+            CompanhiaAerea companhia = (CompanhiaAerea) resultCompanhia.comoSucesso().getObj();
 
+            Resultado resultAeroportoEmbarque = aeroportoRepository.get(portao.getIdAeroporto());
             if (resultAeroportoEmbarque.foiErro()) {
                 System.out.println(resultAeroportoEmbarque.comoErro().getMsg());
                 return;
             }
-            CompanhiaAerea companhia = (CompanhiaAerea) resultCompanhia.comoSucesso().getObj();
             Aeroporto aeroportoEmbarque = (Aeroporto) resultAeroportoEmbarque.comoSucesso().getObj();
 
             numeroText.setText("Número do Voo: " + voo.getNumero());
-            companhiaText.setText("Companhia Aérea: " + companhia.getNome());
-            horarioEmbarqueText.setText("Horário de Embarque: " + voo.getHorarioEmbarque().format(DateTimeFormatter.ofPattern("dd/MM/yyyy HH:mm")));
-            horarioDesembarqueText.setText("Horário de Desembarque: " + voo.getHorarioDesembarque().format(DateTimeFormatter.ofPattern("dd/MM/yyyy HH:mm")));
-            aeroportoEmbarqueText.setText("Aeroporto de Embarque: " + aeroportoEmbarque.getNome());
-            aeroportoDesembarqueText.setText("Aeroporto de Desembarque: " + aeroportoChegada.getNome());
+            companhiaText.setText("Companhia aérea: " + companhia.getNome());
+            horarioEmbarqueText.setText("Horário de embarque: " + voo.getHorarioEmbarque().format(DateTimeFormatter.ofPattern("dd/MM/yyyy HH:mm")));
+            horarioDesembarqueText.setText("Horário de desembarque: " + voo.getHorarioDesembarque().format(DateTimeFormatter.ofPattern("dd/MM/yyyy HH:mm")));
+            aeroportoEmbarqueText.setText("Aeroporto de embarque: " + aeroportoEmbarque.getNome());
+            aeroportoDesembarqueText.setText("Aeroporto de desembarque: " + aeroportoChegada.getNome());
             statusText.setText("Status: " + voo.getStatus());
             origemText.setText("Origem: " + voo.getOrigem());
             destinoText.setText("Destino: " + voo.getDestino());
-            portaoText.setText("Portão de Embarque: " + portao.getCodigo());
+            portaoText.setText("Portão de embarque: " + portao.getCodigo());
         } catch(Exception e) {
             e.printStackTrace();
         }
@@ -134,9 +134,17 @@ public class VerVooControllerFXML implements Initializable {
     void comprarPassagem(ActionEvent event) throws IOException {
         Voo voo;
         try {
-            Resultado result = vooRepository.get(idVoo);
+            Resultado result = vooRepository.verificarVooLotado(idVoo);
             if (result.foiErro()) {
-                System.out.println(result.comoErro().getMsg());
+                warningText.setText("Erro: " + result.comoErro().getMsg());
+                return;
+            } else if ((Boolean) result.comoSucesso().getObj() == true) {
+                warningText.setText("O voo está lotado, não é possível comprar a passagem");
+                return;
+            }
+            result = vooRepository.get(idVoo);
+            if (result.foiErro()) {
+                warningText.setText("Erro: " + result.comoErro().getMsg());
                 return;
             }
             voo = (Voo) result.comoSucesso().getObj();

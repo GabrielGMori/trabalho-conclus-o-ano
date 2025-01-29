@@ -23,7 +23,6 @@ CREATE TABLE IF NOT EXISTS Aeronave (
   id_aeronave_pk INT NOT NULL AUTO_INCREMENT,
   modelo_aeronave VARCHAR(100) NOT NULL,
   capacidade_aeronave INT NOT NULL,
-  assentos_por_fileira_aeronave INT NOT NULL,
   id_companhia_aeronave_fk INT NOT NULL,
   PRIMARY KEY (id_aeronave_pk),
   FOREIGN KEY (id_companhia_aeronave_fk)
@@ -136,7 +135,6 @@ CREATE TABLE IF NOT EXISTS Metodo_Pagamento (
 CREATE TABLE IF NOT EXISTS Passagem (
   id_passagem_pk INT NOT NULL AUTO_INCREMENT,
   data_compra_passagem DATETIME NOT NULL,
-  assento_passagem VARCHAR(10) NULL,
   cpf_passageiro_passagem_fk VARCHAR(11) NOT NULL,
   id_voo_passagem_fk INT NOT NULL,
   id_metodo_pagamento_passagem_fk INT NOT NULL,

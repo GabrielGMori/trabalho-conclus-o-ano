@@ -96,11 +96,6 @@ public class VoosPassageiroControllerFXML implements Initializable {
     }
 
     @FXML
-    void verVoos(ActionEvent event) {
-        // A tela atual já é a de voos
-    }
-
-    @FXML
     void verPassagens(ActionEvent event) throws IOException {
         App.setRoot("passagensCompradas");
     }
@@ -153,14 +148,14 @@ public class VoosPassageiroControllerFXML implements Initializable {
             return;
         }
 
-        if (voos.isEmpty()) {
+        if (voos.isEmpty() || voos == null) {
             naoEncontrado();
             filtrosPane.setVisible(false);
             return;
         }
 
         voosListView.getItems().clear();
-        buildVooListView(voos);
+        buildListView(voos);
         filtrosPane.setVisible(false);
     }
 
@@ -217,7 +212,7 @@ public class VoosPassageiroControllerFXML implements Initializable {
             }
         }
 
-        if (voos.isEmpty()) {
+        if (voos.isEmpty() || voos == null) {
             naoEncontrado();
             return;
         }
@@ -233,7 +228,7 @@ public class VoosPassageiroControllerFXML implements Initializable {
             }
         });
 
-        buildVooListView(voos);
+        buildListView(voos);
     }
 
     private void naoEncontrado() {
@@ -254,7 +249,7 @@ public class VoosPassageiroControllerFXML implements Initializable {
         App.setRoot("verVooPassageiro");
     }
 
-    private void buildVooListView(ArrayList<?> voos) {
+    private void buildListView(ArrayList<?> voos) {
         for (int i = 0; i < voos.size(); i++) {
             Voo voo = (Voo) voos.get(i);
             String nomeCompanhia;
@@ -384,21 +379,42 @@ public class VoosPassageiroControllerFXML implements Initializable {
             dataDesembarqueFim = LocalDateTime.now().format(DateTimeFormatter.ofPattern("ddMMyyyy"));
         }
 
-        LocalDateTime embarqueInicio = dataEmbarqueInicio != null
-                ? LocalDateTime.parse(dataEmbarqueInicio + horarioEmbarqueInicio,
-                        DateTimeFormatter.ofPattern("ddMMyyyyHHmm"))
-                : null;
-        LocalDateTime embarqueFim = dataEmbarqueFim != null
-                ? LocalDateTime.parse(dataEmbarqueFim + horarioEmbarqueFim, DateTimeFormatter.ofPattern("ddMMyyyyHHmm"))
-                : null;
-        LocalDateTime desembarqueInicio = dataDesembarqueInicio != null
-                ? LocalDateTime.parse(dataDesembarqueInicio + horarioDesembarqueInicio,
-                        DateTimeFormatter.ofPattern("ddMMyyyyHHmm"))
-                : null;
-        LocalDateTime desembarqueFim = dataDesembarqueFim != null
-                ? LocalDateTime.parse(dataDesembarqueFim + horarioDesembarqueFim,
-                        DateTimeFormatter.ofPattern("ddMMyyyyHHmm"))
-                : null;
+        LocalDateTime embarqueInicio;
+        LocalDateTime embarqueFim;
+        LocalDateTime desembarqueInicio;
+        LocalDateTime desembarqueFim;
+        try {
+            embarqueInicio = dataEmbarqueInicio != null
+            ? LocalDateTime.parse(dataEmbarqueInicio + horarioEmbarqueInicio, DateTimeFormatter.ofPattern("ddMMyyyyHHmm"))
+            : null;
+        } catch(Exception e) {
+            e.printStackTrace();
+            embarqueInicio = null;
+        }
+        try {
+            embarqueFim = dataEmbarqueFim != null
+            ? LocalDateTime.parse(dataEmbarqueFim + horarioEmbarqueFim, DateTimeFormatter.ofPattern("ddMMyyyyHHmm"))
+            : null;
+        } catch(Exception e) {
+            e.printStackTrace();
+            embarqueFim = null;
+        }
+        try {
+            desembarqueInicio = dataDesembarqueInicio != null
+            ? LocalDateTime.parse(dataDesembarqueInicio + horarioDesembarqueInicio, DateTimeFormatter.ofPattern("ddMMyyyyHHmm"))
+            : null;
+        } catch(Exception e) {
+            e.printStackTrace();
+            desembarqueInicio = null;
+        }
+        try {
+            desembarqueFim = dataDesembarqueFim != null
+            ? LocalDateTime.parse(dataDesembarqueFim + horarioDesembarqueFim, DateTimeFormatter.ofPattern("ddMMyyyyHHmm"))
+            : null;
+        } catch(Exception e) {
+            e.printStackTrace();
+            desembarqueFim = null;
+        }
 
         return new ArrayList<>(Arrays.asList(numero, null, origem, destino, embarqueInicio, embarqueFim,
                 desembarqueInicio, desembarqueFim, null, null, aeroportoEmbarque, aeroportoDesembarque));

@@ -81,7 +81,7 @@
                         <Font name="Yu Gothic Regular" size="35.0" />
                      </font>
                   </Text>
-                  <TextField fx:id="passaporteTextField" prefHeight="51.0" prefWidth="450.0" style="-fx-background-color: F1FFE7;">
+                  <TextField fx:id="passaporteTextField" prefHeight="51.0" prefWidth="450.0" promptText="AAXXXXXX" style="-fx-background-color: F1FFE7;">
                      <font>
                         <Font name="Yu Gothic Regular" size="25.0" />
                      </font>
@@ -109,7 +109,7 @@
                         <Font name="Yu Gothic Regular" size="35.0" />
                      </font>
                   </Text>
-                  <ChoiceBox fx:id="nacionalidadeChoiceBox" prefHeight="53.0" prefWidth="282.0" style="-fx-background-color: F1FFE7;" />
+                  <ChoiceBox fx:id="nacionalidadeChoiceBox" prefHeight="53.0" prefWidth="282.0" style="-fx-background-color: F1FFE7;" stylesheets="@../css/choiceBox.css" />
                </children>
             </HBox>
             <HBox alignment="CENTER" prefHeight="64.0" prefWidth="1000.0" spacing="20.0">

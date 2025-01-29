@@ -9,20 +9,18 @@ public class Aeronave {
     private Integer id;
     private String modelo;
     private Integer capacidade;
-    private Integer assentosPorFileira;
     private Integer idCompanhiaAerea;
     private AeronaveRepository aeronaveRepository;
 
-    public Aeronave(String modelo, Integer capacidade, Integer assentosPorFileira, Integer idCompanhiaAerea) {
+    public Aeronave(String modelo, Integer capacidade, Integer idCompanhiaAerea) {
         this.modelo = modelo;
         this.capacidade = capacidade;
-        this.assentosPorFileira = assentosPorFileira;
         this.idCompanhiaAerea = idCompanhiaAerea;
-        aeronaveRepository = new AeronaveRepository();
+        aeronaveRepository = AeronaveRepository.getInstance();
     }
 
-    public Aeronave(Integer id, String modelo, Integer capacidade, Integer assentosPorFileira, Integer idCompanhiaAerea) {
-        this(modelo, capacidade, assentosPorFileira, idCompanhiaAerea);
+    public Aeronave(Integer id, String modelo, Integer capacidade, Integer idCompanhiaAerea) {
+        this(modelo, capacidade, idCompanhiaAerea);
         this.id = id;
     }
 
@@ -48,14 +46,6 @@ public class Aeronave {
 
     public void setCapacidade(Integer capacidade) {
         this.capacidade = capacidade;
-    }
-
-    public Integer getAssentosPorFileira() {
-        return assentosPorFileira;
-    }
-
-    public void setAssentosPorFileira(Integer assentosPorFileira) {
-        this.assentosPorFileira = assentosPorFileira;
     }
 
     public Integer getIdCompanhiaAerea() {

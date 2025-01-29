@@ -102,6 +102,11 @@
                   </Button>
                </children>
             </HBox>
+            <Text fx:id="warningText" fill="#333333" strokeType="OUTSIDE" strokeWidth="0.0" textAlignment="CENTER" wrappingWidth="804.13671875">
+               <font>
+                  <Font name="Yu Gothic Bold" size="35.0" />
+               </font>
+            </Text>
          </children>
          <padding>
             <Insets top="20.0" />

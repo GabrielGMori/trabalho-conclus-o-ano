@@ -20,6 +20,4 @@ public interface VooDAO {
     Resultado getVoosFiltro(String numero,  String status, String origem, String destino, LocalDateTime horarioEmbarqueInicial, LocalDateTime horarioEmbarqueFinal, LocalDateTime horarioDesembarqueInicial, LocalDateTime horarioDesembarqueFinal, Integer idAeronave, Integer idPortaoEmbarque, String AeroportoEmbarque, String AeroportoChegada) throws SQLException;
 
     Resultado verificarVooLotado(Integer id) throws SQLException;
-
-    Resultado verificarDisponibilidadeAssento(Integer id, String assento) throws SQLException;
 }

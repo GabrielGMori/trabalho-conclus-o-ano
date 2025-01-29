@@ -16,7 +16,7 @@ public class PortaoEmbarque {
         this.codigo = codigo;
         this.disponivel = disponivel;
         this.idAeroporto = idAeroporto;
-        portaoEmbarqueRepository = new PortaoEmbarqueRepository();
+        portaoEmbarqueRepository = PortaoEmbarqueRepository.getInstance();
     }
 
     public PortaoEmbarque(Integer id, String codigo, Boolean disponivel, Integer idAeroporto) {

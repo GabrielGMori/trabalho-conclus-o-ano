@@ -21,7 +21,6 @@ SELECT
     aeronave.id_aeronave_pk as id_aeronave,
     aeronave.modelo_aeronave AS aeronave,
     aeronave.capacidade_aeronave AS capacidade,
-    aeronave.assentos_por_fileira_aeronave AS assentos_por_fileira,
     companhia.id_companhia_pk as id_companhia_aerea,
     companhia.nome_companhia AS companhia
 
@@ -76,7 +75,6 @@ CREATE OR REPLACE VIEW Passagens_View AS
 SELECT
 	passagem.id_passagem_pk as id_passagem,
     passagem.data_compra_passagem as data_compra,
-    passagem.assento_passagem as assento_reservado,
     passagem.id_checkin_passagem_fk as id_check_in,
     passageiro.cpf_passageiro_pk as cpf_passageiro,
     passageiro.nome_passageiro as nome_passageiro,

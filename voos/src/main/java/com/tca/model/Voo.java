@@ -29,7 +29,7 @@ public class Voo {
         this.idAeronave = idAeronave;
         this.idPortaoEmbarque = idPortaoEmbarque;
         this.idAeroportoChegada = idAeroportoChegada;
-        vooRepository = new VooRepository();
+        vooRepository = VooRepository.getInstance();
     }
 
     public Voo(Integer id, String numero, String status, String origem, String destino, LocalDateTime horarioEmbarque,

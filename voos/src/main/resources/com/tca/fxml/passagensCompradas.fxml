@@ -39,7 +39,7 @@
                   <Font name="Yu Gothic Bold" size="20.0" />
                </font>
             </Button>
-            <Button mnemonicParsing="false" onAction="#verPassagens" prefHeight="34.0" prefWidth="156.0" style="-fx-background-color: F1FFE7;" text="Passagens" textAlignment="CENTER" textFill="#333333">
+            <Button mnemonicParsing="false" prefHeight="34.0" prefWidth="156.0" style="-fx-background-color: F1FFE7;" text="Passagens" textAlignment="CENTER" textFill="#333333">
                <font>
                   <Font name="Yu Gothic Bold" size="20.0" />
                </font>

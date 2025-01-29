@@ -34,7 +34,7 @@
       </VBox>
       <VBox alignment="CENTER" prefHeight="800.0" prefWidth="189.0" spacing="20.0" style="-fx-background-color: #3FC2FF;">
          <children>
-            <Button mnemonicParsing="false" onAction="#verVoos" prefHeight="34.0" prefWidth="156.0" style="-fx-background-color: F1FFE7;" text="Voos" textAlignment="CENTER" textFill="#333333">
+            <Button mnemonicParsing="false" prefHeight="34.0" prefWidth="156.0" style="-fx-background-color: F1FFE7;" text="Voos" textAlignment="CENTER" textFill="#333333">
                <font>
                   <Font name="Yu Gothic Bold" size="20.0" />
                </font>

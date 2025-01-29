@@ -1,6 +1,6 @@
 <mxfile host="65bd71144e">
     <diagram name="Página-1" id="f7-zcyWFl8f7tQIr4r0p">
-        <mxGraphModel dx="523" dy="399" grid="1" gridSize="10" guides="1" tooltips="1" connect="1" arrows="1" fold="1" page="1" pageScale="1" pageWidth="827" pageHeight="1169" math="0" shadow="0">
+        <mxGraphModel dx="4797" dy="2190" grid="1" gridSize="10" guides="1" tooltips="1" connect="1" arrows="1" fold="1" page="1" pageScale="1" pageWidth="827" pageHeight="1169" math="0" shadow="0">
             <root>
                 <mxCell id="0"/>
                 <mxCell id="1" parent="0"/>
@@ -27,7 +27,7 @@
                 <mxCell id="36" value="Entra na tela de ver aeronaves" style="rounded=1;whiteSpace=wrap;html=1;" parent="1" vertex="1">
                     <mxGeometry x="196.5" y="350" width="125" height="50" as="geometry"/>
                 </mxCell>
-                <mxCell id="37" value="Mostra dados atuais (Modelo, Capacidade, Assentos por fileira, Companhia Aérea)" style="rounded=1;whiteSpace=wrap;html=1;" parent="1" vertex="1">
+                <mxCell id="37" value="Mostra dados atuais (Modelo, Capacidade, Companhia Aérea)" style="rounded=1;whiteSpace=wrap;html=1;" parent="1" vertex="1">
                     <mxGeometry x="504" y="599.38" width="130" height="61.25" as="geometry"/>
                 </mxCell>
                 <mxCell id="38" value="Seleciona deletar aeronave" style="rounded=1;whiteSpace=wrap;html=1;" parent="1" vertex="1">
@@ -149,13 +149,13 @@
                         <mxPoint x="269.0049999999999" y="665" as="sourcePoint"/>
                     </mxGeometry>
                 </mxCell>
-                <mxCell id="76" value="Informa que a aeronave não está disponível" style="rounded=1;whiteSpace=wrap;html=1;" vertex="1" parent="1">
+                <mxCell id="76" value="Informa que a aeronave não está disponível" style="rounded=1;whiteSpace=wrap;html=1;" parent="1" vertex="1">
                     <mxGeometry x="591.37" y="880" width="125" height="50" as="geometry"/>
                 </mxCell>
-                <mxCell id="77" value="[Não disponível]" style="edgeLabel;html=1;align=center;verticalAlign=middle;resizable=0;points=[];" vertex="1" connectable="0" parent="1">
+                <mxCell id="77" value="[Não disponível]" style="edgeLabel;html=1;align=center;verticalAlign=middle;resizable=0;points=[];" parent="1" vertex="1" connectable="0">
                     <mxGeometry x="653.8668917519229" y="830.0003006633468" as="geometry"/>
                 </mxCell>
-                <mxCell id="78" value="" style="edgeStyle=orthogonalEdgeStyle;html=1;verticalAlign=bottom;endArrow=open;endSize=8;strokeColor=#000000;rounded=0;entryX=1;entryY=0.5;entryDx=0;entryDy=0;exitX=0.5;exitY=1;exitDx=0;exitDy=0;" edge="1" parent="1" source="76" target="46">
+                <mxCell id="78" value="" style="edgeStyle=orthogonalEdgeStyle;html=1;verticalAlign=bottom;endArrow=open;endSize=8;strokeColor=#000000;rounded=0;entryX=1;entryY=0.5;entryDx=0;entryDy=0;exitX=0.5;exitY=1;exitDx=0;exitDy=0;" parent="1" source="76" target="46" edge="1">
                     <mxGeometry relative="1" as="geometry">
                         <mxPoint x="663.8700000000001" y="890" as="targetPoint"/>
                         <mxPoint x="601.3699999999999" y="795" as="sourcePoint"/>
