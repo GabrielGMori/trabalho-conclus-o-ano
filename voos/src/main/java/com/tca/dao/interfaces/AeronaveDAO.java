@@ -1,7 +1,6 @@
 package com.tca.dao.interfaces;
 
 import java.sql.SQLException;
-import java.time.LocalDateTime;
 
 import com.github.hugoperlin.results.Resultado;
 import com.tca.model.Aeronave;
@@ -18,6 +17,4 @@ public interface AeronaveDAO {
     Resultado deletar(Integer id) throws SQLException;
 
     Resultado getAeronavesFiltro(String modelo, Integer capacidade, String companhia) throws SQLException;
-
-    Resultado verificarDisponibilidade(Integer id, LocalDateTime dataInicial, LocalDateTime dataFinal) throws SQLException;
 }

@@ -1,6 +1,6 @@
 <mxfile host="65bd71144e">
     <diagram name="Página-1" id="f7-zcyWFl8f7tQIr4r0p">
-        <mxGraphModel dx="742" dy="352" grid="1" gridSize="10" guides="1" tooltips="1" connect="1" arrows="1" fold="1" page="1" pageScale="1" pageWidth="827" pageHeight="1169" math="0" shadow="0">
+        <mxGraphModel dx="1439" dy="809" grid="1" gridSize="10" guides="1" tooltips="1" connect="1" arrows="1" fold="1" page="1" pageScale="1" pageWidth="827" pageHeight="1169" math="0" shadow="0">
             <root>
                 <mxCell id="0"/>
                 <mxCell id="1" parent="0"/>
@@ -27,8 +27,8 @@
                 <mxCell id="36" value="Entra na tela de ver passageiros" style="rounded=1;whiteSpace=wrap;html=1;" parent="1" vertex="1">
                     <mxGeometry x="196.5" y="350" width="125" height="50" as="geometry"/>
                 </mxCell>
-                <mxCell id="37" value="Mostra dados (E-mail, Nome, CPF, Passaporte, Telefone, Nacionalidade)" style="rounded=1;whiteSpace=wrap;html=1;" parent="1" vertex="1">
-                    <mxGeometry x="504" y="597.5" width="130" height="65" as="geometry"/>
+                <mxCell id="37" value="Mostra dados" style="rounded=1;whiteSpace=wrap;html=1;" parent="1" vertex="1">
+                    <mxGeometry x="504" y="608.75" width="130" height="42.5" as="geometry"/>
                 </mxCell>
                 <mxCell id="38" value="Seleciona deletar passageiro" style="rounded=1;whiteSpace=wrap;html=1;" parent="1" vertex="1">
                     <mxGeometry x="191.38" y="605" width="135.25" height="50" as="geometry"/>

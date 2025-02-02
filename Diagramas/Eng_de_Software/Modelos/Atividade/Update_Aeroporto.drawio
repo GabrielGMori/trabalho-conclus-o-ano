@@ -1,6 +1,6 @@
 <mxfile host="65bd71144e">
     <diagram name="Página-1" id="f7-zcyWFl8f7tQIr4r0p">
-        <mxGraphModel dx="1387" dy="1156" grid="1" gridSize="10" guides="1" tooltips="1" connect="1" arrows="1" fold="1" page="1" pageScale="1" pageWidth="827" pageHeight="1169" math="0" shadow="0">
+        <mxGraphModel dx="2056" dy="1156" grid="1" gridSize="10" guides="1" tooltips="1" connect="1" arrows="1" fold="1" page="1" pageScale="1" pageWidth="827" pageHeight="1169" math="0" shadow="0">
             <root>
                 <mxCell id="0"/>
                 <mxCell id="1" parent="0"/>
@@ -27,10 +27,10 @@
                 <mxCell id="Hh7dZNtptdnggyX2xkTj-7" value="Entra na tela de ver aeroportos" style="rounded=1;whiteSpace=wrap;html=1;" parent="1" vertex="1">
                     <mxGeometry x="196.5" y="350" width="125" height="50" as="geometry"/>
                 </mxCell>
-                <mxCell id="Hh7dZNtptdnggyX2xkTj-10" value="Mostra dados atuais (Nome, Localização)" style="rounded=1;whiteSpace=wrap;html=1;" parent="1" vertex="1">
+                <mxCell id="Hh7dZNtptdnggyX2xkTj-10" value="Mostra dados atuais" style="rounded=1;whiteSpace=wrap;html=1;" parent="1" vertex="1">
                     <mxGeometry x="504" y="605" width="130" height="45" as="geometry"/>
                 </mxCell>
-                <mxCell id="Hh7dZNtptdnggyX2xkTj-12" value="Insere dados novos (Nome, Localização)" style="rounded=1;whiteSpace=wrap;html=1;" parent="1" vertex="1">
+                <mxCell id="Hh7dZNtptdnggyX2xkTj-12" value="Insere dados novos" style="rounded=1;whiteSpace=wrap;html=1;" parent="1" vertex="1">
                     <mxGeometry x="191.37" y="603.75" width="135.25" height="46.25" as="geometry"/>
                 </mxCell>
                 <mxCell id="Hh7dZNtptdnggyX2xkTj-13" value="" style="edgeStyle=orthogonalEdgeStyle;html=1;verticalAlign=bottom;endArrow=open;endSize=8;strokeColor=#000000;rounded=0;entryX=1;entryY=0.5;entryDx=0;entryDy=0;exitX=0;exitY=0.5;exitDx=0;exitDy=0;" parent="1" source="Hh7dZNtptdnggyX2xkTj-10" target="Hh7dZNtptdnggyX2xkTj-12" edge="1">

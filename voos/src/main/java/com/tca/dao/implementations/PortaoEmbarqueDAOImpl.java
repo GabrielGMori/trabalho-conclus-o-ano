@@ -5,8 +5,6 @@ import java.sql.PreparedStatement;
 import java.sql.ResultSet;
 import java.sql.SQLException;
 import java.sql.Statement;
-import java.sql.Timestamp;
-import java.time.LocalDateTime;
 import java.util.ArrayList;
 
 import com.tca.dao.FabricaConexoes;
@@ -221,37 +219,6 @@ public class PortaoEmbarqueDAOImpl implements PortaoEmbarqueDAO {
             }
 
             return Resultado.sucesso("Portões de embarque carregados", portoesEmbarque);
-
-        } catch (SQLException e) {
-            return Resultado.erro(e.getMessage());
-
-        } finally {
-            if (pstm != null)
-                pstm.close();
-            if (con != null)
-                con.close();
-        }
-    }
-
-    public Resultado verificarEmUso(Integer id, LocalDateTime dataInicial, LocalDateTime dataFinal) throws SQLException {
-        Connection con = null;
-        PreparedStatement pstm = null;
-        try {
-            con = fabrica.getConnection();
-            pstm = con.prepareStatement("SELECT verificarPortaoEmbarqueEmUsoFunc(?, ?, ?);");
-            
-            pstm.setInt(1, id);
-            if (dataInicial == null) pstm.setNull(2, java.sql.Types.NULL); else pstm.setTimestamp(2, Timestamp.valueOf(dataInicial));
-            if (dataFinal == null) pstm.setNull(3, java.sql.Types.NULL); else pstm.setTimestamp(3, Timestamp.valueOf(dataFinal));
-
-            ResultSet rs = pstm.executeQuery();
-
-            if (rs.next()) {
-                boolean disponivel = rs.getBoolean(1);
-                return Resultado.sucesso("Disponibilidade verificada", disponivel);
-            }
-
-            return Resultado.erro("Algo deu errado, a disponibilidade não pode ser verificada");
 
         } catch (SQLException e) {
             return Resultado.erro(e.getMessage());

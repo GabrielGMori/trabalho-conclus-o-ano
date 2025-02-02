@@ -1,7 +1,6 @@
 package com.tca.repository;
 
 import java.sql.SQLException;
-import java.time.LocalDateTime;
 import java.util.ArrayList;
 
 import com.tca.dao.FabricaConexoes;
@@ -71,11 +70,6 @@ public class PortaoEmbarqueRepository {
         }
         System.out.println(resultado.comoErro().getMsg());
         return null;
-    }
-
-    public Resultado verificarEmUso(Integer id, LocalDateTime dataInicial, LocalDateTime dataFinal) throws SQLException {
-        Resultado resultado = dao.verificarEmUso(id, dataInicial, dataFinal);
-        return resultado;
     }
     
 }

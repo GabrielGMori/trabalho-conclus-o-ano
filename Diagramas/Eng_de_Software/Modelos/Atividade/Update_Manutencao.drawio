@@ -1,6 +1,6 @@
 <mxfile host="65bd71144e">
     <diagram name="Página-1" id="f7-zcyWFl8f7tQIr4r0p">
-        <mxGraphModel dx="1069" dy="562" grid="1" gridSize="10" guides="1" tooltips="1" connect="1" arrows="1" fold="1" page="1" pageScale="1" pageWidth="827" pageHeight="1169" math="0" shadow="0">
+        <mxGraphModel dx="959" dy="539" grid="1" gridSize="10" guides="1" tooltips="1" connect="1" arrows="1" fold="1" page="1" pageScale="1" pageWidth="827" pageHeight="1169" math="0" shadow="0">
             <root>
                 <mxCell id="0"/>
                 <mxCell id="1" parent="0"/>
@@ -27,8 +27,8 @@
                 <mxCell id="8" value="Entra na tela de ver manutenções" style="rounded=1;whiteSpace=wrap;html=1;" parent="1" vertex="1">
                     <mxGeometry x="196.5" y="350" width="125" height="50" as="geometry"/>
                 </mxCell>
-                <mxCell id="9" value="Mostra dados atuais (Descrição, Data de ínicio, Data de fim, Status, Aeronave)" style="rounded=1;whiteSpace=wrap;html=1;" parent="1" vertex="1">
-                    <mxGeometry x="502.25" y="605" width="133.5" height="65" as="geometry"/>
+                <mxCell id="9" value="Mostra dados atuais" style="rounded=1;whiteSpace=wrap;html=1;" parent="1" vertex="1">
+                    <mxGeometry x="502.25" y="615" width="133.5" height="45" as="geometry"/>
                 </mxCell>
                 <mxCell id="10" value="" style="edgeStyle=orthogonalEdgeStyle;html=1;verticalAlign=bottom;endArrow=open;endSize=8;strokeColor=#000000;rounded=0;entryX=1;entryY=0.5;entryDx=0;entryDy=0;exitX=0;exitY=0.5;exitDx=0;exitDy=0;" parent="1" source="9" target="32" edge="1">
                     <mxGeometry relative="1" as="geometry">
@@ -137,8 +137,8 @@
                         <mxPoint x="492.26" y="1060" as="sourcePoint"/>
                     </mxGeometry>
                 </mxCell>
-                <mxCell id="32" value="Insere dados novos (Descrição, Data de ínicio, Data de fim, Status, Aeronave)" style="rounded=1;whiteSpace=wrap;html=1;" parent="1" vertex="1">
-                    <mxGeometry x="190.44" y="605" width="137.12" height="65" as="geometry"/>
+                <mxCell id="32" value="Insere dados novos" style="rounded=1;whiteSpace=wrap;html=1;" parent="1" vertex="1">
+                    <mxGeometry x="190.44" y="615" width="137.12" height="45" as="geometry"/>
                 </mxCell>
                 <mxCell id="36" value="" style="edgeStyle=orthogonalEdgeStyle;html=1;verticalAlign=bottom;endArrow=open;endSize=8;strokeColor=#000000;rounded=0;entryX=0.5;entryY=0;entryDx=0;entryDy=0;exitX=0.5;exitY=1;exitDx=0;exitDy=0;" parent="1" source="11" target="13" edge="1">
                     <mxGeometry relative="1" as="geometry">
