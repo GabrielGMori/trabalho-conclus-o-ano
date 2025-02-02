@@ -52,7 +52,7 @@ public class LoginAdministradorControllerFXML {
     }
 
     private Boolean validarDados() {
-        if (cpfTextField.getText().length() != 11) {
+        if (!StringFormatter.formatNumericData(cpfTextField.getText()).matches("\\d{11}")) {
             warningText.setText("O CPF digitado é inválido");
             return false;
         }
@@ -68,7 +68,7 @@ public class LoginAdministradorControllerFXML {
             }
             Object obj = result.comoSucesso().getObj();
             Administrador administrador = (Administrador) obj;
-            String nome = StringFormatter.capitalize(nomeTextField.getText().trim().toLowerCase());
+            String nome = StringFormatter.capitalize(nomeTextField.getText());
             String senha = senhaTextField.getText().trim();
             if (!administrador.getNome().equals(nome) || !administrador.getSenha().equals(senha)) {
                 warningText.setText("Algum dado está incorreto");

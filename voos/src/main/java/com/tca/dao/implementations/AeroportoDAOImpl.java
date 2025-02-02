@@ -133,8 +133,8 @@ public class AeroportoDAOImpl implements AeroportoDAO {
             pstm = con.prepareStatement(
                     "UPDATE Aeroporto SET nome_aeroporto = ?, localizacao_aeroporto = ? WHERE id_aeroporto_pk = ?;");
 
-            pstm.setString(1, "%" + aeroporto.getNome() + "%");
-            pstm.setString(2, "%" + aeroporto.getLocalizacao() + "%");
+            pstm.setString(1, aeroporto.getNome());
+            pstm.setString(2, aeroporto.getLocalizacao());
             pstm.setInt(3, id);
 
             int ret = pstm.executeUpdate();

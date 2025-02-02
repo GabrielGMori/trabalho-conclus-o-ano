@@ -34,12 +34,12 @@
             </HBox>
             <HBox alignment="CENTER" prefHeight="63.0" prefWidth="953.0" spacing="20.0">
                <children>
-                  <Text fill="#333333" strokeType="OUTSIDE" strokeWidth="0.0" text="Senha:" textAlignment="RIGHT" wrappingWidth="118.13671875">
+                  <Text fill="#333333" strokeType="OUTSIDE" strokeWidth="0.0" text="Nome:" textAlignment="RIGHT" wrappingWidth="118.13671875">
                      <font>
                         <Font name="Yu Gothic Regular" size="35.0" />
                      </font>
                   </Text>
-                  <TextField fx:id="senhaTextField" prefHeight="51.0" prefWidth="450.0" style="-fx-background-color: #3FC2FF;">
+                  <TextField fx:id="nomeTextField" prefHeight="51.0" prefWidth="450.0" style="-fx-background-color: #3FC2FF;">
                      <font>
                         <Font name="Yu Gothic Regular" size="25.0" />
                      </font>
@@ -48,12 +48,12 @@
             </HBox>
             <HBox alignment="CENTER" prefHeight="63.0" prefWidth="953.0" spacing="20.0">
                <children>
-                  <Text fill="#333333" strokeType="OUTSIDE" strokeWidth="0.0" text="Nome:" textAlignment="RIGHT" wrappingWidth="118.13671875">
+                  <Text fill="#333333" strokeType="OUTSIDE" strokeWidth="0.0" text="Senha:" textAlignment="RIGHT" wrappingWidth="118.13671875">
                      <font>
                         <Font name="Yu Gothic Regular" size="35.0" />
                      </font>
                   </Text>
-                  <TextField fx:id="nomeTextField" prefHeight="51.0" prefWidth="450.0" style="-fx-background-color: #3FC2FF;">
+                  <TextField fx:id="senhaTextField" prefHeight="51.0" prefWidth="450.0" style="-fx-background-color: #3FC2FF;">
                      <font>
                         <Font name="Yu Gothic Regular" size="25.0" />
                      </font>

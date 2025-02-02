@@ -52,8 +52,8 @@ public class VisualizacaoCompanhiasControllerFXML implements Initializable {
     }
 
     @FXML
-    void criar(ActionEvent event) {
-
+    void criar(ActionEvent event) throws IOException {
+        App.setRoot("criarCompanhia");
     }
 
     @FXML
@@ -135,7 +135,7 @@ public class VisualizacaoCompanhiasControllerFXML implements Initializable {
         filtrosPane.setVisible(false);
     }
 
-     private Boolean validarFiltros() {
+    private Boolean validarFiltros() {
         for (int i = 0; i < filtros.size(); i++) {
             if (!filtros.get(i).getText().trim().isEmpty()) {
                 if (filtrosTipos.get(i).equals("Icao")) {
@@ -196,8 +196,8 @@ public class VisualizacaoCompanhiasControllerFXML implements Initializable {
     }
 
     private void editar(Integer id) throws IOException {
-        // TODO
-        App.setRoot("editarVoo");
+        EditarCompanhiaControllerFXML.setIdCompanhia(id);
+        App.setRoot("editarCompanhia");
     }
 
     private void buildListView(ArrayList<?> manutencoes) {

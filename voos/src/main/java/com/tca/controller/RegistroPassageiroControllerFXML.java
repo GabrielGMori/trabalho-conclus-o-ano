@@ -176,7 +176,7 @@ public class RegistroPassageiroControllerFXML implements Initializable {
 
         String cpf = StringFormatter.formatNumericData(cpfTextField.getText());
         String email = emailTextField.getText().trim().toLowerCase();
-        String nome = StringFormatter.capitalize(nomeTextField.getText().toLowerCase());
+        String nome = StringFormatter.capitalize(nomeTextField.getText());
         String senha = senhaTextField.getText().trim();
         String passaporte = StringFormatter.formatNumericData(passaporteTextField.getText().toUpperCase());
         String telefone = StringFormatter.formatNumericData(telefoneTextField.getText().trim());

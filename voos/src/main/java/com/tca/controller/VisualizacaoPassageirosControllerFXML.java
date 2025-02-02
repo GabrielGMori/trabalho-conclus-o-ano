@@ -72,8 +72,8 @@ public class VisualizacaoPassageirosControllerFXML implements Initializable {
     }
 
     @FXML
-    void criar(ActionEvent event) {
-        // TODO
+    void criar(ActionEvent event) throws IOException {
+        App.setRoot("criarPassageiro");
     }
 
     @FXML
@@ -232,7 +232,7 @@ public class VisualizacaoPassageirosControllerFXML implements Initializable {
             @Override
             public void changed(ObservableValue<? extends HBox> arg0, HBox arg1, HBox arg2) {
                 try {
-                    editar(Integer.valueOf(passageirosListView.getSelectionModel().getSelectedItem().getId()));
+                    editar(passageirosListView.getSelectionModel().getSelectedItem().getId());
                 } catch (Exception e) {
                     e.printStackTrace();
                 }
@@ -255,9 +255,9 @@ public class VisualizacaoPassageirosControllerFXML implements Initializable {
         return;
     }
 
-    private void editar(Integer id) throws IOException {
-        // TODO
-        App.setRoot("editarVoo");
+    private void editar(String cpf) throws IOException {
+        EditarPassageiroControllerFXML.setCpfPassageiro(cpf);
+        App.setRoot("editarPassageiro");
     }
 
     private void buildListView(ArrayList<?> passageiros) {

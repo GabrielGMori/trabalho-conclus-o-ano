@@ -38,3 +38,5 @@ SEMANA 6 - 26/01/25 ATÉ 01/02/25
  - DAOs adicionadas
  - Repositories adicionados
  - Controllers sobre o passageiro finalizados
+ - Controllers sobre o administrador finalizados
+ 

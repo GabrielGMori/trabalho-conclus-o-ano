@@ -287,6 +287,24 @@ BEGIN
     END IF;
 END$$
 
+DROP TRIGGER IF EXISTS remocaoAeronaveTrigDelete$$
+CREATE TRIGGER remocaoAeronaveTrigDelete
+BEFORE DELETE ON Aeronave
+FOR EACH ROW
+BEGIN
+    DECLARE voos INT;
+
+    SELECT COUNT(*)
+    INTO voos
+    FROM Voo
+    WHERE id_aeronave_voo_fk = OLD.id_aeronave_pk
+    AND NOT (status_voo = "Cancelado" OR status_voo = "Finalizado");
+
+    IF voos > 0 THEN
+        SIGNAL SQLSTATE '45000'
+        SET MESSAGE_TEXT = 'A aeronave será usada em um voo agendado';
+    END IF;
+END$$
 
 DROP TRIGGER IF EXISTS remocaoPortaoTrigDelete$$
 CREATE TRIGGER remocaoPortaoTrigDelete
@@ -306,6 +324,5 @@ BEGIN
         SET MESSAGE_TEXT = 'O portão de embarque será usado em um voo agendado';
     END IF;
 END$$
-
 
 DELIMITER ;

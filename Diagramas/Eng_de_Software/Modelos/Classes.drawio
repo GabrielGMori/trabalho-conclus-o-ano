@@ -1,11 +1,11 @@
 <mxfile host="65bd71144e">
     <diagram name="Página-1" id="JMPSkYKYKMbUT9NjB5MC">
-        <mxGraphModel dx="4695" dy="3358" grid="1" gridSize="10" guides="1" tooltips="1" connect="1" arrows="1" fold="1" page="1" pageScale="1" pageWidth="827" pageHeight="1169" math="0" shadow="0">
+        <mxGraphModel dx="2803" dy="2800" grid="1" gridSize="10" guides="1" tooltips="1" connect="1" arrows="1" fold="1" page="1" pageScale="1" pageWidth="827" pageHeight="1169" math="0" shadow="0">
             <root>
                 <mxCell id="0"/>
                 <mxCell id="1" parent="0"/>
                 <mxCell id="uebt3IdMJ_7Td7zyS676-1" value="Manutencao" style="swimlane;fontStyle=1;align=center;verticalAlign=top;childLayout=stackLayout;horizontal=1;startSize=26;horizontalStack=0;resizeParent=1;resizeParentMax=0;resizeLast=0;collapsible=1;marginBottom=0;whiteSpace=wrap;html=1;" parent="1" vertex="1">
-                    <mxGeometry x="-1780" y="-1925" width="275" height="250" as="geometry">
+                    <mxGeometry x="-1780" y="-1925" width="275" height="260" as="geometry">
                         <mxRectangle x="190" y="260" width="110" height="30" as="alternateBounds"/>
                     </mxGeometry>
                 </mxCell>
@@ -30,8 +30,8 @@
                 <mxCell id="SrmMBefu6AXR2JpIl7X1-11" value="" style="line;strokeWidth=1;fillColor=none;align=left;verticalAlign=middle;spacingTop=-1;spacingLeft=3;spacingRight=3;rotatable=0;labelPosition=right;points=[];portConstraint=eastwest;strokeColor=inherit;" parent="uebt3IdMJ_7Td7zyS676-1" vertex="1">
                     <mxGeometry y="182" width="275" height="8" as="geometry"/>
                 </mxCell>
-                <mxCell id="SrmMBefu6AXR2JpIl7X1-10" value="&lt;div&gt;+ &lt;font&gt;getManutencoes&lt;/font&gt;&lt;font&gt;Filtro&lt;/font&gt;(String descricao, Date dataInicialIntervalo, Date dataFinalIntervalo, String status, int idAeronave): List&amp;lt;Manutencao&amp;gt;&lt;/div&gt;" style="text;strokeColor=none;fillColor=none;align=left;verticalAlign=top;spacingLeft=4;spacingRight=4;overflow=hidden;rotatable=0;points=[[0,0.5],[1,0.5]];portConstraint=eastwest;whiteSpace=wrap;html=1;" parent="uebt3IdMJ_7Td7zyS676-1" vertex="1">
-                    <mxGeometry y="190" width="275" height="60" as="geometry"/>
+                <mxCell id="SrmMBefu6AXR2JpIl7X1-10" value="&lt;div&gt;+ &lt;font&gt;getManutencoes&lt;/font&gt;&lt;font&gt;Filtro&lt;/font&gt;(String descricao, Date dataInicioInicial, Date dataInicioFinal, Date dataFimInicial, Date dataFimFinal, String aeronave, String status): List&amp;lt;Manutencao&amp;gt;&lt;/div&gt;" style="text;strokeColor=none;fillColor=none;align=left;verticalAlign=top;spacingLeft=4;spacingRight=4;overflow=hidden;rotatable=0;points=[[0,0.5],[1,0.5]];portConstraint=eastwest;whiteSpace=wrap;html=1;" parent="uebt3IdMJ_7Td7zyS676-1" vertex="1">
+                    <mxGeometry y="190" width="275" height="70" as="geometry"/>
                 </mxCell>
                 <mxCell id="uebt3IdMJ_7Td7zyS676-110" style="edgeStyle=orthogonalEdgeStyle;rounded=0;orthogonalLoop=1;jettySize=auto;html=1;entryX=0.5;entryY=0;entryDx=0;entryDy=0;endArrow=none;endFill=0;startArrow=none;" parent="1" source="34" target="uebt3IdMJ_7Td7zyS676-31" edge="1">
                     <mxGeometry relative="1" as="geometry">
@@ -41,7 +41,7 @@
                     </mxGeometry>
                 </mxCell>
                 <mxCell id="uebt3IdMJ_7Td7zyS676-14" value="Aeronave" style="swimlane;fontStyle=1;align=center;verticalAlign=top;childLayout=stackLayout;horizontal=1;startSize=26;horizontalStack=0;resizeParent=1;resizeParentMax=0;resizeLast=0;collapsible=1;marginBottom=0;whiteSpace=wrap;html=1;" parent="1" vertex="1">
-                    <mxGeometry x="-1350" y="-1940" width="270" height="234" as="geometry">
+                    <mxGeometry x="-1350" y="-1940" width="270" height="222" as="geometry">
                         <mxRectangle x="190" y="260" width="110" height="30" as="alternateBounds"/>
                     </mxGeometry>
                 </mxCell>
@@ -63,8 +63,8 @@
                 <mxCell id="uebt3IdMJ_7Td7zyS676-22" value="+ verificarDisponibilidade(Date dataInicial, Date dataFinal): Boolean" style="text;strokeColor=none;fillColor=none;align=left;verticalAlign=top;spacingLeft=4;spacingRight=4;overflow=hidden;rotatable=0;points=[[0,0.5],[1,0.5]];portConstraint=eastwest;whiteSpace=wrap;html=1;" parent="uebt3IdMJ_7Td7zyS676-14" vertex="1">
                     <mxGeometry y="138" width="270" height="36" as="geometry"/>
                 </mxCell>
-                <mxCell id="SrmMBefu6AXR2JpIl7X1-9" value="&lt;div&gt;+ &lt;font&gt;getA&lt;/font&gt;&lt;font&gt;eronavesFiltro&lt;/font&gt;(String modelo, int capacidade, int idCompanhiaAerea): List&amp;lt;Aeronave&amp;gt;&lt;/div&gt;" style="text;strokeColor=none;fillColor=none;align=left;verticalAlign=top;spacingLeft=4;spacingRight=4;overflow=hidden;rotatable=0;points=[[0,0.5],[1,0.5]];portConstraint=eastwest;whiteSpace=wrap;html=1;" parent="uebt3IdMJ_7Td7zyS676-14" vertex="1">
-                    <mxGeometry y="174" width="270" height="60" as="geometry"/>
+                <mxCell id="SrmMBefu6AXR2JpIl7X1-9" value="&lt;div&gt;+ &lt;font&gt;getA&lt;/font&gt;&lt;font&gt;eronavesFiltro&lt;/font&gt;(String modelo, int capacidade, String companhia): List&amp;lt;Aeronave&amp;gt;&lt;/div&gt;" style="text;strokeColor=none;fillColor=none;align=left;verticalAlign=top;spacingLeft=4;spacingRight=4;overflow=hidden;rotatable=0;points=[[0,0.5],[1,0.5]];portConstraint=eastwest;whiteSpace=wrap;html=1;" parent="uebt3IdMJ_7Td7zyS676-14" vertex="1">
+                    <mxGeometry y="174" width="270" height="48" as="geometry"/>
                 </mxCell>
                 <mxCell id="uebt3IdMJ_7Td7zyS676-23" value="CompanhiaAerea" style="swimlane;fontStyle=1;align=center;verticalAlign=top;childLayout=stackLayout;horizontal=1;startSize=26;horizontalStack=0;resizeParent=1;resizeParentMax=0;resizeLast=0;collapsible=1;marginBottom=0;whiteSpace=wrap;html=1;" parent="1" vertex="1">
                     <mxGeometry x="-940" y="-1884" width="250" height="150" as="geometry">
@@ -102,7 +102,7 @@
                     </mxGeometry>
                 </mxCell>
                 <mxCell id="uebt3IdMJ_7Td7zyS676-31" value="Voo" style="swimlane;fontStyle=1;align=center;verticalAlign=top;childLayout=stackLayout;horizontal=1;startSize=26;horizontalStack=0;resizeParent=1;resizeParentMax=0;resizeLast=0;collapsible=1;marginBottom=0;whiteSpace=wrap;html=1;" parent="1" vertex="1">
-                    <mxGeometry x="-1360" y="-1610" width="300" height="410" as="geometry">
+                    <mxGeometry x="-1360" y="-1610" width="300" height="420" as="geometry">
                         <mxRectangle x="190" y="260" width="110" height="30" as="alternateBounds"/>
                     </mxGeometry>
                 </mxCell>
@@ -142,8 +142,8 @@
                 <mxCell id="irYPovuW9XCSNf682CBj-6" value="&lt;div&gt;+ verificarCheio(): Boolean&lt;/div&gt;" style="text;strokeColor=none;fillColor=none;align=left;verticalAlign=top;spacingLeft=4;spacingRight=4;overflow=hidden;rotatable=0;points=[[0,0.5],[1,0.5]];portConstraint=eastwest;whiteSpace=wrap;html=1;" parent="uebt3IdMJ_7Td7zyS676-31" vertex="1">
                     <mxGeometry y="294" width="300" height="26" as="geometry"/>
                 </mxCell>
-                <mxCell id="SrmMBefu6AXR2JpIl7X1-12" value="+ getVoosFiltro(String numero,&amp;nbsp; String status, String origem, String destino, Date horarioInicialIntervalo, Date horarioFinalIntervalo, int idAeronave, int idPortaoEmbarque, int idAeroportoEmbarque, int idAeroportoChegada): List&amp;lt;Voo&amp;gt;" style="text;strokeColor=none;fillColor=none;align=left;verticalAlign=top;spacingLeft=4;spacingRight=4;overflow=hidden;rotatable=0;points=[[0,0.5],[1,0.5]];portConstraint=eastwest;whiteSpace=wrap;html=1;" parent="uebt3IdMJ_7Td7zyS676-31" vertex="1">
-                    <mxGeometry y="320" width="300" height="90" as="geometry"/>
+                <mxCell id="SrmMBefu6AXR2JpIl7X1-12" value="+ getVoosFiltro(String numero, String origem, String destino, Date dataEmbarqueInicio, Date dataEmbarqueFim, String aeroportoEmbarque, Date dataDesembarqueInicio, Date dataDesembarqueFim, String aeroportoDesembarque, String status): List&amp;lt;Voo&amp;gt;" style="text;strokeColor=none;fillColor=none;align=left;verticalAlign=top;spacingLeft=4;spacingRight=4;overflow=hidden;rotatable=0;points=[[0,0.5],[1,0.5]];portConstraint=eastwest;whiteSpace=wrap;html=1;" parent="uebt3IdMJ_7Td7zyS676-31" vertex="1">
+                    <mxGeometry y="320" width="300" height="100" as="geometry"/>
                 </mxCell>
                 <mxCell id="uebt3IdMJ_7Td7zyS676-112" style="edgeStyle=orthogonalEdgeStyle;rounded=0;orthogonalLoop=1;jettySize=auto;html=1;exitX=0.5;exitY=0;exitDx=0;exitDy=0;endArrow=none;endFill=0;entryX=0.485;entryY=1.007;entryDx=0;entryDy=0;entryPerimeter=0;" parent="1" source="uebt3IdMJ_7Td7zyS676-43" target="SrmMBefu6AXR2JpIl7X1-5" edge="1">
                     <mxGeometry relative="1" as="geometry">
@@ -238,7 +238,7 @@
                 <mxCell id="uebt3IdMJ_7Td7zyS676-69" value="+ realizarCheckIn(): Boolean" style="text;strokeColor=none;fillColor=none;align=left;verticalAlign=top;spacingLeft=4;spacingRight=4;overflow=hidden;rotatable=0;points=[[0,0.5],[1,0.5]];portConstraint=eastwest;whiteSpace=wrap;html=1;" parent="uebt3IdMJ_7Td7zyS676-58" vertex="1">
                     <mxGeometry y="190" width="270" height="26" as="geometry"/>
                 </mxCell>
-                <mxCell id="SrmMBefu6AXR2JpIl7X1-2" value="+ getPassagensFiltro(Date dataCompraIncial,&amp;nbsp;&amp;nbsp; Date dataCompraFinal, String cpfPassageiro, String numeroVoo, int idMetodoPagamento): List&amp;lt;Passagem&amp;gt;" style="text;strokeColor=none;fillColor=none;align=left;verticalAlign=top;spacingLeft=4;spacingRight=4;overflow=hidden;rotatable=0;points=[[0,0.5],[1,0.5]];portConstraint=eastwest;whiteSpace=wrap;html=1;" parent="uebt3IdMJ_7Td7zyS676-58" vertex="1">
+                <mxCell id="SrmMBefu6AXR2JpIl7X1-2" value="+ getPassagensFiltro(String numeroVoo, String origem, String destino, String cpfPassageiro, int idMetodoPagamento, Date dataInicio, Date dataFim): List&amp;lt;Passagem&amp;gt;" style="text;strokeColor=none;fillColor=none;align=left;verticalAlign=top;spacingLeft=4;spacingRight=4;overflow=hidden;rotatable=0;points=[[0,0.5],[1,0.5]];portConstraint=eastwest;whiteSpace=wrap;html=1;" parent="uebt3IdMJ_7Td7zyS676-58" vertex="1">
                     <mxGeometry y="216" width="270" height="68" as="geometry"/>
                 </mxCell>
                 <mxCell id="uebt3IdMJ_7Td7zyS676-70" value="CheckIn" style="swimlane;fontStyle=1;align=center;verticalAlign=top;childLayout=stackLayout;horizontal=1;startSize=26;horizontalStack=0;resizeParent=1;resizeParentMax=0;resizeLast=0;collapsible=1;marginBottom=0;whiteSpace=wrap;html=1;" parent="1" vertex="1">
@@ -399,11 +399,8 @@
                 <mxCell id="uebt3IdMJ_7Td7zyS676-136" value="0..*" style="text;html=1;align=center;verticalAlign=middle;whiteSpace=wrap;rounded=0;" parent="1" vertex="1">
                     <mxGeometry x="-750" y="-1492" width="30" height="20" as="geometry"/>
                 </mxCell>
-                <mxCell id="32" value="" style="edgeStyle=none;html=1;" parent="1" source="uebt3IdMJ_7Td7zyS676-138" target="SrmMBefu6AXR2JpIl7X1-12" edge="1">
-                    <mxGeometry relative="1" as="geometry"/>
-                </mxCell>
                 <mxCell id="uebt3IdMJ_7Td7zyS676-138" value="1" style="text;html=1;align=center;verticalAlign=middle;whiteSpace=wrap;rounded=0;" parent="1" vertex="1">
-                    <mxGeometry x="-1205" y="-1199.5" width="20" height="20" as="geometry"/>
+                    <mxGeometry x="-1200" y="-1189" width="20" height="20" as="geometry"/>
                 </mxCell>
                 <mxCell id="uebt3IdMJ_7Td7zyS676-139" value="0..*" style="text;html=1;align=center;verticalAlign=middle;whiteSpace=wrap;rounded=0;" parent="1" vertex="1">
                     <mxGeometry x="-1205" y="-1096" width="30" height="20" as="geometry"/>
@@ -521,7 +518,7 @@
                     </mxGeometry>
                 </mxCell>
                 <mxCell id="30" value="" style="rhombus;whiteSpace=wrap;html=1;fillColor=#000000;rotation=-90;" parent="1" vertex="1">
-                    <mxGeometry x="-1219.5" y="-1195" width="19" height="11" as="geometry"/>
+                    <mxGeometry x="-1219.5" y="-1185" width="19" height="11" as="geometry"/>
                 </mxCell>
                 <mxCell id="35" value="" style="edgeStyle=orthogonalEdgeStyle;rounded=0;orthogonalLoop=1;jettySize=auto;html=1;entryX=1;entryY=0.5;entryDx=0;entryDy=0;endArrow=none;endFill=0;" parent="1" source="uebt3IdMJ_7Td7zyS676-14" target="34" edge="1">
                     <mxGeometry relative="1" as="geometry">

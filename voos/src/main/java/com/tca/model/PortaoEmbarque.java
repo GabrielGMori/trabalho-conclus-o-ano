@@ -58,7 +58,7 @@ public class PortaoEmbarque {
 
     public Boolean emUso(LocalDateTime dataInicial, LocalDateTime dataFinal) {
         try {
-            Resultado result = portaoEmbarqueRepository.verificarEmUso(id, dataInicial, dataFinal);
+            Resultado result = portaoEmbarqueRepository.verificarEmUso(this.id, dataInicial, dataFinal);
             if (result.foiErro()) {
                 System.out.println(result.comoErro().getMsg());
                 return null;

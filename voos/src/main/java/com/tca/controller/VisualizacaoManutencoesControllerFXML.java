@@ -89,8 +89,8 @@ public class VisualizacaoManutencoesControllerFXML implements Initializable {
     }
 
     @FXML
-    void criar(ActionEvent event) {
-
+    void criar(ActionEvent event) throws IOException {
+        App.setRoot("criarManutencao");
     }
 
     @FXML
@@ -248,26 +248,30 @@ public class VisualizacaoManutencoesControllerFXML implements Initializable {
     }
 
     private void editar(Integer id) throws IOException {
-        // TODO
-        App.setRoot("editarVoo");
+        EditarManutencaoControllerFXML.setIdManutencao(id);
+        App.setRoot("editarManutencao");
     }
 
     private void buildListView(ArrayList<?> manutencoes) {
         for (int i = 0; i < manutencoes.size(); i++) {
             Manutencao manutencao = (Manutencao) manutencoes.get(i);
             String modeloAeronave;
+            String idAeronave;
             try {
                 Resultado result = aeronaveRepository.get(manutencao.getIdAeronave());
                 if (result.foiErro()) {
                     System.out.println(result.comoErro().getMsg());
                     modeloAeronave = null;
+                    idAeronave = null;
                 }
                 Aeronave aeronave = (Aeronave) result.comoSucesso().getObj();
                 modeloAeronave = aeronave.getModelo();
+                idAeronave = String.valueOf(aeronave.getId());
 
             } catch (Exception e) {
                 e.printStackTrace();
                 modeloAeronave = null;
+                idAeronave = null;
             }
 
             HBox mainBox = new HBox();
@@ -282,7 +286,7 @@ public class VisualizacaoManutencoesControllerFXML implements Initializable {
 
             Text aeronaveText = null;
             if (modeloAeronave != null)
-                aeronaveText = JavaFXElementBuilder.text(modeloAeronave, 20, FontWeight.BOLD, "#333333");
+                aeronaveText = JavaFXElementBuilder.text(idAeronave + " " + modeloAeronave, 20, FontWeight.BOLD, "#333333");
             
             Text descricaoText = JavaFXElementBuilder.text("Desc.: " + manutencao.getDescricao(), 20, FontWeight.NORMAL, "#333333");
 

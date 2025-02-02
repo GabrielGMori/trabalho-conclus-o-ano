@@ -59,8 +59,8 @@ public class VisualizacaoAeronavesControllerFXML implements Initializable {
     }
 
     @FXML
-    void criar(ActionEvent event) {
-
+    void criar(ActionEvent event) throws IOException {
+        App.setRoot("criarAeronave");
     }
 
     @FXML
@@ -185,8 +185,8 @@ public class VisualizacaoAeronavesControllerFXML implements Initializable {
     }
 
     private void editar(Integer id) throws IOException {
-        // TODO
-        App.setRoot("editarVoo");
+        EditarAeronaveControllerFXML.setIdAeronave(id);
+        App.setRoot("editarAeronave");
     }
 
     private void buildListView(ArrayList<?> aeronaves) {

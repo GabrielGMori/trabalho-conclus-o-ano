@@ -36,6 +36,8 @@ import javafx.scene.text.FontWeight;
 import javafx.scene.text.Text;
 
 public class PassagensControllerFXML implements Initializable {
+    private static Integer idVoo;
+
     private PassagemRepository passagemRepository = PassagemRepository.getInstance();
     private VooRepository vooRepository = VooRepository.getInstance();
     private MetodoPagamentoRepository metodoPagamentoRepository = MetodoPagamentoRepository.getInstance();
@@ -51,31 +53,16 @@ public class PassagensControllerFXML implements Initializable {
     private TextField dataInicioTextField;
 
     @FXML
-    private TextField origemTextField;
-
-    @FXML
-    private TextField destinoTextField11;
-
-    @FXML
     private ListView<HBox> passagensListView;
-
-    @FXML
-    private TextField numeroTextField;
-
-    @FXML
-    private TextField cpfTextField;
 
     @FXML
     private ChoiceBox<String> metodoPagamentoChoiceBox;
 
     @FXML
-    private TextField destinoTextField1;
+    private TextField cpfTextField;
 
     @FXML
     private Text warningText;
-
-    @FXML
-    private TextField destinoTextField;
 
     private ArrayList<TextField> filtros;
     private ArrayList<String> filtrosTipos;
@@ -150,13 +137,14 @@ public class PassagensControllerFXML implements Initializable {
 
         try {
             passagens = passagemRepository.getPassagensFiltro(
-                    (String) params.get(0),
+                    (Integer) params.get(0),
                     (String) params.get(1),
                     (String) params.get(2),
                     (String) params.get(3),
-                    (Integer) params.get(4),
-                    (LocalDateTime) params.get(5),
-                    (LocalDateTime) params.get(6));
+                    (String) params.get(4),
+                    (Integer) params.get(5),
+                    (LocalDateTime) params.get(6),
+                    (LocalDateTime) params.get(7));
         } catch (Exception e) {
             e.printStackTrace();
             naoEncontrado();
@@ -214,7 +202,7 @@ public class PassagensControllerFXML implements Initializable {
             metodoPagamentoChoiceBox.getItems().add(metodo.getMetodo());
         }
 
-        filtros = new ArrayList<>(Arrays.asList(numeroTextField, origemTextField, destinoTextField, cpfTextField, dataInicioTextField, dataFimTextField));
+        filtros = new ArrayList<>(Arrays.asList(cpfTextField, dataInicioTextField, dataFimTextField));
 
         filtrosTipos = new ArrayList<>(Arrays.asList("String", "String", "String", "Cpf", "Date", "Date"));
 
@@ -225,6 +213,14 @@ public class PassagensControllerFXML implements Initializable {
             e.printStackTrace();
             naoEncontrado();
             return;
+        }
+
+        for (int i=0; i<passagens.size(); i++) {
+            Passagem passagem = (Passagem) passagens.get(i);
+            if (passagem.getIdVoo() != idVoo) {
+                passagens.remove(i);
+                i--;
+            }
         }
 
         if (passagens.isEmpty() || passagens == null) {
@@ -326,9 +322,6 @@ public class PassagensControllerFXML implements Initializable {
     }
 
     private ArrayList<?> getFiltros() {
-        String numero = !numeroTextField.getText().trim().isEmpty() ? numeroTextField.getText().trim() : null;
-        String origem = !origemTextField.getText().trim().isEmpty() ? origemTextField.getText().trim() : null;
-        String destino = !destinoTextField.getText().trim().isEmpty() ? destinoTextField.getText().trim() : null;
         String cpf = !StringFormatter.formatNumericData(cpfTextField.getText()).isEmpty() ? StringFormatter.formatNumericData(cpfTextField.getText()) : null;
         String dataInicioText = !dataInicioTextField.getText().trim().isEmpty()
                 ? StringFormatter.formatNumericData(dataInicioTextField.getText())
@@ -363,7 +356,11 @@ public class PassagensControllerFXML implements Initializable {
             idMetodoPagamento = metodoPagamento.getId();
         }
 
-        return new ArrayList<>(Arrays.asList(numero, origem, destino, cpf, idMetodoPagamento, dataInicio, dataFim));
+        return new ArrayList<>(Arrays.asList(null, null, null, cpf, idMetodoPagamento, dataInicio, dataFim));
+    }
+
+    public static void setIdVoo(int id) {
+        idVoo = id;
     }
 
 }

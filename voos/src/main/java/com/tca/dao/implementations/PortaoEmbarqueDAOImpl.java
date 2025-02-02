@@ -35,7 +35,7 @@ public class PortaoEmbarqueDAOImpl implements PortaoEmbarqueDAO {
 
             pstm.setString(1, portaoEmbarque.getCodigo());
             pstm.setBoolean(2, portaoEmbarque.getDisponivel());
-            pstm.setInt(2, portaoEmbarque.getIdAeroporto());
+            pstm.setInt(3, portaoEmbarque.getIdAeroporto());
 
             int ret = pstm.executeUpdate();
 
@@ -169,7 +169,7 @@ public class PortaoEmbarqueDAOImpl implements PortaoEmbarqueDAO {
         PreparedStatement pstm = null;
         try {
             con = fabrica.getConnection();
-            pstm = con.prepareStatement("DELETE FROM Portao_Embarque WHERE id_portaoEmbarque_pk = ?;");
+            pstm = con.prepareStatement("DELETE FROM Portao_Embarque WHERE id_portao_pk = ?;");
 
             pstm.setInt(1, id);
 
@@ -241,8 +241,8 @@ public class PortaoEmbarqueDAOImpl implements PortaoEmbarqueDAO {
             pstm = con.prepareStatement("SELECT verificarPortaoEmbarqueEmUsoFunc(?, ?, ?);");
             
             pstm.setInt(1, id);
-            pstm.setTimestamp(2, Timestamp.valueOf(dataInicial));
-            pstm.setTimestamp(3, Timestamp.valueOf(dataFinal));
+            if (dataInicial == null) pstm.setNull(2, java.sql.Types.NULL); else pstm.setTimestamp(2, Timestamp.valueOf(dataInicial));
+            if (dataFinal == null) pstm.setNull(3, java.sql.Types.NULL); else pstm.setTimestamp(3, Timestamp.valueOf(dataFinal));
 
             ResultSet rs = pstm.executeQuery();
 

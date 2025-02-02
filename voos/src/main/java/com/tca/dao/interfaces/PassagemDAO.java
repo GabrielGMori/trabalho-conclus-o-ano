@@ -13,7 +13,7 @@ public interface PassagemDAO {
 
     Resultado listar() throws SQLException;
 
-    Resultado getPassagensFiltro(String numeroVoo, String origem, String destino, String cpfPassageiro, Integer idMetodoPagamento, LocalDateTime dataInicio, LocalDateTime dataFim) throws SQLException;
+    Resultado getPassagensFiltro(Integer idVoo, String numeroVoo, String origem, String destino, String cpfPassageiro, Integer idMetodoPagamento, LocalDateTime dataInicio, LocalDateTime dataFim) throws SQLException;
 
     Resultado realizarCheckIn(Integer id) throws SQLException;
 

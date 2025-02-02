@@ -49,8 +49,8 @@ public class PassagemRepository {
         return null;
     }
 
-    public ArrayList<?> getPassagensFiltro(String numeroVoo, String origem, String destino, String cpfPassageiro, Integer idMetodoPagamento, LocalDateTime dataInicio, LocalDateTime dataFim) throws SQLException {
-        Resultado resultado = dao.getPassagensFiltro(numeroVoo, origem, destino, cpfPassageiro, idMetodoPagamento, dataInicio, dataFim);
+    public ArrayList<?> getPassagensFiltro(Integer idVoo, String numeroVoo, String origem, String destino, String cpfPassageiro, Integer idMetodoPagamento, LocalDateTime dataInicio, LocalDateTime dataFim) throws SQLException {
+        Resultado resultado = dao.getPassagensFiltro(idVoo, numeroVoo, origem, destino, cpfPassageiro, idMetodoPagamento, dataInicio, dataFim);
         if (resultado.foiSucesso()) {
             ArrayList<?> passagens = (ArrayList<?>) resultado.comoSucesso().getObj();
             if (!(passagens.stream().allMatch(element -> element instanceof Passagem))) {

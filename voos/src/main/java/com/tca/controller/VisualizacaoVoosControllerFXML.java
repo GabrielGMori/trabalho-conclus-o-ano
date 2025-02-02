@@ -26,12 +26,14 @@ import javafx.fxml.FXML;
 import javafx.fxml.Initializable;
 import javafx.geometry.Insets;
 import javafx.geometry.Pos;
+import javafx.scene.control.Button;
 import javafx.scene.control.ChoiceBox;
 import javafx.scene.control.ListView;
 import javafx.scene.control.TextField;
 import javafx.scene.layout.HBox;
 import javafx.scene.layout.Pane;
 import javafx.scene.layout.VBox;
+import javafx.scene.text.Font;
 import javafx.scene.text.FontWeight;
 import javafx.scene.text.Text;
 
@@ -101,8 +103,8 @@ public class VisualizacaoVoosControllerFXML implements Initializable {
     }
 
     @FXML
-    void criar(ActionEvent event) {
-        // TODO
+    void criar(ActionEvent event) throws IOException {
+        App.setRoot("criarVoo");
     }
 
     @FXML
@@ -263,7 +265,7 @@ public class VisualizacaoVoosControllerFXML implements Initializable {
     }
 
     private void editar(Integer id) throws IOException {
-        // TODO
+        EditarVooControllerFXML.setIdVoo(id);
         App.setRoot("editarVoo");
     }
 
@@ -310,6 +312,10 @@ public class VisualizacaoVoosControllerFXML implements Initializable {
             embarqueDesembarqueVBox.setSpacing(10);
             embarqueDesembarqueVBox.setAlignment(Pos.CENTER);
 
+            VBox statusPassagensVBox = new VBox();
+            statusPassagensVBox.setSpacing(10);
+            statusPassagensVBox.setAlignment(Pos.CENTER);
+
             Text numeroText = JavaFXElementBuilder.text("Num.: " + voo.getNumero(), 20, FontWeight.BOLD, "#333333");
             Text companhiaText = null;
             if (nomeCompanhia != null)
@@ -327,15 +333,32 @@ public class VisualizacaoVoosControllerFXML implements Initializable {
 
             Text statusText = JavaFXElementBuilder.text(voo.getStatus(), 20, FontWeight.BOLD, "#333333");
 
+            Button verPassagensButton = new Button("Passagens");
+            verPassagensButton.setFont(Font.font("Yu Gothic", FontWeight.BOLD, 20));
+            verPassagensButton.setStyle("-fx-text-fill: #f1ffe7; -fx-background-color: #3FC2FF;");
+            verPassagensButton.setOnAction(event -> {
+                try {
+                    verPassagens(voo.getId());
+                } catch (IOException e) {
+                    e.printStackTrace();
+                }
+            });
+
             numeroCompanhiaVBox.getChildren().add(numeroText);
             if (companhiaText != null)
                 numeroCompanhiaVBox.getChildren().add(companhiaText);
             origemDestinoVBox.getChildren().addAll(origemText, destinoText);
             embarqueDesembarqueVBox.getChildren().addAll(embarqueText, desembarqueText);
+            statusPassagensVBox.getChildren().addAll(statusText, verPassagensButton);
 
-            mainBox.getChildren().addAll(numeroCompanhiaVBox, origemDestinoVBox, embarqueDesembarqueVBox, statusText);
+            mainBox.getChildren().addAll(numeroCompanhiaVBox, origemDestinoVBox, embarqueDesembarqueVBox, statusPassagensVBox);
             voosListView.getItems().add(mainBox);
         }
+    }
+
+    private void verPassagens(Integer idVoo) throws IOException {
+        PassagensControllerFXML.setIdVoo(idVoo);
+        App.setRoot("passagens");
     }
 
     private ArrayList<?> getFiltros() {

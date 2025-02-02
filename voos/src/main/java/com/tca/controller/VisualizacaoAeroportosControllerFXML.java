@@ -53,8 +53,8 @@ public class VisualizacaoAeroportosControllerFXML implements Initializable {
     }
 
     @FXML
-    void criar(ActionEvent event) {
-
+    void criar(ActionEvent event) throws IOException {
+        App.setRoot("criarAeroporto");
     }
 
     @FXML
@@ -178,8 +178,8 @@ public class VisualizacaoAeroportosControllerFXML implements Initializable {
     }
 
     private void editar(Integer id) throws IOException {
-        // TODO
-        App.setRoot("editarVoo");
+        EditarAeroportoControllerFXML.setIdAeroporto(id);
+        App.setRoot("editarAeroporto");
     }
 
     private void buildListView(ArrayList<?> aeroportos) {

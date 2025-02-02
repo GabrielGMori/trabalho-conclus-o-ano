@@ -93,48 +93,6 @@
                         <Insets bottom="20.0" />
                      </VBox.margin>
                   </Text>
-                  <HBox alignment="CENTER" prefHeight="52.0" prefWidth="812.0" spacing="20.0">
-                     <children>
-                        <Text fill="#f1ffe7" strokeType="OUTSIDE" strokeWidth="0.0" text="Número voo:" textAlignment="RIGHT" wrappingWidth="152.13671875">
-                           <font>
-                              <Font name="Yu Gothic Regular" size="25.0" />
-                           </font>
-                        </Text>
-                        <TextField fx:id="numeroTextField" prefHeight="39.0" prefWidth="450.0" style="-fx-background-color: F1FFE7;">
-                           <font>
-                              <Font name="Yu Gothic Regular" size="20.0" />
-                           </font>
-                        </TextField>
-                     </children>
-                  </HBox>
-                  <HBox alignment="CENTER" prefHeight="52.0" prefWidth="812.0" spacing="20.0">
-                     <children>
-                        <Text fill="#f1ffe7" strokeType="OUTSIDE" strokeWidth="0.0" text="Origem:" textAlignment="RIGHT" wrappingWidth="95.13671875">
-                           <font>
-                              <Font name="Yu Gothic Regular" size="25.0" />
-                           </font>
-                        </Text>
-                        <TextField fx:id="origemTextField" prefHeight="39.0" prefWidth="450.0" style="-fx-background-color: F1FFE7;">
-                           <font>
-                              <Font name="Yu Gothic Regular" size="20.0" />
-                           </font>
-                        </TextField>
-                     </children>
-                  </HBox>
-                  <HBox alignment="CENTER" prefHeight="52.0" prefWidth="953.0" spacing="20.0">
-                     <children>
-                        <Text fill="#f1ffe7" strokeType="OUTSIDE" strokeWidth="0.0" text="Destino:" textAlignment="RIGHT" wrappingWidth="100.13671875">
-                           <font>
-                              <Font name="Yu Gothic Regular" size="25.0" />
-                           </font>
-                        </Text>
-                        <TextField fx:id="destinoTextField" prefHeight="39.0" prefWidth="450.0" style="-fx-background-color: F1FFE7;">
-                           <font>
-                              <Font name="Yu Gothic Regular" size="20.0" />
-                           </font>
-                        </TextField>
-                     </children>
-                  </HBox>
                   <HBox alignment="CENTER" prefHeight="52.0" prefWidth="953.0" spacing="20.0">
                      <children>
                         <Text fill="#f1ffe7" strokeType="OUTSIDE" strokeWidth="0.0" text="CPF do passageiro:" textAlignment="RIGHT" wrappingWidth="238.13671875">

@@ -136,16 +136,17 @@ public class PassagemDAOImpl implements PassagemDAO {
     }
 
     @Override
-    public Resultado getPassagensFiltro(String numeroVooFiltro, String origemFiltro, String destinoFiltro, String cpfPassageiroFiltro, Integer idMetodoPagamentoFiltro, LocalDateTime dataInicioFiltro, LocalDateTime dataFimFiltro) throws SQLException {
+    public Resultado getPassagensFiltro(Integer idVooFiltro, String numeroVooFiltro, String origemFiltro, String destinoFiltro, String cpfPassageiroFiltro, Integer idMetodoPagamentoFiltro, LocalDateTime dataInicioFiltro, LocalDateTime dataFimFiltro) throws SQLException {
         Connection con = null;
         PreparedStatement pstm = null;
         try {
             con = fabrica.getConnection();
             pstm = con.prepareStatement(
-                    "SELECT * FROM Passagem passagem JOIN Voo voo ON passagem.id_voo_passagem_fk = voo.id_voo_pk WHERE (? IS NULL OR voo.numero_voo = ?)  AND (? IS NULL OR voo.origem_voo = ?) AND (? IS NULL OR voo.destino_voo = ?) AND (? IS NULL OR cpf_passageiro_passagem_fk = ?) AND (? IS NULL OR id_metodo_pagamento_passagem_fk = ?) AND (? IS NULL OR data_compra_passagem >= ?) AND (? IS NULL OR data_compra_passagem <= ?);");
+                    "SELECT * FROM Passagem passagem JOIN Voo voo ON passagem.id_voo_passagem_fk = voo.id_voo_pk WHERE (? IS NULL OR id_voo_passagem_fk = ?) AND (? IS NULL OR voo.numero_voo = ?)  AND (? IS NULL OR voo.origem_voo = ?) AND (? IS NULL OR voo.destino_voo = ?) AND (? IS NULL OR cpf_passageiro_passagem_fk = ?) AND (? IS NULL OR id_metodo_pagamento_passagem_fk = ?) AND (? IS NULL OR data_compra_passagem >= ?) AND (? IS NULL OR data_compra_passagem <= ?);");
             
             int i = 1;
             int j = i;
+            for (j+=2; i<j; i++)  {if (idVooFiltro == null) pstm.setNull(i, java.sql.Types.NULL); else pstm.setInt(i, idVooFiltro); } 
             for (j+=2; i<j; i++)  {if (numeroVooFiltro == null) pstm.setNull(i, java.sql.Types.NULL); else pstm.setString(i, numeroVooFiltro); } 
             for (j+=2; i<j; i++)  {if (origemFiltro == null) pstm.setNull(i, java.sql.Types.NULL); else pstm.setString(i, origemFiltro); }
             for (j+=2; i<j; i++)  {if (destinoFiltro == null) pstm.setNull(i, java.sql.Types.NULL); else pstm.setString(i, destinoFiltro); }

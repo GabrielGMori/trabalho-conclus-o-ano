@@ -33,7 +33,7 @@ END$$
 
 
 DROP FUNCTION IF EXISTS verificarPortaoEmbarqueEmUsoFunc$$
-CREATE FUNCTION verificarPortaoEmbarqueEmUsoFunc(id_portao INT, data_inicial DATETIME, data_final DATETIME) 
+CREATE FUNCTION verificarPortaoEmbarqueEmUsoFunc(id_portao INT, data_inicial DATETIME DEFAULT NULL, data_final DATETIME DEFAULT NULL) 
 RETURNS BOOLEAN
 BEGIN
     DECLARE voos INT;
@@ -46,7 +46,7 @@ BEGIN
     SELECT COUNT(*)
     INTO voos
     FROM Voo
-    WHERE id_portao_embarque_voo_fk = id_portao AND horario_embarque_voo <= data_final AND horario_desembarque_voo >= data_inicial
+    WHERE id_portao_embarque_voo_fk = id_portao AND (data_final IS NULL OR horario_embarque_voo <= data_final) AND (data_inicial IS NULL OR horario_desembarque_voo >= data_inicial)
     AND NOT (status_voo = "Cancelado" OR status_voo = "Finalizado");
 
     IF voos = 0 THEN

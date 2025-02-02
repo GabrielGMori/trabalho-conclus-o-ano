@@ -102,13 +102,14 @@ public class PassagensCompradasControllerFXML implements Initializable {
 
         try {
             passagens = passagemRepository.getPassagensFiltro(
-                    (String) params.get(0),
+                    (Integer) params.get(0),
                     (String) params.get(1),
                     (String) params.get(2),
                     (String) params.get(3),
-                    (Integer) params.get(4),
-                    (LocalDateTime) params.get(5),
-                    (LocalDateTime) params.get(6));
+                    (String) params.get(4),
+                    (Integer) params.get(5),
+                    (LocalDateTime) params.get(6),
+                    (LocalDateTime) params.get(7));
         } catch (Exception e) {
             e.printStackTrace();
             naoEncontrado();
@@ -149,7 +150,7 @@ public class PassagensCompradasControllerFXML implements Initializable {
 
         ArrayList<?> passagens;
         try {
-            passagens = passagemRepository.getPassagensFiltro(null, null, null, App.getPassageiroLogado().getCpf(), null, null, null);
+            passagens = passagemRepository.getPassagensFiltro(null, null, null, null, App.getPassageiroLogado().getCpf(), null, null, null);
         } catch (Exception e) {
             e.printStackTrace();
             naoEncontrado();
@@ -298,7 +299,7 @@ public class PassagensCompradasControllerFXML implements Initializable {
             dataFim = null;
         }
 
-        return new ArrayList<>(Arrays.asList(numero, origem, destino, App.getPassageiroLogado().getCpf(), null, dataInicio, dataFim));
+        return new ArrayList<>(Arrays.asList(null, numero, origem, destino, App.getPassageiroLogado().getCpf(), null, dataInicio, dataFim));
     }
 
 }

@@ -54,7 +54,7 @@ public class VisualizacaoAdministradoresControllerFXML implements Initializable 
 
     @FXML
     void criar(ActionEvent event) throws IOException {
-        // Add your logic here
+        App.setRoot("criarAdministrador");
     }
 
     @FXML
@@ -173,7 +173,7 @@ public class VisualizacaoAdministradoresControllerFXML implements Initializable 
             @Override
             public void changed(ObservableValue<? extends HBox> arg0, HBox arg1, HBox arg2) {
                 try {
-                    editar(Integer.valueOf(administradoresListView.getSelectionModel().getSelectedItem().getId()));
+                    editar(administradoresListView.getSelectionModel().getSelectedItem().getId());
                 } catch (Exception e) {
                     e.printStackTrace();
                 }
@@ -196,9 +196,9 @@ public class VisualizacaoAdministradoresControllerFXML implements Initializable 
         return;
     }
 
-    private void editar(Integer id) throws IOException {
-        // TODO
-        App.setRoot("editarVoo");
+    private void editar(String cpf) throws IOException {
+        EditarAdministradorControllerFXML.setCpfAdministrador(cpf);
+        App.setRoot("editarAdministrador");
     }
 
     private void buildListView(ArrayList<?> administradores) {
