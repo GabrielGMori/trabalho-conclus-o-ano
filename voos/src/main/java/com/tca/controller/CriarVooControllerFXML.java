@@ -132,10 +132,14 @@ public class CriarVooControllerFXML implements Initializable {
         }
 
         aeroportoEmbarqueChoiceBox.getSelectionModel().selectedItemProperty().addListener((observable, oldValue, newValue) -> {
+            warningText.setText("");
             portaoChoiceBox.getItems().clear();
             try {
                 Aeroporto aeroporto = (Aeroporto) aeroportos.get(aeroportoEmbarqueChoiceBox.getSelectionModel().getSelectedIndex());
                 portoes = portaoEmbarqueRepository.getPortoesEmbarqueFiltro(null, null, aeroporto.getId());
+                if (portoes.isEmpty()) {
+                    warningText.setText("O aeroporto selecionado não possui nenhum portão de embarque cadastrado no sistema");
+                }
             } catch (Exception e) {
                 e.printStackTrace();
                 warningText.setText("Um erro ocorreu, não foi possível carregar os potões de embarque");
