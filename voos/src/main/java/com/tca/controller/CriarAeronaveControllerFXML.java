@@ -66,7 +66,7 @@ public class CriarAeronaveControllerFXML implements Initializable {
         try {
             companhias = companhiaAereaRepository.listar();
             if (companhias.isEmpty()) {
-                warningText.setText("Não será possível criar uma aeronave pois nenhuma companhia está registrado no sistema");
+                warningText.setText("Não será possível criar uma aeronave pois nenhuma companhia está registrada no sistema");
             }
         } catch (Exception e) {
             e.printStackTrace();
