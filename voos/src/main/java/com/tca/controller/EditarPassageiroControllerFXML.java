@@ -84,7 +84,7 @@ public class EditarPassageiroControllerFXML implements Initializable {
     @FXML
     void confirmar(ActionEvent event) throws IOException {
         warningText.setText("");
-        if (verificarCamposVazios() == false && validarDados() == true) {
+        if (verificarCamposVazios() == false && validarDados() == true && cpfEmailEmUso() == false) {
             try {
                 Resultado result = passageiroRepository.atualizar(cpfPassageiro, getPassageiro());
                 if (result.foiErro()) {
@@ -149,6 +149,27 @@ public class EditarPassageiroControllerFXML implements Initializable {
             return false;
         }
         return true;
+    }
+
+    private Boolean cpfEmailEmUso() {
+        Passageiro passageiro = getPassageiro();
+        try {
+            ArrayList<?> passageirosEmail = passageiroRepository.getPassageirosFiltro(null, passageiro.getEmail(), null, null, null, null);
+            ArrayList<?> passageirosCPf = passageiroRepository.getPassageirosFiltro(passageiro.getCpf(), null, null, null, null, null);
+            if (!passageirosEmail.isEmpty()) {
+                warningText.setText("E-mail já registrado");
+                return true;
+            }
+            if (!passageirosCPf.isEmpty()) {
+                warningText.setText("CPF já registrado");
+                return true;
+            }
+            return false;
+        } catch (Exception e) {
+            e.printStackTrace();
+            warningText.setText("Algo deu errado, tente novamente");
+            return true;
+        }
     }
 
     private void carregarDados() {

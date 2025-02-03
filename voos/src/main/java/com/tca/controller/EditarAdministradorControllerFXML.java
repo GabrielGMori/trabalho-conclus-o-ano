@@ -2,6 +2,7 @@ package com.tca.controller;
 
 import java.io.IOException;
 import java.net.URL;
+import java.util.ArrayList;
 import java.util.ResourceBundle;
 
 import com.github.hugoperlin.results.Resultado;
@@ -73,7 +74,7 @@ public class EditarAdministradorControllerFXML implements Initializable {
     @FXML
     void confirmar(ActionEvent event) throws IOException {
         warningText.setText("");
-        if (verificarCamposVazios() == false && validarDados() == true) {
+        if (verificarCamposVazios() == false && validarDados() == true && cpfEmUso() == false) {
             try {
                 Resultado result = administradorRepository.atualizar(cpfAdministrador, getAdministrador());
                 if (result.foiErro()) {
@@ -124,6 +125,22 @@ public class EditarAdministradorControllerFXML implements Initializable {
             return false;
         }
         return true;
+    }
+
+    private Boolean cpfEmUso() {
+        Administrador administrador = getAdministrador();
+        try {
+            ArrayList<?> administradores = administradorRepository.getAdministradoresFiltro(administrador.getCpf(), null);
+            if (!administradores.isEmpty()) {
+                warningText.setText("CPF já registrado");
+                return true;
+            }
+            return false;
+        } catch (Exception e) {
+            e.printStackTrace();
+            warningText.setText("Algo deu errado, tente novamente");
+            return true;
+        }
     }
 
     private void carregarDados() {
