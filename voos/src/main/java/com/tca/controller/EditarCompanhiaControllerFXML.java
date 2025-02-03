@@ -107,7 +107,7 @@ public class EditarCompanhiaControllerFXML implements Initializable {
     }
 
     private Boolean validarDados() {
-        if (!StringFormatter.formatNumericData(codigoIcaoTextField.getText()).matches("[A-Z]{1,4}")) {
+        if (StringFormatter.formatNumericData(codigoIcaoTextField.getText()).length() > 4) {
             warningText.setText("O código ICAO deve ter no máximo 4 caracteres");
             return false;
         }
