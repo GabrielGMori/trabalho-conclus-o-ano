@@ -189,7 +189,7 @@ public class VisualizacaoManutencoesControllerFXML implements Initializable {
                 }
                 if (filtrosTipos.get(i).equals("Time")) {
                     String text = StringFormatter.formatNumericData(filtros.get(i).getText());
-                    if (!text.matches("\\d{4}")) {
+                    if (!text.matches("\\d{3,4}")) {
                         return false;
                     }
                 }
@@ -360,34 +360,33 @@ public class VisualizacaoManutencoesControllerFXML implements Initializable {
         LocalDateTime inicioFim;
         LocalDateTime fimInicio;
         LocalDateTime fimFim;
+        if (horarioInicioInicio != null && horarioInicioInicio.length() == 3) horarioInicioInicio = "0" + horarioInicioInicio;
         try {
-            inicioInicio = dataInicioInicio != null
-            ? LocalDateTime.parse(dataInicioInicio + horarioInicioInicio, DateTimeFormatter.ofPattern("ddMMyyyyHHmm"))
-            : null;
+            inicioInicio = dataInicioInicio != null ? LocalDateTime.parse(dataInicioInicio + horarioInicioInicio, DateTimeFormatter.ofPattern("ddMMyyyyHHmm")) : null;
         } catch(Exception e) {
             e.printStackTrace();
             inicioInicio = null;
         }
+
+        if (horarioInicioFim != null && horarioInicioFim.length() == 3) horarioInicioFim = "0" + horarioInicioFim;
         try {
-            inicioFim = dataInicioFim != null
-            ? LocalDateTime.parse(dataInicioFim + horarioInicioFim, DateTimeFormatter.ofPattern("ddMMyyyyHHmm"))
-            : null;
+            inicioFim = dataInicioFim != null ? LocalDateTime.parse(dataInicioFim + horarioInicioFim, DateTimeFormatter.ofPattern("ddMMyyyyHHmm")) : null;
         } catch(Exception e) {
             e.printStackTrace();
             inicioFim = null;
         }
+
+        if (horarioFimInicio != null && horarioFimInicio.length() == 3) horarioFimInicio = "0" + horarioFimInicio;
         try {
-            fimInicio = dataFimInicio != null
-            ? LocalDateTime.parse(dataFimInicio + horarioFimInicio, DateTimeFormatter.ofPattern("ddMMyyyyHHmm"))
-            : null;
+            fimInicio = dataFimInicio != null ? LocalDateTime.parse(dataFimInicio + horarioFimInicio, DateTimeFormatter.ofPattern("ddMMyyyyHHmm")) : null;
         } catch(Exception e) {
             e.printStackTrace();
             fimInicio = null;
         }
+
+        if (horarioFimFim != null && horarioFimFim.length() == 3) horarioFimFim = "0" + horarioFimFim;
         try {
-            fimFim = dataFimFim != null
-            ? LocalDateTime.parse(dataFimFim + horarioFimFim, DateTimeFormatter.ofPattern("ddMMyyyyHHmm"))
-            : null;
+            fimFim = dataFimFim != null ? LocalDateTime.parse(dataFimFim + horarioFimFim, DateTimeFormatter.ofPattern("ddMMyyyyHHmm")) : null;
         } catch(Exception e) {
             e.printStackTrace();
             fimFim = null;

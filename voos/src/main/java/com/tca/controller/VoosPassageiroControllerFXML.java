@@ -168,7 +168,7 @@ public class VoosPassageiroControllerFXML implements Initializable {
                 }
                 if (filtrosTipos.get(i).equals("Time")) {
                     String text = StringFormatter.formatNumericData(filtros.get(i).getText());
-                    if (!text.matches("\\d{4}")) {
+                    if (!text.matches("\\d{3,4}")) {
                         return false;
                     }
                 }
@@ -381,6 +381,7 @@ public class VoosPassageiroControllerFXML implements Initializable {
         LocalDateTime embarqueFim;
         LocalDateTime desembarqueInicio;
         LocalDateTime desembarqueFim;
+        if (horarioEmbarqueInicio != null && horarioEmbarqueInicio.length() == 3) horarioEmbarqueInicio = "0" + horarioEmbarqueInicio;
         try {
             embarqueInicio = dataEmbarqueInicio != null
             ? LocalDateTime.parse(dataEmbarqueInicio + horarioEmbarqueInicio, DateTimeFormatter.ofPattern("ddMMyyyyHHmm"))
@@ -389,6 +390,8 @@ public class VoosPassageiroControllerFXML implements Initializable {
             e.printStackTrace();
             embarqueInicio = null;
         }
+
+        if (horarioEmbarqueFim != null && horarioEmbarqueFim.length() == 3) horarioEmbarqueFim = "0" + horarioEmbarqueFim;
         try {
             embarqueFim = dataEmbarqueFim != null
             ? LocalDateTime.parse(dataEmbarqueFim + horarioEmbarqueFim, DateTimeFormatter.ofPattern("ddMMyyyyHHmm"))
@@ -397,6 +400,8 @@ public class VoosPassageiroControllerFXML implements Initializable {
             e.printStackTrace();
             embarqueFim = null;
         }
+
+        if (horarioDesembarqueInicio != null && horarioDesembarqueInicio.length() == 3) horarioDesembarqueInicio = "0" + horarioDesembarqueInicio;
         try {
             desembarqueInicio = dataDesembarqueInicio != null
             ? LocalDateTime.parse(dataDesembarqueInicio + horarioDesembarqueInicio, DateTimeFormatter.ofPattern("ddMMyyyyHHmm"))
@@ -405,6 +410,8 @@ public class VoosPassageiroControllerFXML implements Initializable {
             e.printStackTrace();
             desembarqueInicio = null;
         }
+
+        if (horarioDesembarqueFim != null && horarioDesembarqueFim.length() == 3) horarioDesembarqueFim = "0" + horarioDesembarqueFim;
         try {
             desembarqueFim = dataDesembarqueFim != null
             ? LocalDateTime.parse(dataDesembarqueFim + horarioDesembarqueFim, DateTimeFormatter.ofPattern("ddMMyyyyHHmm"))

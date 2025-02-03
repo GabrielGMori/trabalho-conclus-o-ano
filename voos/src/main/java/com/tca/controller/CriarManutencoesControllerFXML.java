@@ -83,7 +83,7 @@ public class CriarManutencoesControllerFXML implements Initializable {
         try {
             aeronaves = aeronaveRepository.listar();
             if (aeronaves.isEmpty()) {
-                warningText.setText("Não será possível criar um voo pois nenhuma aeronave está registrado no sistema");
+                warningText.setText("Não será possível criar uma manutenção pois nenhuma aeronave está registrada no sistema");
             }
         } catch (Exception e) {
             e.printStackTrace();
