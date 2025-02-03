@@ -140,7 +140,7 @@ public class VisualizacaoCompanhiasControllerFXML implements Initializable {
             if (!filtros.get(i).getText().trim().isEmpty()) {
                 if (filtrosTipos.get(i).equals("Icao")) {
                     String text = filtros.get(i).getText().trim();
-                    if (!text.matches("[A-Z]{1,4}")) {
+                    if (text.length() > 4) {
                         return false;
                     }
                 }
