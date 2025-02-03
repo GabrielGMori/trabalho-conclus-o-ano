@@ -49,7 +49,27 @@ CREATE TRIGGER aeronaveManutencaoTrigInsert
 BEFORE INSERT ON Manutencao
 FOR EACH ROW
 BEGIN
-    IF verificarDisponibilidadeAeronaveFunc(NEW.id_aeronave_manutencao_fk, NEW.data_inicio_manutencao, NEW.data_fim_manutencao) = FALSE THEN
+    DECLARE manutencoes INT;
+    DECLARE voos INT;
+
+    IF (NEW.data_inicio_manutencao > NEW.data_fim_manutencao) THEN
+        SIGNAL SQLSTATE '45000'
+        SET MESSAGE_TEXT = 'Data inicial do intervalo é maior do que a data final do intervalo';
+    END IF;
+
+    SELECT COUNT(*)
+    INTO manutencoes
+    FROM Manutencao
+    WHERE id_aeronave_manutencao_fk = NEW.id_aeronave_manutencao_fk AND data_inicio_manutencao <= NEW.data_fim_manutencao AND data_fim_manutencao >= NEW.data_inicio_manutencao 
+    AND NOT (status_manutencao = "Cancelada" OR status_manutencao = "Finalizada") AND NOT id_manutencao_pk = NEW.id_manutencao_pk;
+
+    SELECT COUNT(*)
+    INTO voos
+    FROM Voo
+    WHERE id_aeronave_voo_fk = NEW.id_aeronave_manutencao_fk AND horario_embarque_voo <= NEW.data_fim_manutencao AND horario_desembarque_voo >= NEW.data_inicio_manutencao 
+    AND NOT (status_voo = "Cancelado" OR status_voo = "Finalizado");
+
+    IF manutencoes > 0 OR voos > 0 THEN
         SIGNAL SQLSTATE '45000'
         SET MESSAGE_TEXT = 'Aeronave não disponível durante o período da manutenção';
     END IF;
@@ -61,7 +81,27 @@ CREATE TRIGGER aeronaveVooTrigInsert
 BEFORE INSERT ON Voo
 FOR EACH ROW
 BEGIN
-    IF verificarDisponibilidadeAeronaveFunc(NEW.id_aeronave_voo_fk, NEW.horario_embarque_voo, NEW.horario_desembarque_voo) = FALSE THEN
+    DECLARE manutencoes INT;
+    DECLARE voos INT;
+
+    IF (NEW.horario_embarque_voo > NEW.horario_desembarque_voo) THEN
+        SIGNAL SQLSTATE '45000'
+        SET MESSAGE_TEXT = 'Data inicial do intervalo é maior do que a data final do intervalo';
+    END IF;
+
+    SELECT COUNT(*)
+    INTO manutencoes
+    FROM Manutencao
+    WHERE id_aeronave_manutencao_fk = NEW.id_aeronave_voo_fk AND data_inicio_manutencao <= NEW.horario_desembarque_voo AND data_fim_manutencao >= NEW.horario_embarque_voo 
+    AND NOT (status_manutencao = "Cancelada" OR status_manutencao = "Finalizada");
+
+    SELECT COUNT(*)
+    INTO voos
+    FROM Voo
+    WHERE id_aeronave_voo_fk = NEW.id_aeronave_voo_fk AND horario_embarque_voo <= NEW.horario_desembarque_voo AND horario_desembarque_voo >= NEW.horario_embarque_voo 
+    AND NOT (status_voo = "Cancelado" OR status_voo = "Finalizado") AND NOT id_voo_pk = NEW.id_voo_pk;
+
+    IF manutencoes > 0 OR voos > 0 THEN
         SIGNAL SQLSTATE '45000'
         SET MESSAGE_TEXT = 'Aeronave não disponível durante o período do voo';
     END IF;
@@ -92,14 +132,26 @@ CREATE TRIGGER portaoVooTrigInsert
 BEFORE INSERT ON Voo
 FOR EACH ROW
 BEGIN
+    DECLARE voos INT;
     DECLARE portao_disponivel BOOLEAN;
+
+    IF (NEW.horario_embarque_voo > NEW.horario_desembarque_voo) THEN
+        SIGNAL SQLSTATE '45000'
+        SET MESSAGE_TEXT = 'Data inicial do intervalo é maior do que a data final do intervalo';
+    END IF;
+
+    SELECT COUNT(*)
+    INTO voos
+    FROM Voo
+    WHERE id_portao_embarque_voo_fk = NEW.id_portao_embarque_voo_fk AND (NEW.horario_desembarque_voo IS NULL OR horario_embarque_voo <= NEW.horario_desembarque_voo) AND (NEW.horario_embarque_voo IS NULL OR horario_desembarque_voo >= NEW.horario_embarque_voo)
+    AND NOT (status_voo = "Cancelado" OR status_voo = "Finalizado");
 
     SELECT disponivel_portao
     INTO portao_disponivel
     FROM Portao_Embarque
     WHERE id_portao_pk = NEW.id_portao_embarque_voo_fk;
 
-    IF verificarPortaoEmbarqueEmUsoFunc(NEW.id_portao_embarque_voo_fk, NEW.horario_embarque_voo, NEW.horario_desembarque_voo) = TRUE OR portao_disponivel = FALSE THEN
+    IF voos > 0 OR portao_disponivel = FALSE THEN
         SIGNAL SQLSTATE '45000'
         SET MESSAGE_TEXT = 'Portão de embarque não disponível durante o período do voo';
     END IF;
@@ -197,23 +249,58 @@ CREATE TRIGGER aeronaveManutencaoTrigUpdate
 BEFORE UPDATE ON Manutencao
 FOR EACH ROW
 BEGIN
-    IF (NOT NEW.id_aeronave_manutencao_fk = OLD.id_aeronave_manutencao_fk OR NOT NEW.data_inicio_manutencao = OLD.data_inicio_manutencao OR NOT NEW.data_fim_manutencao = OLD.data_fim_manutencao
-    OR (NOT NEW.status_manutencao = OLD.status_manutencao AND NOT (NEW.status_manutencao = "Cancelada" OR NEW.status_manutencao = "Finalizada")))
-    AND verificarDisponibilidadeAeronaveFunc(NEW.id_aeronave_manutencao_fk, NEW.data_inicio_manutencao, NEW.data_fim_manutencao) = FALSE THEN
+    DECLARE manutencoes INT;
+    DECLARE voos INT;
+
+    IF (NEW.data_inicio_manutencao > NEW.data_fim_manutencao) THEN
+        SIGNAL SQLSTATE '45000'
+        SET MESSAGE_TEXT = 'Data inicial do intervalo é maior do que a data final do intervalo';
+    END IF;
+
+    SELECT COUNT(*)
+    INTO manutencoes
+    FROM Manutencao
+    WHERE id_aeronave_manutencao_fk = NEW.id_aeronave_manutencao_fk AND data_inicio_manutencao <= NEW.data_fim_manutencao AND data_fim_manutencao >= NEW.data_inicio_manutencao 
+    AND NOT (status_manutencao = "Cancelada" OR status_manutencao = "Finalizada") AND NOT id_manutencao_pk = NEW.id_manutencao_pk;
+
+    SELECT COUNT(*)
+    INTO voos
+    FROM Voo
+    WHERE id_aeronave_voo_fk = NEW.id_aeronave_manutencao_fk AND horario_embarque_voo <= NEW.data_fim_manutencao AND horario_desembarque_voo >= NEW.data_inicio_manutencao 
+    AND NOT (status_voo = "Cancelado" OR status_voo = "Finalizado");
+
+    IF manutencoes > 0 OR voos > 0 THEN
         SIGNAL SQLSTATE '45000'
         SET MESSAGE_TEXT = 'Aeronave não disponível durante o período da manutenção';
     END IF;
 END$$
-
 
 DROP TRIGGER IF EXISTS aeronaveVooTrigUpdate$$
 CREATE TRIGGER aeronaveVooTrigUpdate
 BEFORE UPDATE ON Voo
 FOR EACH ROW
 BEGIN
-    IF (NOT NEW.id_aeronave_voo_fk = OLD.id_aeronave_voo_fk OR NOT NEW.horario_embarque_voo = OLD.horario_embarque_voo OR NOT NEW.horario_desembarque_voo = OLD.horario_desembarque_voo 
-    OR (NOT NEW.status_voo = OLD.status_voo AND NOT (NEW.status_voo = "Cancelado" OR NEW.status_voo = "Finalizado")))
-    AND verificarDisponibilidadeAeronaveFunc(NEW.id_aeronave_voo_fk, NEW.horario_embarque_voo, NEW.horario_desembarque_voo) = FALSE THEN
+    DECLARE manutencoes INT;
+    DECLARE voos INT;
+
+    IF (NEW.horario_embarque_voo > NEW.horario_desembarque_voo) THEN
+        SIGNAL SQLSTATE '45000'
+        SET MESSAGE_TEXT = 'Data inicial do intervalo é maior do que a data final do intervalo';
+    END IF;
+
+    SELECT COUNT(*)
+    INTO manutencoes
+    FROM Manutencao
+    WHERE id_aeronave_manutencao_fk = NEW.id_aeronave_voo_fk AND data_inicio_manutencao <= NEW.horario_desembarque_voo AND data_fim_manutencao >= NEW.horario_embarque_voo 
+    AND NOT (status_manutencao = "Cancelada" OR status_manutencao = "Finalizada");
+
+    SELECT COUNT(*)
+    INTO voos
+    FROM Voo
+    WHERE id_aeronave_voo_fk = NEW.id_aeronave_voo_fk AND horario_embarque_voo <= NEW.horario_desembarque_voo AND horario_desembarque_voo >= NEW.horario_embarque_voo 
+    AND NOT (status_voo = "Cancelado" OR status_voo = "Finalizado") AND NOT id_voo_pk = NEW.id_voo_pk;
+
+    IF manutencoes > 0 OR voos > 0 THEN
         SIGNAL SQLSTATE '45000'
         SET MESSAGE_TEXT = 'Aeronave não disponível durante o período do voo';
     END IF;
@@ -244,16 +331,26 @@ CREATE TRIGGER portaoVooTrigUpdate
 BEFORE UPDATE ON Voo
 FOR EACH ROW
 BEGIN
+    DECLARE voos INT;
     DECLARE portao_disponivel BOOLEAN;
+
+    IF (NEW.horario_embarque_voo > NEW.horario_desembarque_voo) THEN
+        SIGNAL SQLSTATE '45000'
+        SET MESSAGE_TEXT = 'Data inicial do intervalo é maior do que a data final do intervalo';
+    END IF;
+
+    SELECT COUNT(*)
+    INTO voos
+    FROM Voo
+    WHERE id_portao_embarque_voo_fk = NEW.id_portao_embarque_voo_fk AND (NEW.horario_desembarque_voo IS NULL OR horario_embarque_voo <= NEW.horario_desembarque_voo) AND (NEW.horario_embarque_voo IS NULL OR horario_desembarque_voo >= NEW.horario_embarque_voo)
+    AND NOT (status_voo = "Cancelado" OR status_voo = "Finalizado");
 
     SELECT disponivel_portao
     INTO portao_disponivel
     FROM Portao_Embarque
     WHERE id_portao_pk = NEW.id_portao_embarque_voo_fk;
 
-    IF (NOT NEW.id_portao_embarque_voo_fk = OLD.id_portao_embarque_voo_fk OR NOT NEW.horario_embarque_voo = OLD.horario_embarque_voo OR NOT NEW.horario_desembarque_voo = OLD.horario_desembarque_voo
-    OR (NOT NEW.status_voo = OLD.status_voo AND NOT (NEW.status_voo = "Cancelado" OR NEW.status_voo = "Finalizado")))
-    AND verificarPortaoEmbarqueEmUsoFunc(NEW.id_portao_embarque_voo_fk, NEW.horario_embarque_voo, NEW.horario_desembarque_voo) = TRUE OR portao_disponivel = FALSE THEN
+    IF voos > 0 OR portao_disponivel = FALSE THEN
         SIGNAL SQLSTATE '45000'
         SET MESSAGE_TEXT = 'Portão de embarque não disponível durante o período do voo';
     END IF;

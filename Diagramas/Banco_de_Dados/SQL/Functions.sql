@@ -1,5 +1,5 @@
 DELIMITER $$
- 
+
 
 DROP FUNCTION IF EXISTS verificarDisponibilidadeAeronaveFunc$$
 CREATE FUNCTION verificarDisponibilidadeAeronaveFunc(id_aeronave INT, data_inicial DATETIME, data_final DATETIME) 

@@ -123,8 +123,13 @@ public class CriarManutencoesControllerFXML implements Initializable {
             return false;
             }
 
-            LocalDateTime.parse(StringFormatter.formatNumericData(inicioDateTextField.getText()) + StringFormatter.formatNumericData(inicioTimeTextField.getText()), DateTimeFormatter.ofPattern("ddMMyyyyHHmm"));
-            LocalDateTime.parse(StringFormatter.formatNumericData(fimDateTextField.getText()) + StringFormatter.formatNumericData(fimTimeTextField.getText()), DateTimeFormatter.ofPattern("ddMMyyyyHHmm"));
+            String horarioFormatadoInicio = StringFormatter.formatNumericData(inicioTimeTextField.getText());
+            if (horarioFormatadoInicio.length() == 3) horarioFormatadoInicio = "0" + horarioFormatadoInicio;
+            LocalDateTime.parse(StringFormatter.formatNumericData(inicioDateTextField.getText()) + horarioFormatadoInicio, DateTimeFormatter.ofPattern("ddMMyyyyHHmm"));
+
+            String horarioFormatadoFim = StringFormatter.formatNumericData(fimTimeTextField.getText());
+            if (horarioFormatadoFim.length() == 3) horarioFormatadoFim = "0" + horarioFormatadoFim;
+            LocalDateTime.parse(StringFormatter.formatNumericData(fimDateTextField.getText()) + horarioFormatadoFim, DateTimeFormatter.ofPattern("ddMMyyyyHHmm"));
         } catch (Exception e) {
             e.printStackTrace();
             warningText.setText("Alguma data digitada é inválida");

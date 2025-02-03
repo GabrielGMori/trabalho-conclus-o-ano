@@ -201,7 +201,7 @@ public class EditarVooControllerFXML implements Initializable {
             if (aeroporto.getId() == voo.getIdAeroportoChegada()) aeroportoDesembarqueChoiceBox.getSelectionModel().select(i);
         }
         for (int i=0; i<portoes.size(); i++) {
-            if (portaoSelecionado.getId() == voo.getIdPortaoEmbarque()) portaoChoiceBox.getSelectionModel().select(i);
+            if (((PortaoEmbarque) portoes.get(i)).getId() == voo.getIdPortaoEmbarque()) portaoChoiceBox.getSelectionModel().select(i);
         }
 
         carregarDados();
@@ -284,7 +284,7 @@ public class EditarVooControllerFXML implements Initializable {
         Integer idAeroportoChegada = ((Aeroporto) aeroportos.get(aeroportoDesembarqueChoiceBox.getSelectionModel().getSelectedIndex())).getId();
         Integer idAeronave = ((Aeronave) aeronaves.get(aeronaveChoiceBox.getSelectionModel().getSelectedIndex())).getId();
         String status = statuses.get(statusChoiceBox.getSelectionModel().getSelectedIndex());
-
+        
         return new Voo(numero, status, origem, destino, horarioEmbarque, horarioDesembarque, idAeronave, idPortaoEmbarque, idAeroportoChegada);
     }
 

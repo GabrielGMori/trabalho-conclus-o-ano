@@ -182,8 +182,14 @@ public class CriarVooControllerFXML implements Initializable {
             return false;
             }
 
-            LocalDateTime.parse(StringFormatter.formatNumericData(dataEmbarqueTextField.getText()) + StringFormatter.formatNumericData(horarioEmbarqueTextField.getText()), DateTimeFormatter.ofPattern("ddMMyyyyHHmm"));
-            LocalDateTime.parse(StringFormatter.formatNumericData(dataDesembarqueTextField.getText()) + StringFormatter.formatNumericData(horarioDesembarqueTextField.getText()), DateTimeFormatter.ofPattern("ddMMyyyyHHmm"));
+            String horarioEmbarqueFormatado = StringFormatter.formatNumericData(horarioEmbarqueTextField.getText());
+            if (horarioEmbarqueFormatado.length() == 3) horarioEmbarqueFormatado = "0" + horarioEmbarqueFormatado;
+
+            String horarioDesembarqueFormatado = StringFormatter.formatNumericData(horarioDesembarqueTextField.getText());
+            if (horarioDesembarqueFormatado.length() == 3) horarioDesembarqueFormatado = "0" + horarioDesembarqueFormatado;
+
+            LocalDateTime.parse(StringFormatter.formatNumericData(dataEmbarqueTextField.getText()) + horarioEmbarqueFormatado, DateTimeFormatter.ofPattern("ddMMyyyyHHmm"));
+            LocalDateTime.parse(StringFormatter.formatNumericData(dataDesembarqueTextField.getText()) + horarioDesembarqueFormatado, DateTimeFormatter.ofPattern("ddMMyyyyHHmm"));
         } catch (Exception e) {
             e.printStackTrace();
             warningText.setText("Alguma data digitada é inválida");
