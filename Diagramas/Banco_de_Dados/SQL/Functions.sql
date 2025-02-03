@@ -1,5 +1,5 @@
 DELIMITER $$
-
+ 
 
 DROP FUNCTION IF EXISTS verificarDisponibilidadeAeronaveFunc$$
 CREATE FUNCTION verificarDisponibilidadeAeronaveFunc(id_aeronave INT, data_inicial DATETIME, data_final DATETIME) 
@@ -33,7 +33,7 @@ END$$
 
 
 DROP FUNCTION IF EXISTS verificarPortaoEmbarqueEmUsoFunc$$
-CREATE FUNCTION verificarPortaoEmbarqueEmUsoFunc(id_portao INT, data_inicial DATETIME DEFAULT NULL, data_final DATETIME DEFAULT NULL) 
+CREATE FUNCTION verificarPortaoEmbarqueEmUsoFunc(id_portao INT, data_inicial DATETIME, data_final DATETIME) 
 RETURNS BOOLEAN
 BEGIN
     DECLARE voos INT;
